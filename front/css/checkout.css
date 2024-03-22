@@ -1,0 +1,140 @@
+ .succes {
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pay {
+    font-size: 19px;
+    width: 20%;
+    /* height: 3rem;
+border: none;
+background-color: rgba(255, 83, 48); */
+}
+
+.ContainerFooter {
+    height: 10rem;
+}
+
+.reviewMain {
+    background-color: #ffff;
+
+}
+
+.review {
+
+    display: flex;
+    justify-content: space-between;
+    /* width: 80%; */
+    margin-bottom: 4rem;
+}
+
+
+.review h1 {
+    align-self: center;
+    font-size: 36px;
+
+}
+
+.vehicleDiv {
+    padding: 16px;
+}
+
+.total h3 {
+    font-size: 36px;
+}
+
+
+.total p {
+    position: relative;
+
+    text-align: end;
+    font-size: 20px;
+}
+
+h3 {
+
+    font-size: 36px;
+
+}
+
+.vehicleDiv {
+
+    /* border: 1px Solid #bfbfbf ; */
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.vehicleDiv_descrip {
+
+    width: 40%;
+}
+
+.vehicleImage {
+
+    background-color: #f7f7f7;
+}
+
+.Section_Review {
+    border-image-slice: 1;
+    /* Ensure the entire border is used for the gradient */
+    /* Add padding to prevent content from touching the border */
+    border-image: linear-gradient(to top, #fafafa, #fbfbfb, #fcfcfc, #fdfdfd);
+    /* Define the linear gradient */
+
+}
+
+.containerReview {
+    background-color: white;
+    border: 1px solid #bfbfbf;
+    border-radius: 5px;
+}
+
+.Rate {
+
+    width: 100%;
+    margin: 0 auto;
+    width: 39%;
+    margin-top: 5%;
+    right: 0;
+    position: absolute;
+}
+
+.Rate div {
+    justify-content: space-between;
+    display: flex;
+    padding: 2px;
+
+}
+
+.tax {
+
+    color: #090;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.Section_Total {
+    margin-top: 5rem;
+    ;
+
+}
+
+
+.containerTotal {
+
+    /* border: 1px solid #090; */
+    box-shadow: 0 0 0 1px #090, 0 5px 30px rgba(0, 153, 0, .3);
+    border-radius: 5px;
+}
+
+.containerTotal div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+
+ 
