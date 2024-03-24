@@ -11,7 +11,7 @@ class Router
                         'checkout'       => ['controllers' => 'CheckoutController', 'method' => 'index'],
                         'login'         => ['controllers' => 'LoginController', 'method' => 'index'],
                         'register'       => ['controllers' => 'RegisterController', 'method' => 'index'],
-                    ];
+                     ];
 
     public function __construct($request)
     {

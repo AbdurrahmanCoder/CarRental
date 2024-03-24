@@ -36,7 +36,7 @@
             <h3 class="text-center loginColor" >Login</h3>
           </div>
           <div class="card-body">
-            <form id="myForm">
+            <form id="myForm"  method="post">
               <div class="mb-3">
                 <label for="username" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" required>
@@ -58,43 +58,5 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.3/dist/js/bootstrap.min.js"></script>
 </body>
 
-
  
-<script>
- 
-const myForm = document.getElementById("myForm"); // Corrected the variable name to be consistent with usage
-
-myForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-
-    console.log(formData);
-
-    fetch("models/login.php", {
-        method: "post",
-        body: formData
-    }) 
-
-    .then(function (response) {
-        return response.json(); // Parse the JSON response
-    })
-    .then(function (data) {
-        console.log(data);
-
-        if (data.status === "success") {
-            // Reset the form
-            myForm.reset();
-            console.log("Form cleared");
-            // Access other data in 'data' object if needed
-            console.log("Message:", data.message);
-            window.location.href = `/`;     
-        } else {
-            // Handle error cases
-            console.error("Error:", data.message);
-        }
-    });
-});
-
-
-</script>
 </html>

@@ -12,13 +12,17 @@ class Autoloader
         $host = $_SERVER['HTTP_HOST'];
 
        
-        print_r($_SERVER['DOCUMENT_ROOT']);
+        // print_r($_SERVER);
+        print_r(__CLASS__."cffddfd");
+
         // print_r($_SERVER['HTTP_HOST']);
 
-        define('HOST', 'http://' .$host.'/project/');
-        define('ROOT', $root.'/project/');
+        define('HOST', 'http://' .$host.'/project.test/');
+        define('ROOT', $root.'/project.test/');
 
-        define('CONTROLLERS', ROOT.'controllers/');
+
+        
+        define('CONTROLLER', ROOT.'controller/');
         define('VIEWS', ROOT.'views/');
         define('MODELS', ROOT.'models/');
         define('CONFIG', ROOT.'config/');
@@ -27,18 +31,28 @@ class Autoloader
 
     public static function autoload($class)
     {
+
+
         if(file_exists(MODELS.$class.'.php'))
         {
             include_once (MODELS.$class.'php');
+            var_dump($class . " loaded from model");
         }
           else if (file_exists(CLASSES.$class.'.php'))
         {
             include_once (CLASSES.$class.'.php');
-        }
-           else if (file_exists(CONTROLLERS.$class.'.php'))
-        {
-            include_once (CONTROLLERS.$class.'.php');
-        };
+            var_dump($class . " loaded from class");
 
+        }
+           else if (file_exists(CONTROLLER.$class.'.php'))
+        {
+            include_once (CONTROLLER.$class.'.php');
+            var_dump($class . " loaded from CONTROLLER");
+            
+        };
+        
+        var_dump($class . " loaded from outside");
+
+        
     }
 }
