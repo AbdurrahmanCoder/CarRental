@@ -163,16 +163,15 @@ text-decoration: none;
    const imgTags = document.querySelectorAll('img');
 
 // Iterate through img tags to find the one with the specified alt attribute
-for (const imgTag of imgTags) {
-    if (imgTag.alt === 'www.000webhost.com') {
-        // Remove the parent div
-        const parentDiv = imgTag.closest('div');
-        if (parentDiv) {
-            parentDiv.remove();
-        }
-    }} 
-    
-    
+// for (const imgTag of imgTags) {
+//     if (imgTag.alt === 'www.000webhost.com') {
+//         // Remove the parent div
+//         const parentDiv = imgTag.closest('div');
+//         if (parentDiv) {
+//             parentDiv.remove();
+//         }
+//     }} 
+      
   let angledown = document.querySelector(".downarrow");
   
   let userSession = document.querySelector(".userSession");

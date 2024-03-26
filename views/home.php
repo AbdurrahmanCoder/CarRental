@@ -61,7 +61,7 @@
 
       <div class="bookCarDiv">
         <h2>Book a car</h2>
-        <form action= "/vehicleModel"  method="post" id="BookCar">
+        <form  method="post" id="BookCar">
 
           <div class="bookCarMain">
 

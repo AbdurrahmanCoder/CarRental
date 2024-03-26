@@ -17,16 +17,12 @@ class RegisterController
 
     public function index()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
+            
             $database = new Database();
             var_dump($database);
-            print_r($database);
-
-
-            $pdo = $database->getConnection();
-
+            print_r($database); 
+            $pdo = $database->getConnection(); 
             $registration = new Registration();
             $registration->insertData($pdo);
             echo "heelo";

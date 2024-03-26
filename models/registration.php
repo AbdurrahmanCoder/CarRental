@@ -13,7 +13,7 @@ class Registration
         try {
            // $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
-            // Validate and sanitize input data
+            // Validate and sanitize input dat a
             $pseudoValue = isset($_POST['pseudo']) ? filter_var($_POST['pseudo']) : 'default_pseudo_value';
 
             // Check for required fields
