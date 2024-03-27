@@ -26,7 +26,7 @@ Autoloader::start();
 $request = isset($_GET['url']) ? $_GET['url'] : 'home';
 
 //$request = $_GET['url']; //fait référence à index.php?url=...
-var_dump($request);
+// var_dump($request);
 
 $router = new Router($request);
 $router->renderControllers();

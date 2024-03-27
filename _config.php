@@ -13,7 +13,7 @@ class Autoloader
 
        
         // print_r($_SERVER);
-        print_r(__CLASS__."cffddfd");
+        // print_r(__CLASS__."cffddfd");
 
         // print_r($_SERVER['HTTP_HOST']);
 
@@ -36,22 +36,22 @@ class Autoloader
         if(file_exists(MODELS.$class.'.php'))
         {
             include_once (MODELS.$class.'php');
-            var_dump($class . " loaded from model");
+            // var_dump($class . " loaded from model");
         }
           else if (file_exists(CLASSES.$class.'.php'))
         {
             include_once (CLASSES.$class.'.php');
-            var_dump($class . " loaded from class");
+            // var_dump($class . " loaded from class");
 
         }
            else if (file_exists(CONTROLLER.$class.'.php'))
         {
             include_once (CONTROLLER.$class.'.php');
-            var_dump($class . " loaded from CONTROLLER");
+            // var_dump($class . " loaded from CONTROLLER");
             
         };
         
-        var_dump($class . " loaded from outside");
+        // var_dump($class . " loaded from outside");
 
         
     }

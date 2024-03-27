@@ -19,11 +19,39 @@ function SelectedCar(carId, carMarque, carTarif, carImg) {
     <p><b>  Per day Tarif:</b> ${carTarif}<p/>`;
     
     document.querySelector('.checkout').style.opacity = 1;
-   //sendData();
+  
+  
+    console.log(carId)
+    
+  let dfez =  document.querySelector('.SelectedCarID');
+    
+  dfez.value = `${carId}`;
+
+    console.log(dfez)
+  
+    //sendData();
+
+
+
+    
+
+
     
 }
-document.querySelector('.check').innerHTML = carTarif;
+// document.querySelector('.check').innerHTML = carTarif;
  
+
+
+
+
+
+
+
+
+
+
+
+
 function sendData() {
     var data = {
         carids: carId,

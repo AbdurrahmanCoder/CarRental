@@ -4,7 +4,7 @@
     namespace LoginForm;
  
     
-    session_start();      
+    // session_start();      
     class Login {
         private $pdo;
     
