@@ -7,15 +7,11 @@ $totalOrders = $total[0]['total_orders'];
 
 
 $vehicluesTotal = $result->TotalVehicules();
-$TotalVehi = $vehicluesTotal[0]['total_voiture'];
-
+$TotalVehi = $vehicluesTotal[0]['total_voiture']; 
 $totalUser = $result->TotalUser();
 $User = $totalUser[0]['total_membre'];
 
-
-
-
-
+ 
 if (!isAdmin()) {
   header("Location: login.php");
   exit();
@@ -43,10 +39,10 @@ if (!isAdmin()) {
 
     <div class="container">
       <div class="links">
-        <a href="<?= BASE_URL ?>/admin?id=Dashboard" class="nav-link">Dashboard</a>
-        <a href="<?= BASE_URL ?>/admin?id=addCar" class="nav-link">addCar</a>
-        <a href="<?= BASE_URL ?>/admin?id=deleteCar" class="nav-link">deleteCar</a>
-        <a href="<?= BASE_URL ?>/admin?id=orderlist" class="nav-link">Order List</a>
+        <a href="/admin?id=Dashboard" class="nav-link">Dashboard</a>
+        <a href="/admin?id=addCar" class="nav-link">addCar</a>
+        <a href="/admin?id=deleteCar" class="nav-link">deleteCar</a>
+        <a href="/admin?id=orderlist" class="nav-link">Order List</a>
       </div>
 
       <div class="container">

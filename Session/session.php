@@ -2,7 +2,7 @@
 
 namespace Session;
 
-session_start(); // Starting the session
+// session_start(); // Starting the session
 class Session {
     public function handleOrderSearch($postData) {
  
@@ -20,7 +20,11 @@ class Session {
         return $_SESSION;
     }
 
-    
+    function isAdmin() {
+
+        if(isConnected() && $_SESSION['membre']['statut'] == 1) {
+          return $_SESSION['membre'];
+        }
 
 
 }

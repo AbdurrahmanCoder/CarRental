@@ -27,8 +27,7 @@
         $interval = $date1->diff($date2);
         $days = $interval->format('%a');
         $daysChange = $days == 0 ? 1 : $days;
-        $total = $daysChange * $tarif;
-   
+        $total = $daysChange * $tarif; 
         $_SESSION['total'] = $total;
         $_SESSION['days'] = $days;
     }
@@ -76,35 +75,37 @@
                 <div class="vehicleDiv">
 
                     <div class="vehicleDiv_descrip">
+                   <?php  foreach ($VehiculeOrder as $order) { ?>
 
-                        <div class="vehicleImage">
-                            <h4>vehicle</h4>
-                            <img src="views\admin\front\<?php echo $img ?>" alt="" width="200px">
-                            <h4>
-                                <?php echo $marque ?>
-                            </h4>
-                        </div>
-
+                    <div class="vehicleImage">
+                        <h4>vehicle</h4>
+                        <img src="views\admin\front\<?php echo $order['photo'] ?>" alt="" width="200px">
+                        <h4>
+                            <?php echo $order['marque'] ?>
+                        </h4>
+                    </div>
+                    
+                <?php } ?>
 
                         <h3>Pick up & return </h3>
 
                         <div class="vehicleImage">
                             <h5>pick up</h5>
                             <h3>
-                                <?php echo $location; ?>
+                                <?php echo $_SESSION['Location']; ?>
                             </h3>
                             <p>
-                                <?php echo $pickUp ?>
-                                <?php echo $pickUpTime ?>
+                                <?php echo $_SESSION['PickUp'] ?>
+                                <?php echo $_SESSION['PickUpTime'] ?>
                             </p>
                             <hr>
                             <h5>return</h5>
                             <h3>
-                                <?php echo $location; ?>
+                                <?php echo $_SESSION['Location'] ?>
                             </h3>
                             <p>
-                                <?php echo $dropOf; ?>
-                                <?php echo $dropOfTime ?>
+                                <?php echo $_SESSION['DropOf'] ?>
+                                <?php  echo $_SESSION['DropOfTime'] ?>
                             </p>
                         </div>
                     </div>
@@ -175,7 +176,7 @@
             <div class="container  ContainerFooter">
 
 
-                <form action=" /payment" method="POST">
+                <form action="" method="GET">
                     <!-- Add any other form fields or data you need to submit -->
                     <input type="hidden" name="payed" value="true">
                     <button type="submit" class="pay redBlock Form_book_btn">PAY</button>

@@ -19,6 +19,7 @@ require('controller/VehicleController.php');
 require('controller/LoginController.php');
 require('controller/CheckoutController.php');
 require('controller/RegisterController.php');
+require('controller/AdminController.php');
  
 // CHARGEMENT DE LA CONFIGURATION ET L'AUTOLOAD
 Autoloader::start();

@@ -38,7 +38,7 @@ class HomeController
 
         } else {
 
-            echo $_SESSION['user_id'] . "sessiosioidio";
+            // echo $_SESSION['user_id'] . "sessiosioidio";
 
             include 'views/navbar.php';
             include 'views/home.php';
