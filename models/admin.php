@@ -1,18 +1,20 @@
 <?php 
 
-require_once 'config.php';
+// require_once 'config.php';
+
+namespace Admin;
+
 
 class admin{
     private $db;
     public function __construct()
     {
-        try { 
-            $this->db = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASSWORD);
-            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            echo 'Connection failed: ' . $e->getMessage();
-        }
+      
+
+
     }
+ 
+
     public function CommandeAffficher()
     { 
         // $requete = "SELECT carorder.*, membre.*, voiture.*
@@ -30,21 +32,21 @@ class admin{
        ORDER BY membre.id";
        $stmt = $this->db->prepare($requete);
       $stmt->execute();
-      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+      return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
     public function VoitureList()
     { 
         $requete = "SELECT  *  FROM voiture;";
        $stmt = $this->db->prepare($requete);
       $stmt->execute();
-      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+      return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
     public function TotalOrder()
     { 
         $requete = "SELECT COUNT(*) AS total_orders FROM carorder;";
        $stmt = $this->db->prepare($requete);
       $stmt->execute();
-      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+      return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
     
     public function TotalVehicules()
@@ -52,14 +54,14 @@ class admin{
         $requete = "SELECT COUNT(*) AS total_voiture FROM voiture;";
        $stmt = $this->db->prepare($requete);
       $stmt->execute();
-      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+      return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
     public function TotalUser()
     { 
         $requete = "SELECT COUNT(*) AS total_membre FROM membre;";
        $stmt = $this->db->prepare($requete);
       $stmt->execute();
-      return $stmt->fetchAll(PDO::FETCH_ASSOC);
+      return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 }
-?>
+ 

@@ -10,6 +10,10 @@ class Router
                         'vehicleModel' => ['controllers' => 'VehicleController', 'method' => 'index'],  
                         'checkout'       => ['controllers' => 'CheckoutController', 'method' => 'index'],
                         'admin'       => ['controllers' => 'AdminController', 'method' => 'index'],
+                        'admin/addcar'       => ['controllers' => 'AdminController', 'method' => 'checking'],
+
+
+
                         'login'         => ['controllers' => 'LoginController', 'method' => 'index'],
                         'register'       => ['controllers' => 'RegisterController', 'method' => 'index'],
                       ];

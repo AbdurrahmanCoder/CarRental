@@ -5,7 +5,7 @@ myForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const formData = new FormData(this); 
     console.log(formData); 
-    fetch("views/admin/insertdata.php", {
+    fetch("../models/AdminMod.php", {
         method: "post",
         body: formData
     })
@@ -14,9 +14,13 @@ myForm.addEventListener('submit', function (e) {
   })
   .then(function (text) {
       console.log(text); 
+      console.log("deekljkledlekdj"); 
+      
       if (text.includes("data inserted")) { 
         myForm.reset();
         console.log("Form cleared");
     }
   });
-});
+}); 
+
+  

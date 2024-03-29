@@ -1,21 +1,21 @@
 <?php
 
 
-$result = new admin();
-$total = $result->TotalOrder();
-$totalOrders = $total[0]['total_orders'];
+// $result = new admin();
+// $total = $result->TotalOrder();
+// $totalOrders = $total[0]['total_orders'];
 
 
-$vehicluesTotal = $result->TotalVehicules();
-$TotalVehi = $vehicluesTotal[0]['total_voiture']; 
-$totalUser = $result->TotalUser();
-$User = $totalUser[0]['total_membre'];
+// $vehicluesTotal = $result->TotalVehicules();
+// $TotalVehi = $vehicluesTotal[0]['total_voiture']; 
+// $totalUser = $result->TotalUser();
+// $User = $totalUser[0]['total_membre'];
 
  
-if (!isAdmin()) {
-  header("Location: login.php");
-  exit();
-} else {
+// if (!isAdmin()) {
+//   header("Location: login.php");
+//   exit();
+// } else {
 
   ?>
 
@@ -52,7 +52,7 @@ if (!isAdmin()) {
           <div>
             <h3>Total Bookings </h3>
             <h1>
-              <?php echo $totalOrders ?>
+              <?php   ?>
             </h1>
 
           </div>
@@ -61,7 +61,7 @@ if (!isAdmin()) {
           <div>
             <h3>Total Vehicules </h3>
             <h1>
-              <?php echo $TotalVehi ?>
+              <?php   ?>
             </h1>
 
           </div>
@@ -72,7 +72,7 @@ if (!isAdmin()) {
             <h3>Registered User</h3>
 
             <h1>
-              <?php echo $User ?>
+              <?php   ?>
             </h1>
           </div>
 
@@ -92,5 +92,4 @@ if (!isAdmin()) {
 
 
   </html>
-  <?php
-}
+ 

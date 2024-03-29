@@ -1,12 +1,4 @@
  
-<?php
-if (!isAdmin()) {
-  header("Location: login.php");
-  exit();
-} else {
-
-  ?>
-
   <!DOCTYPE html>
   <html lang="en">
 
@@ -15,7 +7,9 @@ if (!isAdmin()) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="front\css\admin.css">
+    <link rel="stylesheet" href="front\css\admin.css">
     <link rel="stylesheet" href="front\css\home.css">
+ 
     <script src="front\js\admin.js" async>
     </script>
 
@@ -25,10 +19,10 @@ if (!isAdmin()) {
 
     <div class="container">
       <div class="links">
-        <a href="<?= BASE_URL ?>/admin?id=Dashboard" class="nav-link">Dashboard</a>
-        <a href="<?= BASE_URL ?>/admin?id=addCar" class="nav-link">addCar</a>
-        <a href="<?= BASE_URL ?>/admin?id=deleteCar" class="nav-link">deleteCar</a>
-        <a href="<?= BASE_URL ?>/admin?id=orderlist" class="nav-link">Order List</a>
+        <a href="/admin?id=Dashboard" class="nav-link">Dashboard</a>
+        <a href="/admin?id=addCar" class="nav-link">addCar</a>
+        <a href="/admin?id=deleteCar" class="nav-link">deleteCar</a>
+        <a href="/admin?id=orderlist" class="nav-link">Order List</a>
       </div>
 
       <div class="Content">
@@ -79,5 +73,4 @@ if (!isAdmin()) {
 
 
   </html>
-  <?php
-}
+ 

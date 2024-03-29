@@ -26,7 +26,7 @@ class Session {
           return $_SESSION['membre'];
         }
 
-
+    }
 }
 
 // // Creating an instance of FormHandler
