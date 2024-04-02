@@ -38,7 +38,7 @@ public function insertItem($marque, $kilometrage, $tarif,$photo)
       $file_basename = pathinfo($_FILES["image_file"]["name"], PATHINFO_FILENAME); 
       $file_extension = pathinfo($_FILES["image_file"]["name"], PATHINFO_EXTENSION); 
       $new_image_name = $file_basename . '_' . date("Ymd_His") . '.' . $file_extension; 
-      $target_directory = "/front"; 
+      $target_directory = "../front/imgRental/"; 
       if (!file_exists($target_directory)) { 
         mkdir($target_directory, 0777, true);   
       } 
@@ -84,16 +84,16 @@ public function insertItem($marque, $kilometrage, $tarif,$photo)
         echo "data not inserted";
     }
 
-
-
+    
 
 }  
 
+ 
  if (isset($_POST['id'])) {
     $id = $_POST['id']; 
     $datainsert = new Admin;
     $datainsert->DeleteItem($id);
-    echo "data deleted"; // Echo a message for deletion
+    echo "data deleted"; 
 } else {
     echo "no data submitted";
 }

@@ -33,8 +33,18 @@ class VehiculeModels
         // Fetch the result
         $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
  
-        return  $result ;
+        return  $result ; 
+       
+    }
+    public function VehiculeModelsDelteById($id)
+    { 
+        $sql = "SELECT * FROM  voiture WHERE  id= :id ";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id', $id); 
+        $stmt->execute();
 
+         $result = $stmt->fetchAll(\PDO::FETCH_ASSOC); 
+        return  $result ; 
        
     }
 

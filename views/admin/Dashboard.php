@@ -52,7 +52,7 @@
           <div>
             <h3>Total Bookings </h3>
             <h1>
-              <?php   ?>
+              <?php  echo $TotalOrder ?>
             </h1>
 
           </div>
@@ -61,7 +61,7 @@
           <div>
             <h3>Total Vehicules </h3>
             <h1>
-              <?php   ?>
+              <?php echo $TotalVehicules  ?>
             </h1>
 
           </div>
@@ -72,7 +72,7 @@
             <h3>Registered User</h3>
 
             <h1>
-              <?php   ?>
+              <?php   echo  $TotalUser ?>
             </h1>
           </div>
 

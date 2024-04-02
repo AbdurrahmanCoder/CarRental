@@ -1,6 +1,6 @@
 <?php 
-$results = new admin;
-$orderList = $results->CommandeAffficher(); 
+// $results = new admin;
+// $orderList = $results->CommandeAffficher(); 
   
  
 if (!isAdmin()) {
@@ -24,10 +24,10 @@ if (!isAdmin()) {
 
     <div class="container">
       <div class="links">
-        <a href="<?= BASE_URL ?>/admin?id=Dashboard" class="nav-link">Dashboard</a>
-        <a href="<?= BASE_URL ?>/admin?id=addCar" class="nav-link">addCar</a>
-        <a href="<?= BASE_URL ?>/admin?id=deleteCar" class="nav-link">deleteCar</a>
-        <a href="<?= BASE_URL ?>/admin?id=orderlist" class="nav-link">Order List</a>
+        <a href=" /admin?id=Dashboard" class="nav-link">Dashboard</a>
+        <a href=" /admin?id=addCar" class="nav-link">addCar</a>
+        <a href=" /admin?id=deleteCar" class="nav-link">deleteCar</a>
+        <a href=" /admin?id=orderlist" class="nav-link">Order List</a>
       </div>
 
       <div class="Content">
@@ -51,7 +51,7 @@ if (!isAdmin()) {
                       </thead>
                       <tbody>
                       <?php
-                      foreach ($orderList as $ComData) { ?>
+                      foreach ($CommandeListe as $ComData) { ?>
                           <tr>
                             <td>
                           <?php echo $ComData['id']; ?>

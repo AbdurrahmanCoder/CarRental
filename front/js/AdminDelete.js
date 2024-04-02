@@ -10,7 +10,7 @@ function deleted() {
     
     console.log("Clicked ID:", id);
     
-    fetch('views/admin/insertdata.php', {
+    fetch('../models/AdminMod.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

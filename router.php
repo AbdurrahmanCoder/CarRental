@@ -11,6 +11,7 @@ class Router
                         'checkout'       => ['controllers' => 'CheckoutController', 'method' => 'index'],
                         'admin'       => ['controllers' => 'AdminController', 'method' => 'index'],
                         'admin/addcar'       => ['controllers' => 'AdminController', 'method' => 'checking'],
+                        'user'       => ['controllers' => 'UserController', 'method' => 'index'],
 
 
 

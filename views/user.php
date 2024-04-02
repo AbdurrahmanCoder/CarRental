@@ -1,12 +1,17 @@
  <?php 
 $Dashboard = new UserDashboard();
+ 
+
 $UserOrder = $Dashboard->CommandeAffficher(); 
+
+ 
   var_dump($UserOrder);
+
+  
    if (isset($_SESSION['user_id'])) {
           echo $_SESSION['user_id'];
         }
-        
-        
+         
         echo "ekelkejklezj";
 ?>
 

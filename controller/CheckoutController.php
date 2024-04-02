@@ -11,28 +11,33 @@ use Database\Database;
 class CheckoutController
 {
 
-    private $database; 
+    private $database;
+
+
+
+
     public function index()
     {
-
+        $Id = $_POST['SelectedCarID'];
+        echo $Id;
+        $database = new Database();
+        $pdo = $database->getConnection();
+        $date1 = new DateTime($_SESSION['PickUp']);
+        $date2 = new DateTime($_SESSION['DropOf']);
+        $interval = $date1->diff($date2);
+        $days = $interval->format('%a');
+        $daysChange = $days == 0 ? 1 : $days;
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $Id = $_POST['SelectedCarID'];
-            echo $Id;
-            $database = new Database();
-            $pdo = $database->getConnection();
+
             $VehiculeAvailable = new VehiculeModels($pdo);
             $VehiculeOrder = $VehiculeAvailable->VehiculeModelsById($Id);
-            
-             var_dump($VehiculeOrder);  
-            $date1 = new DateTime($_SESSION['PickUp']);
-            $date2 = new DateTime($_SESSION['DropOf']);
-            $interval = $date1->diff($date2);
-            $days = $interval->format('%a');
-            $daysChange = $days == 0 ? 1 : $days;
+
+            var_dump($VehiculeOrder);
             $tarif = $VehiculeOrder[0]['tarif'];
-            $total = $daysChange * $tarif; 
-            var_dump($total); 
+            $total = $daysChange * $tarif;
+
+            var_dump($total);
 
             require_once 'views/navbar.php';
             require_once 'views/checkout.php';
@@ -43,15 +48,18 @@ class CheckoutController
 
             echo "working";
 
+ 
+
+
+          
             // }
 
         }
 
 
-
-
+ 
 
     }
 
-}
+}git 
 

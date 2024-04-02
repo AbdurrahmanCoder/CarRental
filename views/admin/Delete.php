@@ -1,11 +1,5 @@
 <?php
 
-$results = new admin;
-
-$orderList = $results->VoitureList();
-
-
-
 
 if (!isAdmin()) {
     header("Location: login.php");
@@ -24,16 +18,17 @@ if (!isAdmin()) {
         <link rel="stylesheet" href="front\css\admin.css">
         <link rel="stylesheet" href="front\css\home.css">
     </head>
-  <script src="front\js\AdminDelete.js" async>
+    <script src="front\js\AdminDelete.js" async>
     </script>
+
     <body>
 
         <div class="container">
             <div class="links">
-                <a href="<?= BASE_URL ?>/admin?id=Dashboard" class="nav-link">Dashboard</a>
-                <a href="<?= BASE_URL ?>/admin?id=addCar" class="nav-link">addCar</a>
-                <a href="<?= BASE_URL ?>/admin?id=deleteCar" class="nav-link">deleteCar</a>
-                <a href="<?= BASE_URL ?>/admin?id=orderlist" class="nav-link">Order List</a>
+                <a href="  /admin?id=Dashboard" class="nav-link">Dashboard</a>
+                <a href=" /admin?id=addCar" class="nav-link">addCar</a>
+                <a href=" /admin?id=deleteCar" class="nav-link">deleteCar</a>
+                <a href="/admin?id=orderlist" class="nav-link">Order List</a>
             </div>
 
             <div class="Content">
@@ -56,34 +51,33 @@ if (!isAdmin()) {
                         </thead>
                         <tbody>
                             <?php
-                            foreach ($orderList as $ComData) { ?>
+                            foreach ($results as $carData) { ?>
                                 <tr>
                                     <td>
-                                        <?php echo $ComData['id']; ?>
-
+                                        <?php echo $carData['id']; ?>
+                                        <?php echo $carData['photo']; ?>
                                     </td>
 
                                     <td>
 
                                         <img width="120px" height="112px"
-                                            src=" views\admin\front\<?php echo $ComData['photo']; ?>" alt="">
+                                            src="../../front/imgRental/<?php echo $carData['photo']; ?>" alt="">
+                                    </td>
+                                    <td>
+                                        <?php echo $carData['marque']; ?>
+                                    </td>
+
+                                    <td>
+                                        <?php echo $carData['kilometrage']; ?>
 
                                     </td>
                                     <td>
-                                        <?php echo $ComData['marque']; ?>
-                                    </td>
-
-                                    <td>
-                                        <?php echo $ComData['kilometrage']; ?>
-
-                                    </td>
-                                    <td>
-                                        <?php echo $ComData['tarif']; ?>
+                                        <?php echo $carData['tarif']; ?>
                                     </td>
 
 
                                     <td>
-                                        <button data-id="<?php echo $ComData['id']; ?>" class="buttonClicked">DELETE </button>
+                                        <button data-id="<?php echo $carData['id']; ?>" class="buttonClicked">DELETE </button>
                                     </td>
 
 
