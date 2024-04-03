@@ -59,7 +59,7 @@
                     <div class="total">
                         <p>TOTAL </p>
                         <h3>€
-                            <?php echo $total ?>
+                            <?php echo $TotalTarif ?>
                         </h3>
                     </div>
 
@@ -164,7 +164,7 @@
                     <h1>TOTAL <span>
                             To pay online</span> </h1>
                     <h3>€
-                        <?php echo $total; ?>
+                        <?php echo $TotalTarif; ?>
                     </h3>
                 </div>
             </div>
@@ -172,10 +172,7 @@
  
 
         <section class="Section_Total">
-
             <div class="container  ContainerFooter">
-
-
                 <form action="" method="GET">
                     <!-- Add any other form fields or data you need to submit -->
                     <input type="hidden" name="payed" value="true">

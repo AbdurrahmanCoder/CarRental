@@ -1,93 +1,82 @@
 <?php
-class Payment {
 
+namespace Payment;
+
+ 
+
+class Payment
+{
+
+    private $database;
     private $pdo;
     private $success = true;
     private $result = [];
+    private $id;
+    private $date1;
+    private $date2;
+    private $daysChange;
+    private $total;
+    private $days;
 
-    function InsertOrderData() {
-        if (isset($_SESSION['user'])) {
-            $userFromSession = $_SESSION['user'];
-            $this->result += $userFromSession;  
-        }
  
- 
 
-if (isset($_SESSION['total']) && isset($_SESSION['days'])) {
- 
-    $this->result += [
-        'total' => $_SESSION['total'],
-        'days' => $_SESSION['days'],
-    ];
-}
-
-        if (isset($_SESSION['processed_data'])) {
-            $carids = $_SESSION['processed_data']['carids'];
-            $marque = $_SESSION['processed_data']['marque'];
-            $tarif = $_SESSION['processed_data']['tarif'];
-            $img = $_SESSION['processed_data']['img'];
-
-            // Add processed_data-related data to the result array
-            $this->result += [
-                'carids' => $carids,
-                'marque' => $marque,
-                'tarif' => $tarif,
-                'img' => $img,
-            ];
-        }
-
-        if (isset($_SESSION['user_id'])) {
-            // Add processed_data-related data to the result array
-            $this->result += [
-                'UserId' => $_SESSION['user_id'],
-            ];
-
-            $this->insertDataToDB();
-            return $this->result;
-        }
+   public  function calculateDateInfo()
+    {
+        $pickup= new \DateTime($_SESSION['PickUp']);
+        $dropoff = new \DateTime($_SESSION['DropOf']);
+        $interval = $pickup->diff( $dropoff);
+        $days = $interval->format('%a');
+        $daysTotal = $days  == 0 ? 1 : $days ; 
+               return [
+                   'pickupDate' => $pickup,
+                   'dropoffDate' => $dropoff,
+                   'days' => $days,
+                   'daysTotal' => $daysTotal
+               ];
+        
     }
 
-    function insertDataToDB() {
-       try {
-    $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASSWORD);
-} catch (PDOException $e) {
-    echo 'Connection failed: ' . $e->getMessage();
-} try {
-    $city = $this->result['Location'];
-    $pickUpDate = $this->result['PickUp'];
-    $pickUpTime = $this->result['PickUpTime'];
-    $dropDate = $this->result['DropOf'];
-    $dropTime = $this->result['PickUpTime'];
-    $checked = 0; 
-    $id_User = $this->result['UserId']; 
-    $voiture_id = $this->result['carids'];
-    $days = $this->result['days'];
-    $total = $this->result['total'];
 
-    $sql = "INSERT INTO `carorder` (`City`, `PickUpDate`, `PickUpTime`, `DropDate`, `DropTime`, `Checked`, `id_User`, `voiture_id`, `days`, `total`) 
+
+    function insertDataToDB()
+    {
+
+        try {
+            $city = $this->result['Location'];
+            $pickUpDate = $this->result['PickUp'];
+            $pickUpTime = $this->result['PickUpTime'];
+            $dropDate = $this->result['DropOf'];
+            $dropTime = $this->result['PickUpTime'];
+            $checked = 0;
+            $id_User = $this->result['UserId'];
+            $voiture_id = $this->result['carids'];
+            $days = $this->result['days'];
+            $total = $this->result['total'];
+
+            $sql = "INSERT INTO `carorder` (`City`, `PickUpDate`, `PickUpTime`, `DropDate`, `DropTime`, `Checked`, `id_User`, `voiture_id`, `days`, `total`) 
             VALUES (:city, :PickUpDate, :PickUpTime, :DropDate, :DropTime, :Checked, :id_User, :voiture_id, :days, :total)";
 
-    $Connect = $pdo->prepare($sql);
-    $Connect->bindParam(':city', $city);
-    $Connect->bindParam(':PickUpDate', $pickUpDate);
-    $Connect->bindParam(':PickUpTime', $pickUpTime);
-    $Connect->bindParam(':DropDate', $dropDate);
-    $Connect->bindParam(':DropTime', $dropTime);
-    $Connect->bindParam(':Checked', $checked);
-    $Connect->bindParam(':id_User', $id_User);
-    $Connect->bindParam(':voiture_id', $voiture_id);
-    $Connect->bindParam(':days', $days);
-    $Connect->bindParam(':total', $total);
+            $Connect = $pdo->prepare($sql);
+            $Connect->bindParam(':city', $city);
+            $Connect->bindParam(':PickUpDate', $pickUpDate);
+            $Connect->bindParam(':PickUpTime', $pickUpTime);
+            $Connect->bindParam(':DropDate', $dropDate);
+            $Connect->bindParam(':DropTime', $dropTime);
+            $Connect->bindParam(':Checked', $checked);
+            $Connect->bindParam(':id_User', $id_User);
+            $Connect->bindParam(':voiture_id', $voiture_id);
+            $Connect->bindParam(':days', $days);
+            $Connect->bindParam(':total', $total);
 
-    $Connect->execute();
-} catch (PDOException $e) {
-    echo 'Error inserting data: ' . $e->getMessage();
-    $this->success = false;
-}
-    } 
-    function isSuccess() {
+            $Connect->execute();
+        } catch (PDOException $e) {
+            echo 'Error inserting data: ' . $e->getMessage();
+            $this->success = false;
+        }
+    }
+    function isSuccess()
+    {
         return $this->success;
     }
 }
 
- 
