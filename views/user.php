@@ -7,6 +7,7 @@ $UserOrder = $Dashboard->CommandeAffficher();
  
   var_dump($UserOrder);
 
+  var_dump($_SESSION['user_id']."hjsfhjkh") ;
   
    if (isset($_SESSION['user_id'])) {
           echo $_SESSION['user_id'];
@@ -95,7 +96,8 @@ foreach ($UserOrder as $order) {
 
                         <div class="vehicleImage">
                             <h4>vehicle</h4>
-                            <img src="views\admin\front\<?php echo $order['photo']; ?>" alt="" width="200px">
+                            <!-- <img src="../front/imgRental/ <?php echo $order['photo']; ?>" alt="" width="200px"> -->
+                            <img src="../front/imgRental/<?php echo $order['photo']; ?>" alt="" width="200px">
                             <h4>
                                 <?php echo $order['marque']; ?>
                             </h4>
@@ -133,11 +135,11 @@ foreach ($UserOrder as $order) {
                         </div>
                         <div>
                             <p>total Days </p>
-                            <p><?php echo $order['days']; ?></p>
+                            <p><?php ?></p>  
                         </div>
                         <div>
                             <p> total paid </p>
-                            <p><?php echo $order['total']; ?> </p>
+                            <p><?php echo $order['TotalCost']; ?> </p>
                         </div>
                         <div>
                             <p>FLEETSC </p>
@@ -155,8 +157,8 @@ foreach ($UserOrder as $order) {
                         <div>
                
                         <?php 
-            $statusClass = ($order['Checked'] === 1) ? 'confirmed' : 'pending';
-            $statusText = ($order['Checked'] === 1) ? 'Confirmed' : 'Pending';
+            $statusClass = ($order['OrderStatus'] === 1) ? 'confirmed' : 'pending';
+            $statusText = ($order['OrderStatus'] === 1) ? 'Confirmed' : 'Pending';
             ?>
             <button class="button <?php echo $statusClass; ?>"><?php echo $statusText; ?></button>
 

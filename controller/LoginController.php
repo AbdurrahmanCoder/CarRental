@@ -26,7 +26,11 @@ class LoginController
             $pdo = $database->getConnection(); 
             $login = new Login($pdo);
             $login->authenticate($this->email,$this->password);
-            print_r($login);            
+            // print_r($login);             
+
+            ECHO "VOUS ETES BIEN CONNECTE";
+
+
          } else {
 
             require_once 'views/navbar.php';

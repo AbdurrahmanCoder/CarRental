@@ -2,7 +2,11 @@
 
 namespace Payment;
 
- 
+require_once "models/config.php";
+
+use Database\Database;
+use Vehicule\VehiculeModels;
+
 
 class Payment
 {
@@ -18,65 +22,89 @@ class Payment
     private $total;
     private $days;
 
- 
+    private $VehiculeAvailable;
 
-   public  function calculateDateInfo()
+    private $VehiculeOrder;
+
+    public function __construct($pdo)
     {
-        $pickup= new \DateTime($_SESSION['PickUp']);
-        $dropoff = new \DateTime($_SESSION['DropOf']);
-        $interval = $pickup->diff( $dropoff);
-        $days = $interval->format('%a');
-        $daysTotal = $days  == 0 ? 1 : $days ; 
-               return [
-                   'pickupDate' => $pickup,
-                   'dropoffDate' => $dropoff,
-                   'days' => $days,
-                   'daysTotal' => $daysTotal
-               ];
+
         
+        $this->pdo = $pdo; 
+
+        $this->VehiculeAvailable = new VehiculeModels($pdo);
+          
+    }
+    
+    
+    public function calculateDateInfo()
+    {
+        $pickup = new \DateTime($_SESSION['PickUp']);
+        $dropoff = new \DateTime($_SESSION['DropOf']);
+        $interval = $pickup->diff($dropoff);
+        $days = $interval->format('%a');
+        $daysTotal = $days == 0 ? 1 : $days;
+        return [
+            'pickupDate' => $pickup,
+            'dropoffDate' => $dropoff,
+            'days' => $days,
+            'daysTotal' => $daysTotal
+        ];
+        
+    }
+    
+    public function calculateTotal($id)
+    {
+
+        $this->VehiculeOrder = $this->VehiculeAvailable->VehiculeModelsById($id);
+        $tarif = $this->VehiculeOrder[0]['tarif'];
+        $dateInfo = $this->calculateDateInfo();
+        $daysTotal = $dateInfo['daysTotal'];
+        return $tarif * $daysTotal;
     }
 
 
-
-    function insertDataToDB()
+    function insertDataToDB($SessionGetData,$id,$TotalTarif)
     {
 
         try {
-            $city = $this->result['Location'];
-            $pickUpDate = $this->result['PickUp'];
-            $pickUpTime = $this->result['PickUpTime'];
-            $dropDate = $this->result['DropOf'];
-            $dropTime = $this->result['PickUpTime'];
-            $checked = 0;
-            $id_User = $this->result['UserId'];
-            $voiture_id = $this->result['carids'];
-            $days = $this->result['days'];
-            $total = $this->result['total'];
+            $sql = "INSERT INTO carorder (City, PickUpDate, PickUpTime, DropDate, DropTime, OrderStatus, TotalCost, PaymentStatus, id_User, voiture_id) 
+            VALUES (:city, :pickupDate, :pickupTime, :dropDate, :dropTime, :orderStatus, :totalCost, :paymentStatus, :userId, :carId)";
 
-            $sql = "INSERT INTO `carorder` (`City`, `PickUpDate`, `PickUpTime`, `DropDate`, `DropTime`, `Checked`, `id_User`, `voiture_id`, `days`, `total`) 
-            VALUES (:city, :PickUpDate, :PickUpTime, :DropDate, :DropTime, :Checked, :id_User, :voiture_id, :days, :total)";
 
-            $Connect = $pdo->prepare($sql);
-            $Connect->bindParam(':city', $city);
-            $Connect->bindParam(':PickUpDate', $pickUpDate);
-            $Connect->bindParam(':PickUpTime', $pickUpTime);
-            $Connect->bindParam(':DropDate', $dropDate);
-            $Connect->bindParam(':DropTime', $dropTime);
-            $Connect->bindParam(':Checked', $checked);
-            $Connect->bindParam(':id_User', $id_User);
-            $Connect->bindParam(':voiture_id', $voiture_id);
-            $Connect->bindParam(':days', $days);
-            $Connect->bindParam(':total', $total);
+                var_dump( $SessionGetData['DropOf']);
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':city', $SessionGetData['Location']);
+            $stmt->bindParam(':pickupDate', $SessionGetData['PickUp']);
+            $stmt->bindParam(':pickupTime', $SessionGetData['PickUpTime']);
+            $stmt->bindParam(':dropDate', $SessionGetData['DropOf']);
+            $stmt->bindParam(':dropTime', $SessionGetData['DropOfTime']);
+            // $stmt->bindParam(':orderStatus', $SessionGetData['OrderStatus']); // Set default value or fetch from session
+            // $stmt->bindParam(':totalCost', $SessionGetData['TotalCost']); // Set default value or calculate total cost
+            // $stmt->bindParam(':paymentStatus', $SessionGetData['PaymentStatus']); // Set default value or fetch from session
+            // $stmt->bindParam(':userId', $SessionGetData['id_User']); // Assuming this is stored in session
+            // $stmt->bindParam(':carId', $SessionGetData['voiture_id']); // Assuming this is stored in session
+            $stmt->bindValue(':orderStatus', 1);  
+            $stmt->bindValue(':paymentStatus', 1);  
+            $stmt->bindValue(':totalCost',$TotalTarif); 
+            $stmt->bindValue(':userId', $_SESSION['user_id']); 
+            $stmt->bindParam(':carId', $id);  
+            
+            
+            // Execute the prepared statement
+            $stmt->execute();
+ 
+            echo "Data inserted successfully."; 
 
-            $Connect->execute();
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
+
             echo 'Error inserting data: ' . $e->getMessage();
             $this->success = false;
         }
     }
-    function isSuccess()
-    {
-        return $this->success;
-    }
+    // function isSuccess()
+    // {
+    //     return $this->success;
+    // }
 }
 

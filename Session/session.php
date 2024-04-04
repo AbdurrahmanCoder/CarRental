@@ -15,9 +15,16 @@ class Session {
         
         echo "Form data has been successfully stored in session variables.";
     }
+
+
+    public function VoitureId($id) {
+ 
+        $_SESSION['VoitureId'] = isset($id) ? $id  : null; 
+      }
+ 
+
     public function getSessionData() {
-        // Return session data as an array
-        return $_SESSION;
+         return $_SESSION;
     }
 
     function isAdmin() {

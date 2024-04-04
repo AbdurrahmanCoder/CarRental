@@ -9,6 +9,7 @@ require_once "models/Payment.php";
 use Vehicule\VehiculeModels;
 use Database\Database;
 use Payment\Payment;
+use Session\Session;
 
 
 
@@ -17,42 +18,53 @@ class CheckoutController
 
     private $database;
     private $date2;
+    private $id;
+
+
 
     public function index()
     {
+        $database = new Database();
+        $pdo = $database->getConnection();
+
+        $Session = new Session();
+        $SessionGetData = $Session->getSessionData();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+
             $id = $_POST['SelectedCarID'];
 
-            $database = new Database();
-            $pdo = $database->getConnection();
-            
-            $payment = new Payment();
-            
-            
-            $VehiculeAvailable = new VehiculeModels($pdo);
+            $Session->VoitureId($id);
+
+            $payment = new Payment($pdo);
+
+            $TotalTarif = $payment->calculateTotal($id);
 
 
-            $VehiculeOrder = $VehiculeAvailable->VehiculeModelsById($id);
-            $tarif = $VehiculeOrder[0]['tarif'];
 
-
-            
-            $DateInfo = $payment->calculateDateInfo(); 
-
-            $daysTotal = $DateInfo['daysTotal']; 
-            $TotalTarif = $tarif * $daysTotal ; 
-            echo "  tarif is " .$tarif  ."total days are "   .$daysTotal; 
-
-
-            var_dump($VehiculeOrder);
+            $dateInfo = $payment->calculateDateInfo();
 
             require_once 'views/navbar.php';
             require_once 'views/checkout.php';
 
         } else {
-            // $this->handleGetRequest();
+
+            $payment = new Payment($pdo);
+
+            $voitureId = $SessionGetData['VoitureId'] ?? null;
+
+            $TotalTarif = $payment->calculateTotal($voitureId);
+ 
+            $payment->insertDataToDB($SessionGetData, $this->id, $TotalTarif);
+
+            // var_dump($SessionGetData);
+
+            // $this->insertDataToDB();
+
+
+
+
         }
     }
 

@@ -22,16 +22,19 @@ class UserDashboard
      
     public function CommandeAffficher()
     {
+ 
         try {
-            $requete = "SELECT carorder.*, membre.id AS mid, membre.*, voiture.id AS vid, voiture.* FROM `carorder`  
+            $requete = "SELECT carorder.*, voiture.id AS vid, voiture.* FROM `carorder`  
 
-                    INNER JOIN voiture ON voiture.id = carorder.voiture_id 
-                    WHERE carorder.id_User = :userId";
+            INNER JOIN voiture ON voiture.id = carorder.voiture_id 
+            WHERE carorder.id_User = :userId";
 
             $pdo = $this->db->getConnection();
             $stmt = $pdo->prepare($requete);
             $stmt->bindParam(':userId', $this->userId, PDO::PARAM_INT);
             $stmt->execute();
+
+            
 
             // Fetch data as associative array
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

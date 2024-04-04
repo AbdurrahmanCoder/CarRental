@@ -67,19 +67,19 @@
 
             <div class="Form_item">
               <label for=""> <i class="ti ti-car"></i>Sélectionnez votre location</label>
-              <input type="text" name="Location" placeholder="ENTER THE CITY">
+              <input type="text" name="Location" placeholder="ENTER THE CITY" required>
             </div>
 
 
             <div class="Form_item">
               <label for=""> <i class="ti ti-car"></i> Pick-up *</label>
-              <input type="date" name="PickUp" id="PickUp" min="<?php echo date('Y-m-d') ?>" format="yyyy-mm-dd">
+              <input type="date" name="PickUp" id="PickUp" min="<?php echo date('Y-m-d') ?>" format="yyyy-mm-dd" required>
             </div>
 
             <div class="Form_item">
               <!-- <label for=""> <i class="ti ti-car"></i> Time</label> -->
 
-               <select name="PickUpTime">
+               <select name="PickUpTime" required>
                 <?php
                 for ($hour = 0; $hour < 24; $hour++) {
                   for ($minute = 0; $minute < 60; $minute += 30) {
@@ -91,15 +91,15 @@
               </select>
             </div>
 
-            <div class="Form_item">
+            <div class="Form_item" >
               <label for=""> <i class="ti ti-car"></i> Drop-of * </label>
               <input type="date" id="DropOf" name="DropOf" min="<?php if (!empty($_POST['PickUp'])) {
                 echo $_POST['PickUp'];
-              } ?>" format="yyyy-mm-dd">
+              } ?>" format="yyyy-mm-dd" required>
             </div>
 
             <div class="Form_item">
-              <select name="DropOfTime">
+              <select name="DropOfTime" required > 
                 <?php
                 for ($hour = 0; $hour < 24; $hour++) {
                   for ($minute = 0; $minute < 60; $minute += 30) {
