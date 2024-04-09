@@ -1,11 +1,5 @@
  <?php 
-$Dashboard = new UserDashboard();
  
-
-$UserOrder = $Dashboard->CommandeAffficher(); 
-
- 
-  var_dump($UserOrder);
 
   var_dump($_SESSION['user_id']."hjsfhjkh") ;
   
@@ -158,7 +152,7 @@ foreach ($UserOrder as $order) {
                
                         <?php 
 
-              $order['OrderStatus'] = 1;
+            //   $order['OrderStatus'] = 1;
 
             $statusClass = ($order['OrderStatus'] === 1) ? 'confirmed' : 'pending';
             $statusText = ($order['OrderStatus'] === 1) ? 'Confirmed' : 'Pending';

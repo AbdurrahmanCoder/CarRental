@@ -22,6 +22,7 @@ class Autoloader
 
 
         
+        
         define('CONTROLLER', ROOT.'controller/');
         define('VIEWS', ROOT.'views/');
         define('MODELS', ROOT.'models/');
@@ -29,12 +30,16 @@ class Autoloader
         define('CLASSES', ROOT.'classes/');
         define('IMAGE', ROOT.'');
  
-    }
 
+
+
+    }
+    
     public static function autoload($class)
     {
-
-        include_once (MODELS.'payment'.'.php');
+        
+        var_dump($class);
+        // include_once (MODELS.'payment'.'.php');
 
         if(file_exists(MODELS.$class.'.php'))
         {

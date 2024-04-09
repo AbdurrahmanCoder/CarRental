@@ -1,11 +1,21 @@
-<?php 
+<?php
 
-        require_once 'models/UserDash.php';
+use User\UserDashboard;
  
-class UserController {
-    public function index() {  
+// require_once 'models/UserDash.php';
+
+
+class UserController
+{
+    public function index()
+    {
+ 
+
+        $User = new UserDashboard();
+        $UserOrder = $User->CommandeAffficher(); 
         require_once 'views/navbar.php';
-        require_once 'views/user.php';
- 
+        require_once 'views/user.php'; 
+
+
     }
 }

@@ -1,9 +1,13 @@
 <?php
 
-require_once "config.php";
+
+ 
+
+namespace User;
+
 
 use Database\Database;
-
+ 
 
 class UserDashboard
 {
@@ -31,16 +35,16 @@ class UserDashboard
 
             $pdo = $this->db->getConnection();
             $stmt = $pdo->prepare($requete);
-            $stmt->bindParam(':userId', $this->userId, PDO::PARAM_INT);
+            $stmt->bindParam(':userId', $this->userId, \PDO::PARAM_INT);
             $stmt->execute();
 
             
 
             // Fetch data as associative array
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
             return $result;
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             // Handle any database errors
             echo "Error: " . $e->getMessage();
             return false;

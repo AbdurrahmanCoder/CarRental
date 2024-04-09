@@ -1,67 +1,53 @@
-<?php 
-class User { 
-    private $Location;
-    private $PickUp;
-    private $PickUpTime;
-    private $DropOf;
-    private $DropOfTime;
-    public function __construct($Location,$PickUp,$PickUpTime,$DropOf,$DropOfTime) {
-        $this->Location = $Location;
-        $this->PickUp= $PickUp;
-        $this->PickUpTime = $PickUpTime;
-        $this->DropOf = $DropOf;
-        $this->DropOfTime= $DropOfTime; 
-    } 
-    public function getLocation(): string {
-        return $this->Location ?? '';
-    } 
-    public function setLocation(string $Location) {
-        $this->Location = $Location;
-    }
+<?php
 
-    public function getPickUp() {
-        return $this->PickUp;
-    }
 
-    public function setPickUp($PickUp) {
-        $this->PickUp = $PickUp;
-    }
+ 
 
-    public function getPickUpTime() {
-        return $this->PickUpTime;
-    } 
-    public function setPickUpTime($PickUpTime) {
-        $this->PickUpTime = $PickUpTime;
-    } 
-    public function getDropOf() {
-        return $this->DropOf;
-    } 
-    public function setDropOf($DropOf) {
-        $this->DropOf = $DropOf;
-    }
+namespace User;
 
-    public function getDropOfTime() {
-        return $this->DropOfTime;
-    } 
-    public function setDropOfTime($DropOfTime) {
-        $this->DropOfTime = $DropOfTime;
-    } 
-    public function saveToSession() {
-        $_SESSION['user'] = [
-            'Location' => $this->Location,
-            'PickUp' => $this->PickUp,
-            'PickUpTime' => $this->PickUpTime,
-            'DropOf' => $this->DropOf,
-            'DropOfTime' => $this->DropOfTime,
-        ]; 
-    } 
-    public function Prix() {
-        $_SESSION['user'] = [
-            'Location' => $this->Location,
-            'PickUp' => $this->PickUp,
-            'PickUpTime' => $this->PickUpTime,
-            'DropOf' => $this->DropOf,
-            'DropOfTime' => $this->DropOfTime,
-        ]; 
-    } 
+
+use Database\Database;
+ 
+
+class UserDashboard
+{
+    private $db;
+    private $userId;
+
+    public function __construct()
+    {
+        if (isset($_SESSION['user_id'])) {
+            $this->userId = $_SESSION['user_id']; 
+            $this->db = new Database();
+
+        } 
+
+    }
+     
+    public function CommandeAffficher()
+    {
+ 
+        try {
+            $requete = "SELECT carorder.*, voiture.id AS vid, voiture.* FROM `carorder`  
+
+            INNER JOIN voiture ON voiture.id = carorder.voiture_id 
+            WHERE carorder.id_User = :userId";
+
+            $pdo = $this->db->getConnection();
+            $stmt = $pdo->prepare($requete);
+            $stmt->bindParam(':userId', $this->userId, \PDO::PARAM_INT);
+            $stmt->execute();
+
+            
+
+            // Fetch data as associative array
+            $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+            return $result;
+        } catch (\PDOException $e) {
+            // Handle any database errors
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
 }
