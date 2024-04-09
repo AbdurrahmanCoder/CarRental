@@ -75,11 +75,11 @@
                 <div class="vehicleDiv">
 
                     <div class="vehicleDiv_descrip">
-                   <?php  foreach ($VehiculeOrder as $order) { ?>
+                   <?php  foreach ($results as $order) { ?>
 
                     <div class="vehicleImage">
                         <h4>vehicle</h4>
-                        <img src="views\admin\front\<?php echo $order['photo'] ?>" alt="" width="200px">
+                        <img src=" ../front/imgRental/<?php echo $order['photo'] ?>" alt="" width="200px">
                         <h4>
                             <?php echo $order['marque'] ?>
                         </h4>
@@ -113,7 +113,7 @@
                     <div class="Rate"> 
                         <div>
                             <p> <B>Basic rate for
-                                    <?php echo $days; ?> days
+                                    <?php echo $dateInfo['days']; ?> days
                                 </B></p>
                             <p>Included </p>
                         </div>

@@ -1,18 +1,16 @@
 <?php
+  
 
+//   require_once "models/config.php";
+//   require_once "models/Order.php";
+//   require_once "models/Payment.php"; 
 
-require_once "models/config.php";
-require_once "models/Order.php";
-require_once "models/Payment.php";
 
 
 use Vehicule\VehiculeModels;
 use Database\Database;
 use Payment\Payment;
-use Session\Session;
-
-
-
+use Session\Session; 
 class CheckoutController
 {
 
@@ -40,10 +38,12 @@ class CheckoutController
             $payment = new Payment($pdo);
 
             $TotalTarif = $payment->calculateTotal($id);
-
-
+            
 
             $dateInfo = $payment->calculateDateInfo();
+
+            $VehiculeAvailable = new VehiculeModels($pdo);  
+            $results = $VehiculeAvailable->VehiculeModelsById($id);
 
             require_once 'views/navbar.php';
             require_once 'views/checkout.php';
@@ -55,8 +55,14 @@ class CheckoutController
             $voitureId = $SessionGetData['VoitureId'] ?? null;
 
             $TotalTarif = $payment->calculateTotal($voitureId);
- 
-            $payment->insertDataToDB($SessionGetData, $this->id, $TotalTarif);
+
+            var_dump($this->id ."id bro ");
+
+            $payment->insertDataToDB($SessionGetData, $voitureId , $TotalTarif);
+
+            
+
+            require_once 'views/payment.php';
 
             // var_dump($SessionGetData);
 

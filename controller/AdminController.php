@@ -60,9 +60,7 @@ class AdminController
       $results = $VehiculeAvailable->VehiculeModelsFetch();  
       require_once 'views/admin/Delete.php';
    
-   
-   
-   
+      
     } else {
       echo "<h1>this is modify</h1>";
     }

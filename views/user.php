@@ -157,6 +157,9 @@ foreach ($UserOrder as $order) {
                         <div>
                
                         <?php 
+
+              $order['OrderStatus'] = 1;
+
             $statusClass = ($order['OrderStatus'] === 1) ? 'confirmed' : 'pending';
             $statusText = ($order['OrderStatus'] === 1) ? 'Confirmed' : 'Pending';
             ?>

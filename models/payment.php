@@ -64,7 +64,7 @@ class Payment
     }
 
 
-    function insertDataToDB($SessionGetData,$id,$TotalTarif)
+    function insertDataToDB($SessionGetData,$voitureId,$TotalTarif)
     {
 
         try {
@@ -79,16 +79,11 @@ class Payment
             $stmt->bindParam(':pickupTime', $SessionGetData['PickUpTime']);
             $stmt->bindParam(':dropDate', $SessionGetData['DropOf']);
             $stmt->bindParam(':dropTime', $SessionGetData['DropOfTime']);
-            // $stmt->bindParam(':orderStatus', $SessionGetData['OrderStatus']); // Set default value or fetch from session
-            // $stmt->bindParam(':totalCost', $SessionGetData['TotalCost']); // Set default value or calculate total cost
-            // $stmt->bindParam(':paymentStatus', $SessionGetData['PaymentStatus']); // Set default value or fetch from session
-            // $stmt->bindParam(':userId', $SessionGetData['id_User']); // Assuming this is stored in session
-            // $stmt->bindParam(':carId', $SessionGetData['voiture_id']); // Assuming this is stored in session
-            $stmt->bindValue(':orderStatus', 1);  
+            $stmt->bindValue(':orderStatus', 0);  
             $stmt->bindValue(':paymentStatus', 1);  
             $stmt->bindValue(':totalCost',$TotalTarif); 
             $stmt->bindValue(':userId', $_SESSION['user_id']); 
-            $stmt->bindParam(':carId', $id);  
+            $stmt->bindParam(':carId',  $voitureId );  
             
             
             // Execute the prepared statement

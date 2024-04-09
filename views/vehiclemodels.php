@@ -134,7 +134,7 @@ print_r($sessionData);
                     <div class="List_vehicule_Disponible">
 
                         <div>
-                            <img width="200px" height="300px" src="views\admin\front\<?php echo $data['photo'] ?>" alt="">
+                            <img width="200px" height="300px" src=" ../front/imgRental/<?php echo $data['photo'] ?>" alt="">
 
 
                             <!-- <img width="200px" height="300px"  src="views\admin\front\imgRentala_20240107_192939.png" alt=""> -->

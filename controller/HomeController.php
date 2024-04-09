@@ -1,8 +1,8 @@
 <?php
 
-require_once "models/Order.php";
-require_once "models/config.php";
-require_once "Session/session.php";
+// require_once "models/Order.php";
+// require_once "models/config.php";
+// require_once "Session/session.php";
 
 
 use Database\Database;

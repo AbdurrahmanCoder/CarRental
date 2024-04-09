@@ -1,12 +1,4 @@
-    <?php
-    require_once 'models/payment.php';
- 
-    $payment = new Payment();
-    $payment->InsertOrderData(); 
-    $success = $payment->isSuccess();
-    var_dump($payment->InsertOrderData()); 
 
-    ?>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -19,14 +11,11 @@
     </head>
 
     <body>
-<?php 
- if($success === true){ ?> 
+
 <div class="container"> 
     <h1 class="succes containerTotal">🎉 Payment Successful 🎉</h1> 
 </div>
 
-<?php }
-  ?>
 
     </body>
 
