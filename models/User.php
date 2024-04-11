@@ -9,7 +9,7 @@ namespace User;
 use Database\Database;
  
 
-class UserDashboard
+class UserDashboardzzz
 {
     private $db;
     private $userId;

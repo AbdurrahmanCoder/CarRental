@@ -13,14 +13,14 @@ class Autoloader
 
        
         // print_r($_SERVER);
-        // print_r(__CLASS__."cffddfd");
-
+        
         // print_r($_SERVER['HTTP_HOST']);
-
+        
         define('HOST', 'http://' .$host.'/');
         define('ROOT', $root.'/');
 
 
+        var_dump($root."cffddfd");
         
         
         define('CONTROLLER', ROOT.'controller/');
@@ -37,24 +37,30 @@ class Autoloader
     
     public static function autoload($class)
     {
-        
-        var_dump($class);
-        // include_once (MODELS.'payment'.'.php');
 
-        if(file_exists(MODELS.$class.'.php'))
+        $parts = explode('\\', $class);
+    
+        // Extract the last part of the namespace
+        $className = end( $parts);
+     
+        
+          var_dump($className);
+
+
+        if(file_exists(MODELS.$className.'.php'))
         {
-            include_once (MODELS.$class.'.php'); 
+            include_once (MODELS.$className.'.php'); 
             // var_dump($class . " loaded from model");
         }
-          else if (file_exists(CLASSES.$class.'.php'))
+          else if (file_exists(CLASSES.$className.'.php'))
         {
-            include_once (CLASSES.$class.'.php');
+            include_once (CLASSES.$className.'.php');
             // var_dump($class . " loaded from class");
 
         }
-           else if (file_exists(CONTROLLER.$class.'.php'))
+           else if (file_exists(CONTROLLER.$className.'.php'))
         {
-            include_once (CONTROLLER.$class.'.php');
+            include_once (CONTROLLER.$className.'.php');
             // var_dump($class . " loaded from CONTROLLER");
             
         };

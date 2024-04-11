@@ -2,7 +2,7 @@
 
 namespace Payment;
 
-require_once "models/config.php";
+// require_once "models/config.php";
 
 use Database\Database;
 use Vehicule\VehiculeModels;

@@ -29,7 +29,21 @@
       <div class="container-form">
         <h2>Formulaire de Voiture</h2>
         <form id="myForm" enctype="multipart/form-data">
-          <div class="mb-3">
+          
+        <!-- <div class="mb-3">
+
+            <label for="marque" class="form-label">Type de Voiture </label>
+        
+            <select id="carTypeDropdown" style="margin:20px">
+
+            <option value="">Select Car Type</option>
+       
+        </select>
+        
+            <input type="text" class="form-control" id="marque" name="marque" required>
+          </div> -->
+        
+        <div class="mb-3">
             <label for="marque" class="form-label">Marque</label>
             <input type="text" class="form-control" id="marque" name="marque" required>
           </div>

@@ -8,6 +8,11 @@ use Database\Database;
 use Vehicule\VehiculeModels;
 use AdminDash\adminDash;
 
+
+// use AdminDash\adminDash;
+
+
+
 use Admin\admin;
 
 class AdminController
@@ -33,11 +38,12 @@ class AdminController
       
     } else if ($id === "addCar") {
       
-      
+ 
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         echo "hello ";
       } else {
+      // $CommandeListe = $VehiculeAvailable->CommandeAffficher(); 
         
         require_once 'views/admin/Addcar.php';
       }

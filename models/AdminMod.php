@@ -1,6 +1,6 @@
 <?php 
 
-require_once "config.php";
+ require_once "Database.php";
 
 use Database\Database;
 
@@ -47,13 +47,14 @@ public function insertItem($marque, $kilometrage, $tarif,$photo)
     //   echo "non";
         // header("Location:index.php?message=er");
     }
-      $sql = "INSERT INTO voiture (marque, kilometrage, tarif, photo, fiche) VALUES (:marque, :kilometrage, :tarif, :photo, :fiche)";
+      $sql = "INSERT INTO voiture (marque, kilometrage, tarif, photo, fiche ,typeId) VALUES (:marque, :kilometrage, :tarif, :photo, :fiche,:typeId)";
         $stmt =  $pdo->prepare($sql);
         $stmt->bindParam(':marque', $marque);
         $stmt->bindParam(':kilometrage', $kilometrage);
         $stmt->bindParam(':tarif', $tarif);
         $stmt->bindParam(':photo', $new_image_name);
         $stmt->bindValue(':fiche', 'default_value'); 
+        $stmt->bindValue(':typeId', 1); 
         $stmt->execute();
        if ($stmt->rowCount() > 0) {
           return true;  

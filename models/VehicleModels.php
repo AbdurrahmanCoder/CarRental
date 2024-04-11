@@ -49,6 +49,25 @@ class VehiculeModels
     }
 
 
+    public function VehiculeType()
+    { 
+        $sql = "SELECT * FROM  types_de_voiture ";
+        $stmt = $this->pdo->prepare($sql); 
+        $stmt->execute();
+ 
+         $result = $stmt->fetchAll(\PDO::FETCH_ASSOC); 
+        return  $result ; 
+       
+    }
+
+
+
+
+
+
+
+
+
     
 
 

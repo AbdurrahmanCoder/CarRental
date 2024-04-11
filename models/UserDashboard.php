@@ -20,8 +20,7 @@ class UserDashboard
             $this->userId = $_SESSION['user_id']; 
             $this->db = new Database();
 
-        } 
-
+        }  
     }
      
     public function CommandeAffficher()
