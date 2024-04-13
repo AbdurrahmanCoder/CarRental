@@ -1,42 +1,42 @@
 <?php 
-// $results = new admin;
-// $orderList = $results->CommandeAffficher(); 
-  
- 
-if (!isAdmin()) {
-  header("Location: login.php");
-  exit();
-} else {
-?>
+       
+         if (isset($_GET['selectedId'])) {
+   
+   echo "cool";
 
-  <!DOCTYPE html>
+} 
+
+
+
+
+else
+{
+    ?>    
+
+    <!DOCTYPE html>
   <html lang="en">
-
+  
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="front\css\admin.css">
     <link rel="stylesheet" href="front\css\home.css"> 
-  </head>
+    </head>
 
-  <body>
+    <body >
 
-    <div class="container">
-      <div class="links">
-        <a href=" /admin?id=Dashboard" class="nav-link">Dashboard</a>
-        <a href=" /admin?id=addCar" class="nav-link">addCar</a>
-        <a href=" /admin?id=deleteCar" class="nav-link">deleteCar</a>
-        <a href=" /admin?id=orderlist" class="nav-link">Order List</a>
-      </div>
+    <div class="container"  >
+     
+        <?php include_once("header.php") ?>
+  
+    <div class="Content">
 
-      <div class="Content">
-
-      
-      <div class="container mt-5">
-                
+    
+    <div class="container mt-5">
+    
                     <table class="table">
-                      <thead>
+                    <thead>
                         <tr>
                           <th>ID</th>
                           <th>City</th>
@@ -47,7 +47,7 @@ if (!isAdmin()) {
                           <th>nom</th>
                           <th>prenom</th>
                           <th>email</th> 
-                          <th>Details</th> 
+                          <th>details</th> 
                         </tr>
                       </thead>
                       <tbody>
@@ -91,13 +91,11 @@ if (!isAdmin()) {
                             <td>
                           <?php echo $ComData['email']; ?>
                             </td>
-                            
-                      <a href="">
-
-                        <td>
-                          <p>More details</p>
-                        </td>
-                      </a>      
+                            <td>
+                                <a href="/admin?id=neworder&selectedId=<?php echo $ComData['id']; ?>"> 
+                                    <p>More details</p>
+                                </a>
+                            </td>
 
 
                     </div>
@@ -110,12 +108,15 @@ if (!isAdmin()) {
 
 
 
-  </body>
-
-
-
+  </body> 
 
   </html>
   <?php
-}
-}
+}}
+ 
+
+?>
+
+
+
+ 

@@ -1,0 +1,7 @@
+<div class="links">
+        <a href=" /admin?id=Dashboard" class="nav-link">Dashboard</a>
+        <a href=" /admin?id=addCar" class="nav-link">addCar</a>
+        <a href=" /admin?id=deleteCar" class="nav-link">deleteCar</a>
+        <a href=" /admin?id=orderlist" class="nav-link">Order List</a>
+      </div>
+ 

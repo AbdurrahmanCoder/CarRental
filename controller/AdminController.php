@@ -30,49 +30,87 @@ class AdminController
 
     if ($id === "Dashboard") {
       $VehiculeAvailable = new adminDash($pdo);   
-      $TotalUser = $VehiculeAvailable->TotalUser()[0]['total_membre'];
-      $TotalVehicules = $VehiculeAvailable->TotalVehicules()[0]['total_voiture']; 
-      $TotalOrder = $VehiculeAvailable->TotalOrder()[0]['total_orders']; 
+      $TotalUser = $VehiculeAvailable->TotalUser()['total_membre'];
+      $TotalVehicules = $VehiculeAvailable->TotalVehicules()['total_voiture']; 
+      $TotalOrder = $VehiculeAvailable->TotalOrder()['total_orders']; 
+      $NewOrder = $VehiculeAvailable->NewOrderCount();
+      
+      var_dump($NewOrder); 
       
       require_once 'views/admin/Dashboard.php';
       
-    } else if ($id === "addCar") {
-      
- 
+    } else if ($id === "addCar") { 
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         echo "hello ";
       } else {
-      // $CommandeListe = $VehiculeAvailable->CommandeAffficher(); 
-        
+        $VehiculeAvailable = new VehiculeModels($pdo);  
+        $typeDeVoiture = $VehiculeAvailable->VehiculeType() ; 
+      var_dump($typeDeVoiture);
         require_once 'views/admin/Addcar.php';
       }
-      
-      
+       
+
     } else if ($id === "orderlist") {
       $VehiculeAvailable = new adminDash($pdo);   
       $CommandeListe = $VehiculeAvailable->CommandeAffficher(); 
 
         var_dump($CommandeListe);
-
-
+ 
       require_once 'views/admin/orderlist.php';
-
-
-    } else if ($id === "deleteCar") {
-
-  
+ 
+    } else if ($id === "deleteCar") {  
       $VehiculeAvailable = new VehiculeModels($pdo);  
       $results = $VehiculeAvailable->VehiculeModelsFetch();  
       require_once 'views/admin/Delete.php';
-   
-      
-    } else {
+    
+    } 
+    else if ($id === "neworder") {  
+      $VehiculeAvailable = new adminDash($pdo);   
+      $CommandeListe  = $VehiculeAvailable->NewOrder(); 
+      // print_r($CommandeListe);
+      require_once 'views/admin/neworder.php';
+    }  
+    else if ($id === "neworder")  {   
+
+      $VehiculeAvailable = new adminDash($pdo);   
+      // $CommandeListe  = $VehiculeAvailable->NewOrder();  
+
+      if (isset($_GET['selectedId'])) {
+       
+       
+        $id=  $_GET['selectedId'];
+
+        $SelectedIdData  = $VehiculeAvailable->NewOrderById($id); 
+        
+        print_r($CommandeListe);
+      }
+ 
+      require_once 'views/admin/neworder.php';
+    
+    
+    
+    
+    }  
+
+
+
+
+    else {
       echo "<h1>this is modify</h1>";
     }
 
 
 
   }
+
+
+  public function checking()
+{
+  echo "hello ";
+}
+
+
+
 }
 

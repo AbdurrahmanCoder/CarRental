@@ -68,20 +68,5 @@ class Autoloader
         // var_dump($class . " loaded from outside");
          
     }}
-// // 
-//   public static function autoload($class)
-// {
-//     // Convert class name to file path
-//     $file = str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
-
-//     // Check if file exists and include it
-//     if (file_exists(MODELS . $file)) {
-//         include_once MODELS . $file;
-//     } else if (file_exists(CLASSES . $file)) {
-//         include_once CLASSES . $file;
-//     } else if (file_exists(CONTROLLER . $file)) {
-//         include_once CONTROLLER . $file;
-//     }
-// }
-// }
+ 
 

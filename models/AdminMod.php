@@ -27,7 +27,7 @@ class Admin{
       $stmt->execute();
       return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-public function insertItem($marque, $kilometrage, $tarif,$photo)
+public function insertItem($marque, $kilometrage, $tarif,$photo,$carType)
 {
     $pdo = $this->db->getConnection();
     // echo "non";
@@ -54,7 +54,7 @@ public function insertItem($marque, $kilometrage, $tarif,$photo)
         $stmt->bindParam(':tarif', $tarif);
         $stmt->bindParam(':photo', $new_image_name);
         $stmt->bindValue(':fiche', 'default_value'); 
-        $stmt->bindValue(':typeId', 1); 
+        $stmt->bindValue(':typeId', $carType); 
         $stmt->execute();
        if ($stmt->rowCount() > 0) {
           return true;  
@@ -73,13 +73,22 @@ public function insertItem($marque, $kilometrage, $tarif,$photo)
     $stmt->execute();
     } 
     }  
-   if (isset($_POST['marque']) && isset($_POST['kilometrage']) && isset($_POST['tarif']) && isset($_FILES["image_file"]["tmp_name"])) {
+
+
+
+   if (isset($_POST['marque']) && isset($_POST['kilometrage']) && isset($_POST['tarif']) && isset($_FILES["image_file"]["tmp_name"]) && isset($_POST['carType'])  ) {
     $marque = $_POST['marque'];
     $kilometrage = $_POST['kilometrage'];
     $tarif = $_POST['tarif'];
     $photo = $_FILES["image_file"]["tmp_name"];
+    $carType = $_POST['carType'];
+
+     
+
+
+
     $datainsert = new Admin;
-    if ($datainsert->insertItem($marque, $kilometrage, $tarif, $photo)) {
+    if ($datainsert->insertItem($marque, $kilometrage, $tarif, $photo,$carType)) {
         echo "data inserted";
     } else {
         echo "data not inserted";

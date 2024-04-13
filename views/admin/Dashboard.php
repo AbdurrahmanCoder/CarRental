@@ -43,22 +43,30 @@
         <a href="/admin?id=addCar" class="nav-link">addCar</a>
         <a href="/admin?id=deleteCar" class="nav-link">deleteCar</a>
         <a href="/admin?id=orderlist" class="nav-link">Order List</a>
+        <a href="/admin?id=neworder" class="nav-link">New Order</a>
       </div>
 
       <div class="container">
-        <div class="Dashboard">
+        <div class="Dashboard"> 
+  
+        <div>
+            <h3>New Order </h3>
+            <h1>
+              <?php  echo $NewOrder ?>
+            </h1>
 
-
-          <div>
+          </div> 
+  
+        <div>
             <h3>Total Bookings </h3>
             <h1>
               <?php  echo $TotalOrder ?>
             </h1>
 
-          </div>
-
-
+          </div> 
+        
           <div>
+            
             <h3>Total Vehicules </h3>
             <h1>
               <?php echo $TotalVehicules  ?>

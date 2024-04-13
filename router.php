@@ -4,20 +4,18 @@
 
 class Router
 {
-    private $request; 
-    private $routes = [ 
-                        'home'     => ['controllers' => 'HomeController', 'method' => 'index'], 
-                        'vehicleModel' => ['controllers' => 'VehicleController', 'method' => 'index'],  
-                        'checkout'       => ['controllers' => 'CheckoutController', 'method' => 'index'],
-                        'admin'       => ['controllers' => 'AdminController', 'method' => 'index'],
-                        'admin/addcar'       => ['controllers' => 'AdminController', 'method' => 'checking'],
-                        'user'       => ['controllers' => 'UserController', 'method' => 'index'],
+    private $request;
+    private $routes = [
+        'home' => ['controllers' => 'HomeController', 'method' => 'index'],
+        'vehicleModel' => ['controllers' => 'VehicleController', 'method' => 'index'],
+        'checkout' => ['controllers' => 'CheckoutController', 'method' => 'index'],
+        'admin' => ['controllers' => 'AdminController', 'method' => 'index'],
+        // 'adminaddcar' => ['controllers' => 'AdminController', 'method' => 'checking'],
+        'user' => ['controllers' => 'UserController', 'method' => 'index'], 
 
-
-
-                        'login'         => ['controllers' => 'LoginController', 'method' => 'index'],
-                        'register'       => ['controllers' => 'RegisterController', 'method' => 'index'],
-                      ];
+        'login' => ['controllers' => 'LoginController', 'method' => 'index'],
+        'register' => ['controllers' => 'RegisterController', 'method' => 'index'],
+    ];
 
     public function __construct($request)
     {
@@ -28,9 +26,8 @@ class Router
     public function renderControllers()
     {
         $request = $this->request;
-        
-        if(key_exists($request, $this->routes))
-        {
+
+        if (key_exists($request, $this->routes)) {
             $controllers = $this->routes[$request]['controllers'];
             $method = $this->routes[$request]['method'];
             $currentController = new $controllers();
