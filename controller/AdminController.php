@@ -72,11 +72,13 @@ class AdminController
        $CommandeListe  = $VehiculeAvailable->NewOrder();  
 
       if (isset($_GET['selectedId'])) { 
-        $id=  $_GET['selectedId']; 
-
+      
+        $id=  $_GET['selectedId'];        
         var_dump($id);
         $SelectedIdData  = $VehiculeAvailable->NewOrderById($id);  
         var_dump($SelectedIdData);
+        var_dump($SelectedIdData);
+
       }
       require_once 'views/admin/neworder.php'; 
     }  
