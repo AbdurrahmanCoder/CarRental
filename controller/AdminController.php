@@ -65,32 +65,20 @@ class AdminController
       require_once 'views/admin/Delete.php';
     
     } 
-    else if ($id === "neworder") {  
-      $VehiculeAvailable = new adminDash($pdo);   
-      $CommandeListe  = $VehiculeAvailable->NewOrder(); 
-      // print_r($CommandeListe);
-      require_once 'views/admin/neworder.php';
-    }  
+  
     else if ($id === "neworder")  {   
 
       $VehiculeAvailable = new adminDash($pdo);   
-      // $CommandeListe  = $VehiculeAvailable->NewOrder();  
+       $CommandeListe  = $VehiculeAvailable->NewOrder();  
 
-      if (isset($_GET['selectedId'])) {
-       
-       
-        $id=  $_GET['selectedId'];
+      if (isset($_GET['selectedId'])) { 
+        $id=  $_GET['selectedId']; 
 
-        $SelectedIdData  = $VehiculeAvailable->NewOrderById($id); 
-        
-        print_r($CommandeListe);
+        var_dump($id);
+        $SelectedIdData  = $VehiculeAvailable->NewOrderById($id);  
+        var_dump($SelectedIdData);
       }
- 
-      require_once 'views/admin/neworder.php';
-    
-    
-    
-    
+      require_once 'views/admin/neworder.php'; 
     }  
 
 

@@ -1,19 +1,4 @@
-<?php 
-       
-         if (isset($_GET['selectedId'])) {
-   
-   echo "cool";
-
-} 
-
-
-
-
-else
-{
-    ?>    
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
   <html lang="en">
   
   <head>
@@ -25,7 +10,6 @@ else
     </head>
 
     <body >
-
     <div class="container"  >
      
         <?php include_once("header.php") ?>
@@ -34,6 +18,27 @@ else
 
     
     <div class="container mt-5">
+
+<?php 
+       
+         if (isset($_GET['selectedId'])) {
+           ?>        
+   
+ 
+
+
+           
+           
+           
+   <?php  
+           
+        } 
+else
+{
+    ?>    
+
+ 
+
     
                     <table class="table">
                     <thead>
@@ -55,7 +60,7 @@ else
                       foreach ($CommandeListe as $ComData) { ?>
                           <tr>
                             <td>
-                          <?php echo $ComData['id']; ?>
+                          <?php echo $ComData['carorder_id']; ?>
 
                             </td>
 
@@ -92,14 +97,17 @@ else
                           <?php echo $ComData['email']; ?>
                             </td>
                             <td>
-                                <a href="/admin?id=neworder&selectedId=<?php echo $ComData['id']; ?>"> 
+                                <a href="/admin?id=neworder&selectedId=<?php echo $ComData['carorder_id']; ?>"> 
                                     <p>More details</p>
                                 </a>
                             </td>
 
 
                     </div>
+<?php
+                  }
 
+                  ?>
     </div>
     </div>
 
@@ -112,7 +120,9 @@ else
 
   </html>
   <?php
-}}
+
+
+}
  
 
 ?>
