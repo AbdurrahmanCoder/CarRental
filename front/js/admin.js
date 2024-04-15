@@ -1,6 +1,4 @@
-
-const myForm = document.getElementById("myForm");
-
+const myForm = document.getElementById("myForm"); 
 myForm.addEventListener('submit', function (e) {
   e.preventDefault();
   const formData = new FormData(this);
@@ -20,14 +18,16 @@ myForm.addEventListener('submit', function (e) {
         myForm.reset();
         console.log("Form cleared");
         let success = document.querySelector('#success')
-        success.style.opacity ="1";
-       
+        success.style.opacity ="1"; 
         setTimeout(function () {
           success.style.opacity = "0";  
-      }, 3000);
-  
-
+      }, 3000); 
       }
     });
 });
+
+
+
+
+
 

@@ -20,19 +20,14 @@ class Autoloader
         define('ROOT', $root.'/');
 
 
-        var_dump($root."cffddfd");
-        
-        
+        // var_dump($root."cffddfd");
+        var_dump(HOST."cffddfd");
         define('CONTROLLER', ROOT.'controller/');
         define('VIEWS', ROOT.'views/');
         define('MODELS', ROOT.'models/');
         define('CONFIG', ROOT.'config/');
         define('CLASSES', ROOT.'classes/');
         define('IMAGE', ROOT.'');
- 
-
-
-
     }
     
     public static function autoload($class)

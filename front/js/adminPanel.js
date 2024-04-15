@@ -1,0 +1,34 @@
+let button = document.getElementById('button');
+
+button.addEventListener('click', functionRun)
+
+function functionRun() {
+
+
+    const SelectedId = this.getAttribute('data-SelectedId');
+
+    fetch('../models/AdminMod.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `SelectedId=${encodeURIComponent(SelectedId)}`,
+    })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data);
+
+            //         this.parentNode.parentNode.remove();
+               console.log("dewani bawli ");
+
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+
+
+    console.log("clickedme", SelectedId);
+}
+
+
