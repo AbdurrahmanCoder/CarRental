@@ -85,8 +85,24 @@
           </div>
 
 
+          <div>
+            <h3> cars available </h3>
+
+            <h1>
+              <?php   echo  $TotalUser ?>
+            </h1>
+          </div>
+
+
+
+
+
         </div>
+ 
+        
       </div>
+
+
 
 
 

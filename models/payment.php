@@ -68,6 +68,8 @@ class Payment
     {
 
         try {
+            
+            
             $sql = "INSERT INTO carorder (City, PickUpDate, PickUpTime, DropDate, DropTime, OrderStatus, TotalCost, PaymentStatus, id_User, voiture_id) 
             VALUES (:city, :pickupDate, :pickupTime, :dropDate, :dropTime, :orderStatus, :totalCost, :paymentStatus, :userId, :carId)";
 
@@ -83,12 +85,20 @@ class Payment
             $stmt->bindValue(':paymentStatus', 1);  
             $stmt->bindValue(':totalCost',$TotalTarif); 
             $stmt->bindValue(':userId', $_SESSION['user_id']); 
-            $stmt->bindParam(':carId',  $voitureId );  
-            
-            
+            $stmt->bindParam(':carId',  $voitureId );    
             // Execute the prepared statement
             $stmt->execute();
  
+
+            $sql = "UPDATE voiture SET carstatus = 1 WHERE id = :SelectedId";
+            $stmt = $this->pdo->prepare($sql);  
+            $stmt->bindParam(':SelectedId', $voitureId);     
+            $stmt->execute();
+
+
+
+
+
             echo "Data inserted successfully."; 
 
         } catch (\PDOException $e) {

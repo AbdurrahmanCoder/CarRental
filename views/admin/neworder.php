@@ -1,3 +1,4 @@
+ 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +17,7 @@
 
         <?php
 
-var_dump( $_SESSION['membre']);
+// var_dump( $_SESSION['membre']);
 
  
  include_once ("header.php") ?>
@@ -108,7 +109,7 @@ var_dump( $_SESSION['membre']);
                                         ?>
 
                                         <button id="button" data-SelectedId="<?php echo $SelectedIdData['carorder_id']; ?>"
-                                            class="button <?php echo $statusClass; ?>"><?php echo $statusClass; ?></button>
+                                            class="button <?php echo $statusClass; ?>"><?php echo $statusClass; ?> </button>
  
                                         <p><?php echo gettype($SelectedIdData['OrderStatus']) ?></p>
 

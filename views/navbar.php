@@ -55,7 +55,7 @@ function UserLogged() {
     <ul>
       <li> <a href= "/">Home</a> </li>
       <li><a href=" /about">About</a></li>
-      <li><a href=" /profile">Vehicle Models</a> </li>
+      <li><a href=" /vehicleModel">Vehicle Models</a> </li>
       <!-- <li>Models</li> -->
       <li><a href=" /testimonial">Testimonials</a> </li>
 

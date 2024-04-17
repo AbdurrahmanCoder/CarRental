@@ -17,9 +17,12 @@ function functionRun() {
         .then(response => response.text())
         .then(data => {
             console.log(data);
+            console.log(this);
+   
+            this.classList.remove("pending")
+            this.classList.add("confirmed")
 
-            //         this.parentNode.parentNode.remove();
-               console.log("dewani bawli ");
+
 
         })
         .catch(error => {

@@ -49,7 +49,7 @@ print_r($sessionData);
 
                         <div class="pickUp">
                             <p>pick up</p>
-                            <?php echo $_SESSION['Location'] ?>
+                            <?php echo $_SESSION['Location'] ? $_SESSION['Location'] : "select location" ?>
                             <p>
                                 <?php echo $_SESSION['PickUp'] ?>
                             </p>

@@ -16,7 +16,7 @@ class VehiculeModels
 
     public function VehiculeModelsFetch()
     { 
-        $sql = "SELECT  * FROM  voiture ";
+        $sql = "SELECT  * FROM  voiture where carstatus = 0 ";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();  
         $result = $stmt->fetchAll(\PDO::FETCH_ASSOC); 

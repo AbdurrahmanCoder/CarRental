@@ -35,9 +35,7 @@ class UserDashboard
             $pdo = $this->db->getConnection();
             $stmt = $pdo->prepare($requete);
             $stmt->bindParam(':userId', $this->userId, \PDO::PARAM_INT);
-            $stmt->execute();
-
-            
+            $stmt->execute(); 
 
             // Fetch data as associative array
             $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);

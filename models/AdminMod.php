@@ -48,13 +48,14 @@ class Admin
             //   echo "non";
             // header("Location:index.php?message=er");
         }
-        $sql = "INSERT INTO voiture (marque, kilometrage, tarif, photo, fiche ,typeId) VALUES (:marque, :kilometrage, :tarif, :photo, :fiche,:typeId)";
+        
+        $sql = "INSERT INTO voiture (marque, kilometrage, tarif, photo ,typeId,carstatus) VALUES (:marque, :kilometrage, :tarif, :photo,:typeId,:carstatus )";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':marque', $marque);
         $stmt->bindParam(':kilometrage', $kilometrage);
         $stmt->bindParam(':tarif', $tarif);
         $stmt->bindParam(':photo', $new_image_name);
-        $stmt->bindValue(':fiche', 'default_value');
+         $stmt->bindValue(':carstatus', 0);
         $stmt->bindValue(':typeId', $carType);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
@@ -81,6 +82,7 @@ class Admin
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':SelectedId', $SelectedId, PDO::PARAM_INT);
         $stmt->execute();
+      
     }
 
 }

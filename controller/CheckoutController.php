@@ -60,8 +60,6 @@ class CheckoutController
 
             $payment->insertDataToDB($SessionGetData, $voitureId , $TotalTarif);
 
-            
-
             require_once 'views/payment.php';
 
             // var_dump($SessionGetData);
