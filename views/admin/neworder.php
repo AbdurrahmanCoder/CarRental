@@ -15,11 +15,7 @@
 <body>
     <div class="container">
 
-        <?php
-
-// var_dump( $_SESSION['membre']);
-
- 
+        <?php   
  include_once ("header.php") ?>
 
         <div class="Content">
@@ -109,8 +105,7 @@
                                         ?>
 
                                         <button id="button" data-SelectedId="<?php echo $SelectedIdData['carorder_id']; ?>"
-                                            class="button <?php echo $statusClass; ?>"><?php echo $statusClass; ?> </button>
- 
+                                            class="button <?php echo $statusClass; ?>"><?php echo $statusClass; ?>  </button>
                                         <p><?php echo gettype($SelectedIdData['OrderStatus']) ?></p>
 
                                     </div> 

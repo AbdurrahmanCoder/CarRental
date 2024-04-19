@@ -1,13 +1,13 @@
-<?php 
+<?php
 // $results = new admin;
 // $orderList = $results->CommandeAffficher(); 
-  
- 
+
+
 if (!isAdmin()) {
   header("Location: login.php");
   exit();
 } else {
-?>
+  ?>
 
   <!DOCTYPE html>
   <html lang="en">
@@ -17,105 +17,84 @@ if (!isAdmin()) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="front\css\admin.css">
-    <link rel="stylesheet" href="front\css\home.css"> 
+    <link rel="stylesheet" href="front\css\home.css">
   </head>
 
   <body>
 
     <div class="container">
-      <div class="links">
-        <a href=" /admin?id=Dashboard" class="nav-link">Dashboard</a>
-        <a href=" /admin?id=addCar" class="nav-link">addCar</a>
-        <a href=" /admin?id=deleteCar" class="nav-link">deleteCar</a>
-        <a href=" /admin?id=orderlist" class="nav-link">Order List</a>
-      </div>
+      <?php
 
+      include_once ("header.php") ?>
       <div class="Content">
 
-      
-      <div class="container mt-5">
-                
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>ID</th>
-                          <th>City</th>
-                          <th>PickUpDate</th>
-                          <th>PickUpTime</th>
-                          <th>DropDate</th>
-                          <th>DropTime</th>
-                          <th>nom</th>
-                          <th>prenom</th>
-                          <th>email</th> 
-                          <th>Details</th> 
-                        </tr>
-                      </thead>
-                      <tbody>
-                      <?php
-                      foreach ($CommandeListe as $ComData) { ?>
-                          <tr>
-                            <td>
-                          <?php echo $ComData['id']; ?>
 
-                            </td>
+        <div class="container mt-5">
 
-                            <td>
-                          <?php echo $ComData['City']; ?>
-                            </td>
-                            <td>
-                          <?php echo $ComData['PickUpDate']; ?>
-                            </td>
+          <table class="table">
 
-                            <td>
-                          <?php echo $ComData['PickUpTime']; ?>
+            <tr>
+              <th>ID</th>
+              <th>City</th>
+              <th>PickUpDate</th>
+              <th>PickUpTime</th>
+              <th>DropDate</th>
+              <th>DropTime</th>
+              <th>nom</th>
+              <th>prenom</th>
+              <th>email</th>
+              <th>Details</th>
+            </tr>
+            </thead>
+            <tbody>
+        </div>
 
-                            </td>
-                            <td>
-                          <?php echo $ComData['DropDate']; ?>
-                            </td>
-
-                            <td>
-                          <?php echo $ComData['DropTime']; ?>
-                            </td>
-
-                            <td>
-                          <?php echo $ComData['nom']; ?>
-                            </td>
-
-
-                            <td>
-                          <?php echo $ComData['prenom']; ?>
-                            </td>
-
-
-                            <td>
-                          <?php echo $ComData['email']; ?>
-                            </td>
-                            
-                      <a href="">
-
-                        <td>
-                          <p>More details</p>
-                        </td>
-                      </a>      
-
-
-                    </div>
-
-    </div>
+      </div>
     </div>
 
+    <input type="text" id="search" placeholder="Search...">
 
+    <div id="result"> 
 
+    </div> 
 
-
-
-  </body>
-
+  </body> 
+    <script >X
+      document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('search');
+        const resultDiv = document.getElementById('result'); 
+        searchInput.addEventListener('keyup', function () {
+          const query = searchInput.value;
+          
+          console.log(query) 
+          if (query !== '') {
+            fetch('../models/AdminMod.php', {
+              method: 'POST',
+              headers: {
+                'Content-Type':'application/json'
+              },
+              body: JSON.stringify({
+                action: 'search',
+                query: query
+              }) 
+            })
+              .then(response => response.text())
+              .then(data => {
+                resultDiv.innerHTML = data;
+                console.log(data)
+              })
+              .catch(error => console.error('Error:', error));
+          }
+        });
+      });
+    </script>
 
 
 
   </html>
+
+
+
   <?php
 }
-}
+?>

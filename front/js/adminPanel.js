@@ -17,13 +17,9 @@ function functionRun() {
         .then(response => response.text())
         .then(data => {
             console.log(data);
-            console.log(this);
-   
+            console.log(this); 
             this.classList.remove("pending")
-            this.classList.add("confirmed")
-
-
-
+            this.classList.add("confirmed")  
         })
         .catch(error => {
             console.error('Error:', error);

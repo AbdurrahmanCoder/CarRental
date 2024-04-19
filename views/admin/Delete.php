@@ -24,16 +24,11 @@ if (!isAdmin()) {
     <body>
 
         <div class="container">
-            <div class="links">
-                <a href="  /admin?id=Dashboard" class="nav-link">Dashboard</a>
-                <a href=" /admin?id=addCar" class="nav-link">addCar</a>
-                <a href=" /admin?id=deleteCar" class="nav-link">deleteCar</a>
-                <a href="/admin?id=orderlist" class="nav-link">Order List</a>
-            </div>
+        <?php
+ 
+ include_once ("header.php") ?>
 
-            <div class="Content">
-
-
+            <div class="Content"> 
                 <div class="container mt-5">
 
                     <table class="table">

@@ -21,6 +21,8 @@ require('controller/CheckoutController.php');
 require('controller/AdminController.php');
 require('controller/RegisterController.php');
 require('controller/UserController.php');
+require('controller/AboutController.php');
+require('controller/PaymentsuccessController.php');
  
 // CHARGEMENT DE LA CONFIGURATION ET L'AUTOLOAD
 Autoloader::start();

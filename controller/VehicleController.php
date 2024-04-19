@@ -41,10 +41,7 @@ class VehicleController
         $pdo = $database->getConnection();
         $VehiculeAvailable = new VehiculeModels($pdo);  
         $results = $VehiculeAvailable->VehiculeModelsFetch();
-        var_dump($results);
-
-
-
+        var_dump($results); 
         // print_r($sessionData);
 
         require_once 'views/navbar.php';

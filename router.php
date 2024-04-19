@@ -9,6 +9,9 @@ class Router
         'home' => ['controllers' => 'HomeController', 'method' => 'index'],
         'vehicleModel' => ['controllers' => 'VehicleController', 'method' => 'index'],
         'checkout' => ['controllers' => 'CheckoutController', 'method' => 'index'],
+        'about' => ['controllers' => 'AboutController', 'method' => 'index'],
+        'testimonial' => ['controllers' => 'TestimonialController', 'method' => 'index'],
+        'Paymentsuccess' => ['controllers' => 'PaymentsuccessController', 'method' => 'index'],
          
       
             

@@ -32,13 +32,22 @@ class adminDash
     //   INNER JOIN membre ON carorder.id_User = membre.id
     //   INNER JOIN voiture ON carorder.voiture_id = voiture_id
     //  ORDER BY membre.id";
-    $requete = "SELECT carorder.*, membre.*, voiture.*, types_de_voiture.*
-                      FROM carorder 
-                      INNER JOIN membre ON carorder.id_User = membre.id
-                      INNER JOIN voiture ON carorder.voiture_id = voiture.id
-                      INNER JOIN  types_de_voiture ON types_de_voiture.id = voiture.typeId
-                      ORDER BY membre.id;";
+    // $requete = "SELECT carorder.*, membre.*, voiture.*, types_de_voiture.*
+    //                   FROM carorder 
+    //                   INNER JOIN membre ON carorder.id_User = membre.id
+    //                   INNER JOIN voiture ON carorder.voiture_id = voiture.id
+    //                   INNER JOIN  types_de_voiture ON types_de_voiture.id = voiture.typeId
+    //                   ORDER BY membre.id;";
+    $requete = "SELECT carorder.*, membre.*, voiture.*, types_de_voiture.*, carorder.id AS carorder_id
+    FROM carorder 
+    INNER JOIN membre ON carorder.id_User = membre.id
+    INNER JOIN voiture ON carorder.voiture_id = voiture.id
+    INNER JOIN types_de_voiture ON types_de_voiture.id = voiture.typeId
+    ORDER BY membre.id  ";
+    
     $stmt = $this->pdo->prepare($requete);
+
+
     $stmt->execute();
     return $stmt->fetchAll(\PDO::FETCH_ASSOC);
   }
@@ -89,7 +98,8 @@ class adminDash
     INNER JOIN membre ON carorder.id_User = membre.id
     INNER JOIN voiture ON carorder.voiture_id = voiture.id
     INNER JOIN types_de_voiture ON types_de_voiture.id = voiture.typeId
-    ORDER BY membre.id";
+    WHERE OrderStatus = 0
+    ORDER BY membre.id; ";
     $stmt = $this->pdo->prepare($requete);
     $stmt->execute();
     return $stmt->fetchAll(\PDO::FETCH_ASSOC);

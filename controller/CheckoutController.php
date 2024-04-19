@@ -11,6 +11,8 @@ use Vehicule\VehiculeModels;
 use Database\Database;
 use Payment\Payment;
 use Session\Session; 
+use StripePayment\StripePayment; 
+
 class CheckoutController
 {
 
@@ -60,6 +62,11 @@ class CheckoutController
 
             $payment->insertDataToDB($SessionGetData, $voitureId , $TotalTarif);
 
+            $StripePayment = new StripePayment();
+
+            $StripePayment->payment($TotalTarif);
+  
+ 
             require_once 'views/payment.php';
 
             // var_dump($SessionGetData);

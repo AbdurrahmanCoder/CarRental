@@ -34,6 +34,13 @@ print_r($sessionData);
             </div>
         </nav>
 
+<?php if(UserLoggedIn())
+{
+    ?>
+
+
+
+
 
         <div class="container  ">
 
@@ -91,23 +98,18 @@ print_r($sessionData);
 
                 </div>
 
-            </div>
-
-
-
-
+            </div>  
         </div>
     </div>
-    </div>
-
-
-
+    </div> 
     </div>
 
     <!-- ///checkout div -->
 
     
-
+    <?php
+}
+?>
     <div class="checkout_main">
         <div class="checkout_Div">
             <div class="checkout">

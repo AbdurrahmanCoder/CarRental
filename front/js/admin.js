@@ -1,12 +1,12 @@
 const myForm = document.getElementById("myForm"); 
-
 myForm.addEventListener('submit', function (e) {
   e.preventDefault();
-  const formData = new FormData(this);
+  const formData = new FormData(this);.
+  formData.append("action", "insert");
   console.log(formData);
   fetch("../models/AdminMod.php", {
     method: "post",
-    body: formData
+    body: formData 
   })
     .then(function (response) {
       return response.text();

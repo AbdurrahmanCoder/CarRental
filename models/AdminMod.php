@@ -81,45 +81,77 @@ class Admin
         $sql = "UPDATE carorder SET orderstatus = 1 WHERE id = :SelectedId; ";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':SelectedId', $SelectedId, PDO::PARAM_INT);
-        $stmt->execute();
-      
+        $stmt->execute(); 
     }
 
 }
 
 
 
-if (isset($_POST['marque']) && isset($_POST['kilometrage']) && isset($_POST['tarif']) && isset($_FILES["image_file"]["tmp_name"]) && isset($_POST['carType'])) {
-    $marque = $_POST['marque'];
-    $kilometrage = $_POST['kilometrage'];
-    $tarif = $_POST['tarif'];
-    $photo = $_FILES["image_file"]["tmp_name"];
-    $carType = $_POST['carType'];
+// if (isset($_POST['marque']) && isset($_POST['kilometrage']) && isset($_POST['tarif']) && isset($_FILES["image_file"]["tmp_name"]) && isset($_POST['carType'])) {
+//     $marque = $_POST['marque'];
+//     $kilometrage = $_POST['kilometrage'];
+//     $tarif = $_POST['tarif'];
+//     $photo = $_FILES["image_file"]["tmp_name"];
+//     $carType = $_POST['carType'];
  
 
-    $datainsert = new Admin;
-    if ($datainsert->insertItem($marque, $kilometrage, $tarif, $photo, $carType)) {
-        echo "data inserted";
-    } else {
-        echo "data not inserted";
-    }
-}
-if (isset($_POST['id'])) {
-    $id = $_POST['id'];
-    $datainsert = new Admin;
-    $datainsert->DeleteItem($id);
-    echo "data deleted";
-} else {
-    echo "no data submitted";
+//     $datainsert = new Admin;
+//     if ($datainsert->insertItem($marque, $kilometrage, $tarif, $photo, $carType)) {
+//         echo "data inserted";
+//     } else {
+//         echo "data not inserted";
+//     }
+// }
+
+
+// if (isset($_POST['id'])) {
+//     $id = $_POST['id'];
+//     $datainsert = new Admin;
+//     $datainsert->DeleteItem($id);
+//     echo "data deleted";
+// } else {
+//     echo "no data submitted";
+// }
+
+
+// if (isset($_POST['SelectedId'])) {
+//     $SelectedId = $_POST['SelectedId'];
+//     $datainsert = new Admin;
+//     $datainsert->confirmed($SelectedId);
+//     echo "confirmed";
+// } else {
+//     echo "no data submitted";
+// }
+
+
+
+// if (isset($_POST['query'])) {
+//     $id = $_POST['query']; 
+//     echo "data deleted";
+// } else {
+//     echo "no data submitted";
+// }
+
+if(isset($_POST['action'])) {
+    $action = $_POST['action']; 
+    if( $action  == "insert")
+    { 
+        if (isset($_POST['marque']) && isset($_POST['kilometrage']) && isset($_POST['tarif']) && isset($_FILES["image_file"]["tmp_name"]) && isset($_POST['carType'])) {
+            $marque = $_POST['marque'];
+                $kilometrage = $_POST['kilometrage'];
+                $tarif = $_POST['tarif'];
+                $photo = $_FILES["image_file"]["tmp_name"];
+                $carType = $_POST['carType']; 
+                $datainsert = new Admin;
+                if ($datainsert->insertItem($marque, $kilometrage, $tarif, $photo, $carType)) {
+                    echo "data inserted";
+                } else {
+                    echo "data not inserted";
+                } 
+
+            } 
 }
 
 
-if (isset($_POST['SelectedId'])) {
-    $SelectedId = $_POST['SelectedId'];
-    $datainsert = new Admin;
-    $datainsert->confirmed($SelectedId);
-    echo "confirmed";
-} else {
-    echo "no data submitted";
 }
-

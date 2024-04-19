@@ -37,11 +37,8 @@ class Autoloader
     
         // Extract the last part of the namespace
         $className = end( $parts);
-     
-        
-          var_dump($className);
-
-
+      
+          var_dump($className); 
         if(file_exists(MODELS.$className.'.php'))
         {
             include_once (MODELS.$className.'.php'); 

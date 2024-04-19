@@ -5,9 +5,7 @@ namespace Payment;
 // require_once "models/config.php";
 
 use Database\Database;
-use Vehicule\VehiculeModels;
-
-
+use Vehicule\VehiculeModels; 
 class Payment
 {
 
@@ -67,13 +65,10 @@ class Payment
     function insertDataToDB($SessionGetData,$voitureId,$TotalTarif)
     {
 
-        try {
-            
-            
+        try { 
             $sql = "INSERT INTO carorder (City, PickUpDate, PickUpTime, DropDate, DropTime, OrderStatus, TotalCost, PaymentStatus, id_User, voiture_id) 
             VALUES (:city, :pickupDate, :pickupTime, :dropDate, :dropTime, :orderStatus, :totalCost, :paymentStatus, :userId, :carId)";
-
-
+ 
                 var_dump( $SessionGetData['DropOf']);
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindParam(':city', $SessionGetData['Location']);
@@ -82,28 +77,24 @@ class Payment
             $stmt->bindParam(':dropDate', $SessionGetData['DropOf']);
             $stmt->bindParam(':dropTime', $SessionGetData['DropOfTime']);
             $stmt->bindValue(':orderStatus', 0);  
-            $stmt->bindValue(':paymentStatus', 1);  
+            $stmt->bindValue(':paymentStatus', 0);  
             $stmt->bindValue(':totalCost',$TotalTarif); 
             $stmt->bindValue(':userId', $_SESSION['user_id']); 
             $stmt->bindParam(':carId',  $voitureId );    
             // Execute the prepared statement
-            $stmt->execute();
- 
+            $stmt->execute(); 
 
             $sql = "UPDATE voiture SET carstatus = 1 WHERE id = :SelectedId";
             $stmt = $this->pdo->prepare($sql);  
             $stmt->bindParam(':SelectedId', $voitureId);     
-            $stmt->execute();
-
-
-
-
-
+            $stmt->execute(); 
             echo "Data inserted successfully."; 
 
-        } catch (\PDOException $e) {
+        } catch (\PDOException $e) { 
 
             echo 'Error inserting data: ' . $e->getMessage();
+
+
             $this->success = false;
         }
     }
