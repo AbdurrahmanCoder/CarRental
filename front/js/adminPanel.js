@@ -12,7 +12,9 @@ function functionRun() {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: `SelectedId=${encodeURIComponent(SelectedId)}`,
+        body: `SelectedId=${encodeURIComponent(SelectedId)}&action=confirmed`,
+          
+    
     })
         .then(response => response.text())
         .then(data => {

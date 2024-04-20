@@ -15,7 +15,8 @@ function deleted() {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: `id=${encodeURIComponent(id)}`,
+        // body: `id=${encodeURIComponent(id)}`,
+        body: `id=${encodeURIComponent(id)}&action=delete`, 
     })
         .then(response => response.text())
         .then(data => {
