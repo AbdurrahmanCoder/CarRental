@@ -51,48 +51,15 @@
 
         </div>
       </div>
-
+      
+      
+      
       <input type="text" id="search" placeholder="Search...">
 
       <div id="result"> 
-
       </div> 
-
     </body> 
      <script >
-    //     document.addEventListener('DOMContentLoaded', function () {
-    //       const searchInput = document.getElementById('search');
-    //       const resultDiv = document.getElementById('result'); 
-    //       searchInput.addEventListener('keyup', function () {
-    //         const query = searchInput.value;
-            
-    //         // console.log(query) 
-    //         if (query !== '') {
-    //           fetch('../models/AdminMod.php', {
-    //             method: 'POST',
-    //             headers: {
-    //               'Content-Type':'application/json'
-    //             },
-    //             body: JSON.stringify({
-    //   query: query,
-    //   action: 'search'
-    // })
-    //               //  body:  JSON.stringify(query)&action=search, 
-    //           }) 
-    //             .then(response => response.text())
-    //             .then(data => {
-    //               resultDiv.innerHTML = data;
-    //               console.log(data);
-    //             })
-    //             .catch(error => console.error('Error:', error));
-    //         }
-    //       });
-    //     });
-
-
-
- 
-
     document.addEventListener('DOMContentLoaded', function () {
     const resultDiv = document.getElementById('result');
 
@@ -108,20 +75,17 @@
         })
         .then(response => response.text())
         .then(data => {
-            resultDiv.innerHTML = data;  
-            console.log(data);
-        })
-        .catch(error => console.error('Error:', error));
-    }
+          console.log(data);
+          resultDiv.innerHTML = data;    
+        })  
+        .catch(error => console.error('Error:', error)); 
+    } 
+      fetchAllData(); 
 
-      fetchAllData();
-
-    // Event listener for search input
-    const searchInput = document.getElementById('search');
-    searchInput.addEventListener('keyup', function () {
+        const searchInput = document.getElementById('search');
+        searchInput.addEventListener('keyup', function () {
         const query = searchInput.value.trim();
-
-        if (query !== '') {
+          if (query !== '') {
             fetch('../models/AdminMod.php', {
                 method: 'POST',
                 headers: {
@@ -144,10 +108,7 @@
         }
     });
 });
-
-
-
-
+ 
 
   </script> 
 

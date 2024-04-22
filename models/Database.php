@@ -7,7 +7,7 @@ class Database {
     private $pdo;
 
     public function __construct() {
-        $this->connect();
+        $this->connect();   
     }
 
     private function connect() {

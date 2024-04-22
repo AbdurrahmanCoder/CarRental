@@ -18,15 +18,85 @@ class Admin
     public function CommandeAffficher()
     {
         $pdo = $this->db->getConnection();
-        $requete = "SELECT carorder.*, membre.*, voiture.*
-        FROM carorder
-        INNER JOIN membre ON carorder.id_User = membre.id
-        INNER JOIN voiture ON carorder.voiture_id = voiture_id
-        WHERE membre.id";
+        // $requete = "SELECT carorder.*, membre.*, voiture.*
+        // FROM carorder
+        // INNER JOIN membre ON carorder.id_User = membre.id
+        // INNER JOIN voiture ON carorder.voiture_id = voiture_id
+        // WHERE membre.id";
+         $requete = "SELECT carorder.*, membre.*, voiture.*, types_de_voiture.*, carorder.id AS carorder_id
+         FROM carorder 
+         INNER JOIN membre ON carorder.id_User = membre.id
+         INNER JOIN voiture ON carorder.voiture_id = voiture.id
+         INNER JOIN types_de_voiture ON types_de_voiture.id = voiture.typeId
+         ORDER BY membre.id;";
+
         $stmt = $pdo->prepare($requete);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    // public function ShowDataBySearch($search)
+    // {
+    //     $pdo = $this->db->getConnection();
+         
+    //      $requete = "SELECT carorder.*, membre.*, voiture.*, types_de_voiture.*, carorder.id AS carorder_id
+    //         FROM carorder 
+    //         INNER JOIN membre ON carorder.id_User = membre.id
+    //         INNER JOIN voiture ON carorder.voiture_id = voiture.id
+    //         INNER JOIN types_de_voiture ON types_de_voiture.id = voiture.typeId
+    //         WHERE carorder.id LIKE '% $search %'
+            
+    //         ";
+    //     $stmt = $pdo->prepare($requete);
+    //     $stmt->execute();
+    //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // }
+ 
+    public function ShowDataBySearch($search)
+    {
+        $pdo = $this->db->getConnection();
+         
+        // $requete = "SELECT carorder.*, membre.*, voiture.*, types_de_voiture.*, carorder.id AS carorder_id
+        //             FROM carorder 
+        //             INNER JOIN membre ON carorder.id_User = membre.id
+        //             INNER JOIN voiture ON carorder.voiture_id = voiture.id
+        //             INNER JOIN types_de_voiture ON types_de_voiture.id = voiture.typeId
+        //             WHERE carorder_id LIKE :searchTerm"; 
+        // Add the % wildcards to the search term
+        
+        
+        
+        
+        
+        
+                $requete = "SELECT carorder.*, membre.*, voiture.*, types_de_voiture.*, carorder.id AS carorder_id
+                    FROM carorder 
+                    INNER JOIN membre ON carorder.id_User = membre.id
+                    INNER JOIN voiture ON carorder.voiture_id = voiture.id
+                    INNER JOIN types_de_voiture ON types_de_voiture.id = voiture.typeId
+                    WHERE carorder.id LIKE :searchTerm OR membre.nom LIKE :searchTerm";
+
+            // -- WHERE carorder.id LIKE :searchTerm";  
+        
+        $searchWithWildcards = '%' . $search . '%'; 
+        $stmt = $pdo->prepare($requete);
+        $stmt->bindParam(':searchTerm', $searchWithWildcards, PDO::PARAM_STR);
+        $stmt->execute();
+    
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); 
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function insertItem($marque, $kilometrage, $tarif, $photo, $carType)
     {
         $pdo = $this->db->getConnection();
@@ -155,6 +225,7 @@ class Admin
 
 
 
+$AdminInstance = new Admin;
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -163,12 +234,69 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     if (isset($data->action)) {
         $action = $data->action;  
-
+        $query = $data->query;  
+        
         if ($action === 'search') {
             // Handle search action
-            echo "Search results for: " . $action;
+            // echo "Search results for: " . $action;
+            echo "Search results for: " . $query;
+            $result = $AdminInstance->ShowDataBySearch($query);
+               
+$table = '<table>
+            <tr>
+                <th class="table_header">City</th>
+                <th class="table_header">ID User</th>
+                <th class="table_header">ID User</th>
+             </tr>';
+        
+        // Loop through each $result item to create table rows
+        foreach ($result as $data) {
+            $table .= '
+                <tr>
+                    <td>' . $data['City'] . '</td>
+                    <td>' . $data['carorder_id'] . '</td>
+                 </tr>';
+        }
+        
+        // Close the table
+        $table .= '</table>';
+        
+        echo $table;
+
+
+
+
         } elseif ($action === 'all') {
+            
+            
             echo "All data from the database";
+           $result = $AdminInstance->CommandeAffficher();
+              
+
+    $table = '<table>
+    <tr>
+        <th class="table_header">City</th>
+        <th class="table_header">ID User</th>
+     </tr>';
+
+// Loop through each $result item to create table rows
+foreach ($result as $data) {
+    $table .= '
+        <tr>
+            <td>' . $data['City'] . '</td>
+            <td>' . $data['carorder_id'] . '</td>
+         </tr>';
+}
+
+// Close the table
+$table .= '</table>';
+
+echo $table;
+
+
+
+    // echo $resultJson;
+
         } else  {
             echo "nothing";
         } 
@@ -181,25 +309,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 if (isset($_POST['action'])) {

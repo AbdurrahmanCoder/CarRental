@@ -25,9 +25,7 @@ class HomeController
             $SessionInsert->handleOrderSearch($_POST);    
             $sessionData = $SessionInsert->getSessionData();  
             print_r($sessionData);
-
-
-
+ 
             // $id_User =  $_SESSION['user_id'];  
             // $database = new Database();
             // $pdo = $database->getConnection(); 
@@ -36,8 +34,7 @@ class HomeController
              header("Location:/vehicleModel");
              exit(); 
 
-        } else {
-
+        } else { 
             // echo $_SESSION['user_id'] . "sessiosioidio";
 
             include 'views/navbar.php';
