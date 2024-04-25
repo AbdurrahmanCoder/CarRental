@@ -10,46 +10,13 @@
 </head>
 
 <body>
-    <?php
-    if (isset($_SESSION['processed_data'])) {
-        $carids = $_SESSION['processed_data']['carids'];
-        $marque = $_SESSION['processed_data']['marque'];
-        $tarif = $_SESSION['processed_data']['tarif'];
-        $img = $_SESSION['processed_data']['img'];
-
-        // unset($_SESSION['processed_data']);
-    } else {
-        echo "<p>No data available.</p>";
-    }
-    if (isset($_SESSION["user"])) {
-        $date1 = new DateTime($_SESSION['user']['PickUp']);
-        $date2 = new DateTime($_SESSION['user']['DropOf']);
-        $interval = $date1->diff($date2);
-        $days = $interval->format('%a');
-        $daysChange = $days == 0 ? 1 : $days;
-        $total = $daysChange * $tarif; 
-        $_SESSION['total'] = $total;
-        $_SESSION['days'] = $days;
-    }
-    ?>
+ 
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Display Data</title>
   
-    <?php
-    if (isset($_SESSION['user'])) {
-        $userFromSession = $_SESSION['user'];
-        $location = $userFromSession['Location'];
-        $pickUp = $userFromSession['PickUp'];
-        $pickUpTime = $userFromSession['PickUpTime'];
-        $dropOf = $userFromSession['DropOf'];
-        $dropOfTime = $userFromSession['DropOfTime'];
-    } else {
-        // echo "User data not found in session.";
-    }
-
- ?>
+ 
         <div class="reviewMain">
 
             <div class="container ">

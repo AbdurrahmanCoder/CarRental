@@ -1,11 +1,44 @@
+// let button = document.getElementById('button');
+
+// button.addEventListener('click', functionRun)
+
+// function functionRun() {
+
+
+//     const SelectedId = this.getAttribute('data-SelectedId');
+
+//     fetch('../models/AdminMod.php', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/x-www-form-urlencoded',
+//         },
+//         body: `SelectedId=${encodeURIComponent(SelectedId)}&action=confirmed`,
+          
+    
+//     })
+//         .then(response => response.text())
+//         .then(data => {
+//             console.log(data);
+//             console.log("eeddededededed")
+//             console.log(this); 
+//             this.classList.remove("pending")
+//             this.classList.add("confirmed")  
+//             this.innerHTML = "confodzdrmed";
+//         })
+//         .catch(error => {
+//             console.error('Error:', error);
+//         });
+  
+//     console.log("clickedme", SelectedId);
+// } 
+
 let button = document.getElementById('button');
 
-button.addEventListener('click', functionRun)
+button.addEventListener('click', functionRun);
 
 function functionRun() {
-
-
     const SelectedId = this.getAttribute('data-SelectedId');
+    const buttonElement = this; // Store a reference to the button element
 
     fetch('../models/AdminMod.php', {
         method: 'POST',
@@ -13,23 +46,19 @@ function functionRun() {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: `SelectedId=${encodeURIComponent(SelectedId)}&action=confirmed`,
-          
-    
     })
-        .then(response => response.text())
-        .then(data => {
-            console.log(data);
-            console.log(this); 
-            this.classList.remove("pending")
-            this.classList.add("confirmed")  
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-
-
+    .then(response => response.text())
+    .then(data => {
+        console.log(data);
+        console.log("eeddededededed");
+        console.log(buttonElement); // Use buttonElement instead of this
+        buttonElement.classList.remove("pending");
+        buttonElement.classList.add("confirmed");
+        buttonElement.innerHTML = "confirmed";
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 
     console.log("clickedme", SelectedId);
 }
-
-

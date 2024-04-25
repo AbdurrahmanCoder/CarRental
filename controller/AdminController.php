@@ -7,12 +7,9 @@ require_once "models/VehicleModels.php";
 use Database\Database;
 use Vehicule\VehiculeModels;
 use AdminDash\adminDash;
-
-
-// use AdminDash\adminDash;
-
-use Admin\admin;
-
+ 
+// use AdminDash\adminDash; 
+use Admin\admin;  
 class AdminController
 {
   private $database;

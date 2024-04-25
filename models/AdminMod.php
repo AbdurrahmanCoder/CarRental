@@ -23,7 +23,7 @@ class Admin
         // INNER JOIN membre ON carorder.id_User = membre.id
         // INNER JOIN voiture ON carorder.voiture_id = voiture_id
         // WHERE membre.id";
-         $requete = "SELECT carorder.*, membre.*, voiture.*, types_de_voiture.*, carorder.id AS carorder_id
+        $requete = "SELECT carorder.*, membre.*, voiture.*, types_de_voiture.*, carorder.id AS carorder_id
          FROM carorder 
          INNER JOIN membre ON carorder.id_User = membre.id
          INNER JOIN voiture ON carorder.voiture_id = voiture.id
@@ -37,24 +37,24 @@ class Admin
     // public function ShowDataBySearch($search)
     // {
     //     $pdo = $this->db->getConnection();
-         
+
     //      $requete = "SELECT carorder.*, membre.*, voiture.*, types_de_voiture.*, carorder.id AS carorder_id
     //         FROM carorder 
     //         INNER JOIN membre ON carorder.id_User = membre.id
     //         INNER JOIN voiture ON carorder.voiture_id = voiture.id
     //         INNER JOIN types_de_voiture ON types_de_voiture.id = voiture.typeId
     //         WHERE carorder.id LIKE '% $search %'
-            
+
     //         ";
     //     $stmt = $pdo->prepare($requete);
     //     $stmt->execute();
     //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
     // }
- 
+
     public function ShowDataBySearch($search)
     {
         $pdo = $this->db->getConnection();
-         
+
         // $requete = "SELECT carorder.*, membre.*, voiture.*, types_de_voiture.*, carorder.id AS carorder_id
         //             FROM carorder 
         //             INNER JOIN membre ON carorder.id_User = membre.id
@@ -62,27 +62,27 @@ class Admin
         //             INNER JOIN types_de_voiture ON types_de_voiture.id = voiture.typeId
         //             WHERE carorder_id LIKE :searchTerm"; 
         // Add the % wildcards to the search term
-        
-        
-        
-        
-        
-        
-                $requete = "SELECT carorder.*, membre.*, voiture.*, types_de_voiture.*, carorder.id AS carorder_id
+
+
+
+
+
+
+        $requete = "SELECT carorder.*, membre.*, voiture.*, types_de_voiture.*, carorder.id AS carorder_id
                     FROM carorder 
                     INNER JOIN membre ON carorder.id_User = membre.id
                     INNER JOIN voiture ON carorder.voiture_id = voiture.id
                     INNER JOIN types_de_voiture ON types_de_voiture.id = voiture.typeId
                     WHERE carorder.id LIKE :searchTerm OR membre.nom LIKE :searchTerm";
 
-            // -- WHERE carorder.id LIKE :searchTerm";  
-        
-        $searchWithWildcards = '%' . $search . '%'; 
+        // -- WHERE carorder.id LIKE :searchTerm";  
+
+        $searchWithWildcards = '%' . $search . '%';
         $stmt = $pdo->prepare($requete);
         $stmt->bindParam(':searchTerm', $searchWithWildcards, PDO::PARAM_STR);
         $stmt->execute();
-    
-        return $stmt->fetchAll(PDO::FETCH_ASSOC); 
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 
@@ -185,7 +185,7 @@ class Admin
 
 // if (isset($_POST['action'])) {
 //     $query = $_POST['action'];
- 
+
 //     echo "confirmed", $query;
 // } else {
 //     echo "no data from query ";
@@ -198,7 +198,7 @@ class Admin
 // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //     $json = file_get_contents('php://input');
 //     $data = json_decode($json);
-    
+
 //     if (isset($data->query, $data->action)) {
 //         $query = $data->query;
 //         $action = $data->action; 
@@ -223,94 +223,119 @@ class Admin
 //     echo "Invalid request method";
 // }
 
-
-
 $AdminInstance = new Admin;
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $json = file_get_contents('php://input');
     $data = json_decode($json);
-    
+
     if (isset($data->action)) {
-        $action = $data->action;  
-        $query = $data->query;  
-        
+        $action = $data->action;
+
         if ($action === 'search') {
-            // Handle search action
-            // echo "Search results for: " . $action;
+            $query = $data->query;
             echo "Search results for: " . $query;
             $result = $AdminInstance->ShowDataBySearch($query);
-               
-$table = '<table>
+
+            $table = '<table>
             <tr>
-                <th class="table_header">City</th>
-                <th class="table_header">ID User</th>
-                <th class="table_header">ID User</th>
+            <th class="table_header">ID User</th>
+            <th class="table_header">City</th>
+            <th class="table_header">PickUpDate	</th>
+            <th class="table_header">PickUpTime</th>
+            <th class="table_header">DropDate</th>
+            <th class="table_header">DropTime</th>
+            <th class="table_header">nom</th>
+            <th class="table_header">prenom</th>
+            <th class="table_header">email</th>
+            <th class="table_header">details</th>
              </tr>';
-        
-        // Loop through each $result item to create table rows
-        foreach ($result as $data) {
-            $table .= '
+
+            // Loop through each $result item to create table rows
+            foreach ($result as $data) {
+                $table .= '
                 <tr>
-                    <td>' . $data['City'] . '</td>
-                    <td>' . $data['carorder_id'] . '</td>
-                 </tr>';
-        }
-        
-        // Close the table
-        $table .= '</table>';
-        
-        echo $table;
+        <td>' . $data['carorder_id'] . '</td>
+            <td>' . $data['City'] . '</td>
+            <td>' . $data['PickUpDate'] . '</td>
+            <td>' . $data['PickUpTime'] . '</td>
+            <td>' . $data['DropDate'] . '</td>
+            <td>' . $data['DropTime'] . '</td>
+            <td>' . $data['nom'] . '</td>
+            <td>' . $data['prenom'] . '</td>
+            <td>' . $data['email'] . '</td>
+            <td>
+            <a href="/admin?id=neworder&selectedId=' . $data['carorder_id'] . '">
+                <p>More details</p>
+            </a>
+        </td>
+            </tr>';
+            }
 
+            // Close the table
+            $table .= '</table>';
 
+            echo $table;
 
 
         } elseif ($action === 'all') {
-            
-            
-            echo "All data from the database";
-           $result = $AdminInstance->CommandeAffficher();
-              
 
-    $table = '<table>
+
+            echo "All data from the database";
+            $result = $AdminInstance->CommandeAffficher();
+
+
+            $table = '<table>
     <tr>
+    <th class="table_header">ID User</th>
         <th class="table_header">City</th>
-        <th class="table_header">ID User</th>
+        <th class="table_header">PickUpDate	</th>
+        <th class="table_header">PickUpTime</th>
+        <th class="table_header">DropDate</th>
+        <th class="table_header">DropTime</th>
+        <th class="table_header">nom</th>
+        <th class="table_header">prenom</th>
+        <th class="table_header">email</th>
+        <th class="table_header">details</th>
      </tr>';
 
-// Loop through each $result item to create table rows
-foreach ($result as $data) {
-    $table .= '
+            // Loop through each $result item to create table rows
+            foreach ($result as $data) {
+                $table .= '
         <tr>
+        <td>' . $data['carorder_id'] . '</td>
             <td>' . $data['City'] . '</td>
-            <td>' . $data['carorder_id'] . '</td>
-         </tr>';
-}
+            <td>' . $data['PickUpDate'] . '</td>
+            <td>' . $data['PickUpTime'] . '</td>
+            <td>' . $data['DropDate'] . '</td>
+            <td>' . $data['DropTime'] . '</td>
+            <td>' . $data['nom'] . '</td>
+            <td>' . $data['prenom'] . '</td>
+            <td>' . $data['email'] . '</td>
+            <td>
+            <a href="/admin?id=neworder&selectedId=' . $data['carorder_id'] . '">
+                <p>More details</p>
+            </a>
+        </td>
+            
+            </tr>';
+            }
 
-// Close the table
-$table .= '</table>';
 
-echo $table;
+            // Close the table
+            $table .= '</table>';
+            echo $table;
+            // echo var_dump($result);
 
-
-
-    // echo $resultJson;
-
-        } else  {
+        } else {
             echo "nothing";
-        } 
+        }
     } else {
         echo "Invalid JSON format";
     }
 } else {
     echo "Invalid request method";
 }
-
-
-
- 
-
 
 if (isset($_POST['action'])) {
     $action = $_POST['action'];
@@ -353,18 +378,18 @@ if (isset($_POST['action'])) {
                 echo "confirmed";
             } else {
                 echo "no data submitted";
-            } 
-            break; 
+            }
+            break;
         case 'search':
-            
+
             if (isset($_POST['query'])) {
                 $query = $_POST['query'];
-             
+
                 echo "confirmed", $query;
             } else {
                 echo "no data from query ";
-            } 
-            
+            }
+
             break;
         default:
             // Handle unrecognized action

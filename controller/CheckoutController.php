@@ -62,10 +62,8 @@ class CheckoutController
 
             $payment->insertDataToDB($SessionGetData, $voitureId , $TotalTarif);
 
-            $StripePayment = new StripePayment();
-
-            $StripePayment->payment($TotalTarif);
-  
+            $StripePayment = new StripePayment(); 
+            $StripePayment->payment($TotalTarif); 
  
             require_once 'views/payment.php';
 

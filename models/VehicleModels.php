@@ -13,11 +13,32 @@ class VehiculeModels
           $this->pdo = $pdo;
       }
    
-
+      public function TypesofVoiture()
+      {   
+          $sql = "SELECT  * FROM  types_de_voiture ";
+          $stmt = $this->pdo->prepare($sql);
+          $stmt->execute();  
+          $result = $stmt->fetchAll(\PDO::FETCH_ASSOC); 
+          return  $result ;  
+      } 
     public function VehiculeModelsFetch()
-    { 
+    {   
         $sql = "SELECT  * FROM  voiture where carstatus = 0 ";
         $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();  
+        $result = $stmt->fetchAll(\PDO::FETCH_ASSOC); 
+        return  $result ;  
+    } 
+    
+    public function VehiculeModelsFetchByType($selectedType)
+    { 
+        $sql = "SELECT voiture.*, types_de_voiture.*
+        FROM voiture
+        INNER JOIN types_de_voiture ON voiture.typeId = types_de_voiture.id 
+        WHERE  types_de_voiture.id = :ids"; 
+     
+        $stmt = $this->pdo->prepare($sql);
+         $stmt->bindParam(':ids', $selectedType); 
         $stmt->execute();  
         $result = $stmt->fetchAll(\PDO::FETCH_ASSOC); 
         return  $result ;  

@@ -9,6 +9,13 @@ function UserLoggedIn()
     }
 }
 print_r($sessionData);
+ 
+print_r($VehiculeTypes );
+
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -110,6 +117,29 @@ print_r($sessionData);
     <?php
 }
 ?>
+<div>
+ <form id="vehicleForm" method="POST" action="">
+        <!-- Dropdown for selecting vehicle type -->
+        <select name="vehicleType" id="vehicleType"   >
+        <option value="all" <?php echo ($selectedType == 'all') ? 'selected' : ''; ?>>ALL</option>
+
+            <?php  
+        foreach($VehiculeTypes as $values)
+        {  
+            $selected = ($selectedType == $values['id']) ? 'selected' : ''; 
+            ?> 
+        <!-- <option value="<?php echo $values['id'] ?>"><?php  echo $values['type'] ?> </option> -->
+        <option value="<?php echo $values['id']; ?>" <?php echo $selected; ?>><?php echo $values['type']; ?></option>
+      
+        <?php  } ?> 
+    
+
+        </select>
+        <button type="submit " value="submit"> submit</button>
+    </form>
+</div>
+
+ 
     <div class="checkout_main">
         <div class="checkout_Div">
             <div class="checkout">
@@ -132,6 +162,7 @@ print_r($sessionData);
         <div class="VehiculeModels">
             <div class="container">
                 <?php
+                 if (!empty($results)) {  
                 foreach ($results as $data) { ?>
                     <div class="List_vehicule_Disponible">
 
@@ -176,7 +207,7 @@ print_r($sessionData);
                         </div>
                     </div>
                     <?php
-                }
+                }}
 
                 ?>
 
@@ -184,8 +215,17 @@ print_r($sessionData);
         </div>
 
 
+  <!-- <script async>
+        document.getElementById('vehicleType').addEventListener('change',  ()=> {
+            document.getElementById('vehicleForm').submit();
+        });
+    </script>  -->
 
         <script src="front\js\carselect.js" async>
         </script>
 
+
+ 
+
+    
 </html>
