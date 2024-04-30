@@ -48,19 +48,18 @@ class VehicleController
             // if (isset($_POST['vehicleType'])) { 
             $selectedType = $_POST['vehicleType']; 
             if($selectedType  == "all") {
-                $results = $VehiculeAvailable->VehiculeModelsFetch();
-
+                $results = $VehiculeAvailable->VehiculeModelsFetch(); 
             }
             else {
             $results = $VehiculeAvailable->VehiculeModelsFetchByType($selectedType); 
-            var_dump($results); 
-        }   
+         }   
+
+
         } 
         // }
-
-        $results = $VehiculeAvailable->VehiculeModelsFetch(); 
-
-
+    else{ 
+        $results = $VehiculeAvailable->VehiculeModelsFetch();   
+    }
         // var_dump($results); 
         // print_r($sessionData);
 

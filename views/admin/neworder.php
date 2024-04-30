@@ -13,18 +13,13 @@
 </head>
 
 <body>
+    
     <div class="container">
-
         <?php   
  include_once ("header.php") ?>
-
         <div class="Content">
-
-
             <div class="container mt-5">
-
                 <?php
-
                 if (isset($_GET['selectedId'])) {
                     ?>
                     <section class="Section_Review">
@@ -105,29 +100,17 @@
                                         ?>
 
                                         <button id="button" data-SelectedId="<?php echo $SelectedIdData['carorder_id']; ?>"
-                                            class="button <?php echo $statusClass; ?>"><?php echo $statusClass; ?>  </button>
+                                            class="button <?php echo $statusClass; ?>"> <?php echo $statusClass; ?>  </button>
                                         <p><?php echo gettype($SelectedIdData['OrderStatus']) ?></p>
 
                                     </div> 
                                 </div> 
                             </div>
                         </div>
-                    </section>
-
-
-
-
-
- 
-
-                    <?php
-
+                    </section>   
+                    <?php 
                 } else {
-                    ?>
-
-
-
-
+                    ?> 
                     <table class="table">
                         <thead>
                             <tr>
@@ -188,9 +171,7 @@
                                         <a href="/admin?id=neworder&selectedId=<?php echo $ComData['carorder_id']; ?>">
                                             <p>More details</p>
                                         </a>
-                                    </td>
-
-
+                                    </td> 
                     </div>
                     <?php
                             }

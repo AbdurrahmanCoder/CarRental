@@ -1,17 +1,12 @@
 <?php
 
-session_start();
 function UserLoggedIn()
 {
-    if (isset ($_SESSION['pseudoData'])) {
+    if (isset($_SESSION['pseudoData'])) {
 
         return $_SESSION['pseudoData'];
     }
 }
-print_r($sessionData);
- 
-print_r($VehiculeTypes );
-
 
 
 
@@ -41,181 +36,206 @@ print_r($VehiculeTypes );
             </div>
         </nav>
 
-<?php if(UserLoggedIn())
-{
-    ?>
+        <?php if (UserLoggedIn()) {
+            ?>
+
+            <div class="container  ">
+
+                <div class="mainContainer">
+
+                    <div class="order">
+                        <div class="order_First_child">
+                            <span class="identifier"> 1</span>
+                            <h3 class="order_h3">RENTAL LOCATION </h3>
+                        </div>
+                        <div class="OrderDivsContainer">
+
+
+                            <div class="pickUp">
+                                <p>pick up</p>
+
+                                <?php echo isset($_SESSION['Location']) ? $_SESSION['Location'] : "select location"; ?>
+
+
+                                <p>
+                                    <?php echo isset($_SESSION['PickUp']) ? $_SESSION['PickUp'] : "select pickup  location"; ?>
+                                </p>
+                                <p>
+                                    <?php echo isset($_SESSION['PickUpTime']) ? $_SESSION['PickUpTime'] : "select PickUpTime  location"; ?>
+
+
+                                </p>
+                            </div>
+
+                            <div class="return">
+                                <p>return</p>
+                                <?php echo isset($_SESSION['Location']) ? $_SESSION['Location'] : "select Drop location "; ?>
+
+                                <p>
+                                    <?php echo isset($_SESSION['DropOf']) ? $_SESSION['DropOf'] : "select DropOf location "; ?>
+
+                                </p>
+                                <p>
+                                    <?php echo isset($_SESSION['DropOfTime']) ? $_SESSION['DropOfTime'] : "select DropOfTime location "; ?>
+                                </p>
+                            </div>
 
 
 
+                        </div>
+                        <?php if (!isset($_SESSION['DropOfTime'])) {
 
+                            ?>
 
-        <div class="container  ">
+                            <button > Insert form DATA</button>
+                            <?php
+                        }
+                        ?>
 
-            <div class="mainContainer">
-
-                <div class="order">
-                    <div class="order_First_child">
-                        <span class="identifier"> 1</span>
-                        <h3 class="order_h3">RENTAL LOCATION </h3>
                     </div>
-                    <div class="OrderDivsContainer">
 
 
-                        <div class="pickUp">
-                            <p>pick up</p>
-                            <?php echo $_SESSION['Location'] ? $_SESSION['Location'] : "select location" ?>
-                            <p>
-                                <?php echo $_SESSION['PickUp'] ?>
-                            </p>
-                            <p>
-                                <?php echo $_SESSION['PickUpTime'] ?>
-                            </p>
+
+
+                    <div class="vehicule">
+                        <div class="order_First_child">
+                            <span class="identifier idenColorChange"> 2</span>
+                            <h3>VEHICULE</h3>
+
+                        </div>
+                        <div class="carSelected">
+
+
+                            <p>you have not selected the car </p>
+
+
                         </div>
 
-                        <div class="return">
-                            <p>return</p>
-                            <?php echo $_SESSION['Location'] ?>
-                            <p>
-                                <?php echo $_SESSION['DropOf'] ?>
-                            </p>
-                            <p>
-                                <?php echo $_SESSION['DropOfTime'] ?>
-                            </p>
-                        </div>
                     </div>
 
-
-                </div>
-
-
-
-                <div class="vehicule">
-                    <div class="order_First_child">
-                        <span class="identifier idenColorChange"> 2</span>
-                        <h3>VEHICULE</h3>
-
-                    </div>
-                    <div class="carSelected">
-
-
-                        <p>you have not selected the car </p>
-
-
-                    </div>
-
-                </div>
-
-            </div>  
-        </div>
-    </div>
-    </div> 
-    </div>
-
-    <!-- ///checkout div -->
-
-    
-    <?php
-}
-?>
-<div>
- <form id="vehicleForm" method="POST" action="">
-        <!-- Dropdown for selecting vehicle type -->
-        <select name="vehicleType" id="vehicleType"   >
-        <option value="all" <?php echo ($selectedType == 'all') ? 'selected' : ''; ?>>ALL</option>
-
-            <?php  
-        foreach($VehiculeTypes as $values)
-        {  
-            $selected = ($selectedType == $values['id']) ? 'selected' : ''; 
-            ?> 
-        <!-- <option value="<?php echo $values['id'] ?>"><?php  echo $values['type'] ?> </option> -->
-        <option value="<?php echo $values['id']; ?>" <?php echo $selected; ?>><?php echo $values['type']; ?></option>
-      
-        <?php  } ?> 
-    
-
-        </select>
-        <button type="submit " value="submit"> submit</button>
-    </form>
-</div>
-
- 
-    <div class="checkout_main">
-        <div class="checkout_Div">
-            <div class="checkout">
-                <div class="container tocheck">
-                    <form action="/checkout" method="post">
-                        <!-- Move the button inside the form -->
-                        <input type="hidden" class="SelectedCarID" name="SelectedCarID">
-                        <input type="submit" class="redBlock Form_book_btn checkout_btn"
-                            value="Go to review & checkout">
-                    </form>
                 </div>
             </div>
         </div>
+        </div>
+        </div>
+
+        <!-- ///checkout div -->
+
+
+        <?php
+        }
+        ?>
+    <div>
+        <div class="container " id="Dropdown">
+            <form id="vehicleForm" method="POST" action="">
+                <!-- Dropdown for selecting vehicle type -->
+                <select name="vehicleType" id="vehicleType">
+                    <option value="all" <?php echo ($selectedType == 'all') ? ' ' : ''; ?>>ALL</option>
+
+                    <?php
+                    foreach ($VehiculeTypes as $values) {
+                        $selected = ($selectedType == $values['id']) ? 'selected' : '';
+                        ?>
+                        <!-- <option value="<?php echo $values['id'] ?>"><?php echo $values['type'] ?> </option> -->
+                        <option value="<?php echo $values['id']; ?>" <?php echo $selected; ?>><?php echo $values['type']; ?>
+                        </option>
+
+                    <?php } ?>
+
+                </select>
+                <button type="submit" value="submit"> submit</button>
+            </form>
+        </div>
     </div>
 
+    <?php if (isset($_SESSION['DropOfTime'])) {
 
+        ?>
+        <div class="checkout_main">
+            <div class="checkout_Div">
+                <div class="checkout">
+                    <div class="container tocheck">
+                        <form action="/checkout" method="post">
+                            <!-- Move the button inside the form -->
+                            <input type="hidden" class="SelectedCarID" name="SelectedCarID">
+                            <input type="submit" class="redBlock Form_book_btn checkout_btn"
+                                value="Go to review & checkout">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php
+    }
+    ?>
 
     <div class="Vehicule_List">
 
         <div class="VehiculeModels">
             <div class="container">
                 <?php
-                 if (!empty($results)) {  
-                foreach ($results as $data) { ?>
-                    <div class="List_vehicule_Disponible">
+                if (!empty($results)) {
+                    foreach ($results as $data) { ?>
+                        <div class="List_vehicule_Disponible">
 
-                        <div>
-                            <img width="200px" height="300px" src=" ../front/imgRental/<?php echo $data['photo'] ?>" alt="">
-
-
-                            <!-- <img width="200px" height="300px"  src="views\admin\front\imgRentala_20240107_192939.png" alt=""> -->
+                            <div>
+                                <img width="200px" height="300px" src=" ../front/imgRental/<?php echo $data['photo'] ?>" alt="">
 
 
-                        </div>
-                        <div>
-                            <h2>
-                                <?php echo $data['marque']; ?>
-                            </h2>
-                            <p><i class="fa-solid fa-check"></i>Free first charge</p>
-                            <p><i class="fa-solid fa-check"></i>Basic protection included</p>
-                            <p><i class="fa-solid fa-check"></i>Free cancellation up to 48h before pick up</p>
-                        </div>
+                                <!-- <img width="200px" height="300px"  src="views\admin\front\imgRentala_20240107_192939.png" alt=""> -->
 
 
-                        <div>
-                            <!-- <p>FROM</p> -->
-                            <p class="tarif_vehicule">
-                                <?php echo $data['tarif']; ?> <span> €/day </span>
-                            </p>
+                            </div>
+                            <div>
+                                <h2>
+                                    <?php echo $data['marque']; ?>
+                                </h2>
+                                <p><i class="fa-solid fa-check"></i>Free first charge</p>
+                                <p><i class="fa-solid fa-check"></i>Basic protection included</p>
+                                <p><i class="fa-solid fa-check"></i>Free cancellation up to 48h before pick up</p>
+                            </div>
 
-                            </p>
-                            <?php if (UserLoggedIn()) { ?>
-                                <!-- <a class="bookButton"
+
+                            <div>
+                                <!-- <p>FROM</p> -->
+                                <p class="tarif_vehicule">
+                                    <?php echo $data['tarif']; ?> <span> €/day </span>
+                                </p>
+
+                                </p>
+                                <?php if (UserLoggedIn()) { ?>
+                                    <!-- <a class="bookButton"
                             href="?CarId=<?php echo $data['id']; ?>&CarMarque=<?php echo $data['marque']; ?>&CarTarif=<?php echo $data['tarif']; ?>&CarImg=<?php echo $data['photo']; ?>">
                             Book Ride</a>  -->
-                                <button class="bookButton  bookButtonSelect" data-car-id="<?php echo $data['id']; ?>"
-                                    data-car-marque="<?php echo $data['marque']; ?>"
-                                    data-car-tarif="<?php echo $data['tarif']; ?>" data-car-img="<?php echo $data['photo']; ?>">
-                                    Book Ride
-                                </button>
-                            <?php } else { ?>
-                                <a class="bookButton" href=" /login"> Book Ride</a>
-                            <?php } ?>
+                                    <button class="bookButton  bookButtonSelect" data-car-id="<?php echo $data['id']; ?>"
+                                        data-car-marque="<?php echo $data['marque']; ?>"
+                                        data-car-tarif="<?php echo $data['tarif']; ?>" data-car-img="<?php echo $data['photo']; ?>">
+                                        Book Ride
+                                    </button>
+                                <?php } else { ?>
+                                    <a class="bookButton" href=" /login"> Book Ride</a>
+                                <?php } ?>
 
+                            </div>
                         </div>
-                    </div>
-                    <?php
-                }}
+                        <?php
+                    }
+                } else {
 
+                    ?>
+                    <H1>NO CARS AVAILABLE </H1>
+
+                <?php
+
+                }
                 ?>
 
             </div>
         </div>
 
 
-  <!-- <script async>
+        <!-- <script async>
         document.getElementById('vehicleType').addEventListener('change',  ()=> {
             document.getElementById('vehicleForm').submit();
         });
@@ -225,7 +245,58 @@ print_r($VehiculeTypes );
         </script>
 
 
- 
 
-    
+        <style>
+            /* Form container */
+            #vehicleForm {
+                /* margin: 0 auto; */
+                width: 80%;
+                overflow: hidden;
+
+                max-width: 45%;
+                margin-left: 20px;
+
+            }
+
+            /* Dropdown styling */
+            #vehicleType {
+                float: left;
+                width: calc(70% - 10px);
+                padding: 10px;
+                font-size: 16px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-right: 10px;
+                box-sizing: border-box;
+            }
+
+            /* Button styling */
+            button[type="submit"] {
+                float: left;
+                width: calc(30% - 10px);
+                background-color: #4CAF50;
+                color: white;
+                padding: 14px 14px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                box-sizing: border-box;
+            }
+
+
+            button[type="submit"]:hover {
+                background-color: #45a049;
+            }
+
+            #Dropdown {
+
+                display: flex;
+                justify-content: left;
+                align-items: start;
+                align-self: start;
+                align-content: flex-start;
+            }
+        </style>
+
+
 </html>

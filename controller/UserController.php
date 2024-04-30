@@ -9,12 +9,30 @@ class UserController
 {
     public function index()
     {
- 
-
+        
         $User = new UserDashboard();
-        $UserOrder = $User->CommandeAffficher(); 
-        require_once 'views/navbar.php';
-        require_once 'views/user.php'; 
+
+       
+        $id = isset($_GET["id"]) ? $_GET["id"] : "newOrder";
+       
+       if($id === "newOrder")
+
+       { 
+           $UserOrder = $User->CommandeAffficher(); 
+           require_once 'views/navbar.php';
+           require_once 'views/user.php'; 
+        }
+       else if($id === "oldOrder")
+
+        {  
+            echo "cooccoo";
+            $UserOrder = $User->OldOrders(); 
+            require_once 'views/navbar.php';
+            require_once 'views/user.php'; 
+         }
+else {
+    echo "No car booked ";
+}
 
 
     }

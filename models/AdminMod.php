@@ -63,10 +63,7 @@ class Admin
         //             WHERE carorder_id LIKE :searchTerm"; 
         // Add the % wildcards to the search term
 
-
-
-
-
+ 
 
         $requete = "SELECT carorder.*, membre.*, voiture.*, types_de_voiture.*, carorder.id AS carorder_id
                     FROM carorder 
@@ -152,76 +149,26 @@ class Admin
         $stmt->execute();
     }
 
+    public function CarReturned($SelectedId,$carid)
+    {
+        $pdo = $this->db->getConnection();
+        $sql = "UPDATE carorder SET ReturnStatus = 1 WHERE id = :SelectedId; ";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':SelectedId', $SelectedId, PDO::PARAM_INT);
+        $stmt->execute();
+
+
+        $sql2 = "UPDATE voiture SET carstatus = 0 WHERE id = :carid; ";
+        $stmt2 = $pdo->prepare($sql2);
+        $stmt2->bindParam(':carid', $carid, PDO::PARAM_INT);
+        $stmt2->execute();
+ 
+
+    }
+
 }
 
-
-
-// if (isset($_POST['marque']) && isset($_POST['kilometrage']) && isset($_POST['tarif']) && isset($_FILES["image_file"]["tmp_name"]) && isset($_POST['carType'])) {
-//     $marque = $_POST['marque'];
-//     $kilometrage = $_POST['kilometrage'];
-//     $tarif = $_POST['tarif'];
-//     $photo = $_FILES["image_file"]["tmp_name"];
-//     $carType = $_POST['carType'];
-
-//     $datainsert = new Admin;
-//     if ($datainsert->insertItem($marque, $kilometrage, $tarif, $photo, $carType)) {
-//         echo "data inserted";
-//     } else {
-//         echo "data not inserted";
-//     }
-// }
-
-
-
-// if (isset($_POST['SelectedId'])) {
-//     $SelectedId = $_POST['SelectedId'];
-//     $datainsert = new Admin;
-//     $datainsert->confirmed($SelectedId);
-//     echo "confirmed";
-// } else {
-//     echo "no data submitted";
-// }
-
-
-// if (isset($_POST['action'])) {
-//     $query = $_POST['action'];
-
-//     echo "confirmed", $query;
-// } else {
-//     echo "no data from query ";
-// } 
-
-
-
-
-
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//     $json = file_get_contents('php://input');
-//     $data = json_decode($json);
-
-//     if (isset($data->query, $data->action)) {
-//         $query = $data->query;
-//         $action = $data->action; 
-
-//      if(!$query){
-
-//             echo "if works";
-//                     }
-//             else
-//             {
-//                 echo "to show all data";
-//             }
-
-
-//     //  echo "confirmed ", $query, " ", $action;
-
-
-//     } else {
-//         echo "Invalid JSON format";
-//     }
-// } else {
-//     echo "Invalid request method";
-// }
+ 
 
 $AdminInstance = new Admin;
 
@@ -264,11 +211,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <td>' . $data['nom'] . '</td>
             <td>' . $data['prenom'] . '</td>
             <td>' . $data['email'] . '</td>
-            <td>
-            <a href="/admin?id=neworder&selectedId=' . $data['carorder_id'] . '">
+            <td>  <a href="/admin?id=orderlist&CarOrderId=' .$data['carorder_id'] . '">
                 <p>More details</p>
             </a>
         </td>
+         
             </tr>';
             }
 
@@ -298,9 +245,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <th class="table_header">email</th>
         <th class="table_header">details</th>
      </tr>';
-
-            // Loop through each $result item to create table rows
-            foreach ($result as $data) {
+ 
+ 
+                foreach ($result as $data) {
                 $table .= '
         <tr>
         <td>' . $data['carorder_id'] . '</td>
@@ -312,12 +259,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <td>' . $data['nom'] . '</td>
             <td>' . $data['prenom'] . '</td>
             <td>' . $data['email'] . '</td>
-            <td>
-            <a href="/admin?id=neworder&selectedId=' . $data['carorder_id'] . '">
+            <td>  <a href="/admin?id=orderlist&CarOrderId=' .$data['carorder_id'] . '">
                 <p>More details</p>
             </a>
         </td>
-            
+         
+        
+
             </tr>';
             }
 
@@ -376,6 +324,27 @@ if (isset($_POST['action'])) {
                 $datainsert = new Admin;
                 $datainsert->confirmed($SelectedId);
                 echo "confirmed";
+            } else {
+                echo "no data submitted";
+            }
+            break;
+        case 'return':
+            if (isset($_POST['CarReturned'])) {
+                $SelectedId = $_POST['CarReturned'];
+                $Carid = $_POST['Carid'];
+               
+                $datainsert = new Admin;
+
+                $datainsert->CarReturned($SelectedId,$Carid);
+
+
+
+
+                echo "returned";
+
+       
+                
+                
             } else {
                 echo "no data submitted";
             }

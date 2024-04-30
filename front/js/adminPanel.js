@@ -1,36 +1,4 @@
-// let button = document.getElementById('button');
-
-// button.addEventListener('click', functionRun)
-
-// function functionRun() {
-
-
-//     const SelectedId = this.getAttribute('data-SelectedId');
-
-//     fetch('../models/AdminMod.php', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/x-www-form-urlencoded',
-//         },
-//         body: `SelectedId=${encodeURIComponent(SelectedId)}&action=confirmed`,
-          
-    
-//     })
-//         .then(response => response.text())
-//         .then(data => {
-//             console.log(data);
-//             console.log("eeddededededed")
-//             console.log(this); 
-//             this.classList.remove("pending")
-//             this.classList.add("confirmed")  
-//             this.innerHTML = "confodzdrmed";
-//         })
-//         .catch(error => {
-//             console.error('Error:', error);
-//         });
-  
-//     console.log("clickedme", SelectedId);
-// } 
+ 
 
 let button = document.getElementById('button');
 

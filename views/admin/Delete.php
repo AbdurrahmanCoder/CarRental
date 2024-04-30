@@ -50,8 +50,7 @@ if (!isAdmin()) {
                                 <tr>
                                     <td>
                                         <?php echo $carData['id']; ?>
-                                        <?php echo $carData['photo']; ?>
-                                    </td>
+                                     </td>
 
                                     <td>
 

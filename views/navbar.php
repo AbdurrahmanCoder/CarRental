@@ -13,6 +13,15 @@ function isAdmin() {
     return $_SESSION['membre'];
   }
 }   
+function User() {
+
+  if(isConnected() && $_SESSION['membre']['statut'] == 0) {
+    return $_SESSION['membre'];
+  }
+}   
+
+ 
+
 function UserLogged() {
   if(isset($_SESSION['pseudoData'])) {
     // echo $_SESSION['pseudoData']; 
@@ -39,8 +48,7 @@ function UserLogged() {
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <link rel="stylesheet" href="front\css\navbar.css">
-  <link rel="stylesheet" href="front\css\home.css">
-
+  <link rel="stylesheet" href="front\css\home.css"> 
 
 </head>
 
@@ -51,7 +59,7 @@ function UserLogged() {
       <img src="front\imgRental\logo.png" alt="">
     </div>
 
-
+ 
     <ul>
       <li> <a href= "/">Home</a> </li>
       <li><a href=" /about">About</a></li>
@@ -59,14 +67,22 @@ function UserLogged() {
       <!-- <li>Models</li> -->
       <li><a href=" /testimonial">Testimonials</a> </li>
 
-      <li> Contact</li>
+      <!-- <li> Contact</li> -->
       <!-- <a href="logout.php ">click me </a> -->
+      <?php if(isAdmin()): ?>
       <li>
-        <?php if(isAdmin()): ?>
-          <a href="/admin">Admin Login</a>
+          <a href="/admin">Admin</a> 
+        </a>
+      </li>
+      <?php endif; ?>
+     
+      <li>
+        <?php if(User()): ?>
+          <a href="/user">User </a>
         <?php endif; ?>
         </a>
       </li>
+      
     </ul>
 
 
@@ -77,15 +93,14 @@ function UserLogged() {
         
         
         
-        <?php if(UserLogged()) { ?>
+        <?php if(User() ||isAdmin() ) { ?>
           
           <div class="flex">
-            <div>
-         <span class="arrowDownbutton"> <?php echo $_SESSION['pseudoData'].  " " . "  "  ."<i class='fa-solid fa-angle-down downarrow'>"."</i>"; ?> </span>
-            </div>
+             <div>
+             <span class="arrowDownbutton"> <?php  echo 'Hi, '.  $_SESSION['pseudoData'].  " " . "  "  ."<i class='fa-solid fa-angle-down downarrow'>"."</i>"; ?> </span>
+             </div>
             
-            
-            
+
             
             <?php } else { ?>
        <div>
@@ -152,12 +167,11 @@ text-decoration: none;
  
 }
  
-  @media screen and (max-width: 986px) {
-    .Nav_desktop ul {
-      display: none;
-    }
 
-  }
+
+
+
+
 </style>
 <script async>
    const imgTags = document.querySelectorAll('img');

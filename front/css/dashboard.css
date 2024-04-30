@@ -34,12 +34,16 @@
 }  
 
 .Dashboard div:nth-child(4) { 
-    background: linear-gradient(to right, rgb(231, 178, 255) 35%, rgb(194, 53, 255) 100%); 
+    background: linear-gradient(to right,  rgb(194, 53, 255) 35% , rgb(232, 199, 248) 100%); 
 }  
+
 .Dashboard div:nth-child(5) { 
     background: linear-gradient(to right, rgb(255, 114, 114) 35%, rgb(241, 189, 177) 100%); 
 }  
 
+.Dashboard div:nth-child(6) { 
+    background: linear-gradient(to right, rgb(39, 235, 163) 35%, rgb(193, 251, 212) 100%); 
+}  
 
 h1,
 h3 {

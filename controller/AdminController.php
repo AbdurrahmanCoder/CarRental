@@ -28,8 +28,8 @@ class AdminController
         return $_SESSION['membre'];
       }
     }
- 
-    if (isAdmind()) {
+    
+ if (isAdmind()) {
       require_once 'views/navbar.php';
       $database = new Database();
       $pdo = $database->getConnection();
@@ -43,8 +43,14 @@ class AdminController
         $TotalVehicules = $VehiculeAvailable->TotalVehicules()['total_voiture'];
         $TotalOrder = $VehiculeAvailable->TotalOrder()['total_orders'];
         $NewOrder = $VehiculeAvailable->NewOrderCount();
+        $CarAvailable = $VehiculeAvailable->CarAvailable();
+        
+        $TotalAmount = $VehiculeAvailable->TotalAmount();
+        
+        
 
-        var_dump($NewOrder);
+
+        var_dump($TotalAmount);
 
         require_once 'views/admin/Dashboard.php';
 
@@ -64,7 +70,12 @@ class AdminController
         $VehiculeAvailable = new adminDash($pdo);
         $CommandeListe = $VehiculeAvailable->CommandeAffficher();
 
-        var_dump($CommandeListe);
+        if (isset($_GET['CarOrderId'])) {
+          $id = $_GET['CarOrderId'];   
+          $SelectedIdData = $VehiculeAvailable->NewOrderById($id); 
+         } 
+
+        // var_dump($CommandeListe);
 
         require_once 'views/admin/orderlist.php';
 
@@ -77,9 +88,11 @@ class AdminController
 
         $VehiculeAvailable = new adminDash($pdo);
         $CommandeListe = $VehiculeAvailable->NewOrder();
-
+ 
         if (isset($_GET['selectedId'])) {
           $id = $_GET['selectedId'];
+ 
+
           var_dump($id);
           $SelectedIdData = $VehiculeAvailable->NewOrderById($id);
           var_dump($SelectedIdData);
@@ -91,9 +104,7 @@ class AdminController
         //    $SelectedIdData  = $VehiculeAvailable->NewOrderById($id);  
         //    var_dump($SelectedIdData);
         //  }
-
-
-
+ 
         require_once 'views/admin/neworder.php';
       } else {
         echo "<h1>this is modify</h1>";
@@ -113,4 +124,4 @@ class AdminController
 
 
 }
-
+ 

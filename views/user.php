@@ -73,11 +73,16 @@
 </head>
 <body>
 
+
+
+<a href="/user?id=newOrder" class="nav-link">new order </a>
+      <a href="/user?id=oldOrder" class="nav-link">old order</a>
+
+
+
 <?php 
-foreach ($UserOrder as $order) {
- 
-    ?>
- 
+foreach ($UserOrder as $order) { 
+    ?> 
     <!--//tocheck-->
    <section class="Section_Review">
 

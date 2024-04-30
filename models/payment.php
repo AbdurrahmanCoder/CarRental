@@ -66,8 +66,8 @@ class Payment
     {
 
         try { 
-            $sql = "INSERT INTO carorder (City, PickUpDate, PickUpTime, DropDate, DropTime, OrderStatus, TotalCost, PaymentStatus, id_User, voiture_id) 
-            VALUES (:city, :pickupDate, :pickupTime, :dropDate, :dropTime, :orderStatus, :totalCost, :paymentStatus, :userId, :carId)";
+            $sql = "INSERT INTO carorder (City, PickUpDate, PickUpTime, DropDate, DropTime, OrderStatus,ReturnStatus,TotalCost, PaymentStatus, id_User, voiture_id) 
+            VALUES (:city, :pickupDate, :pickupTime, :dropDate, :dropTime, :orderStatus,:ReturnStatus, :totalCost, :paymentStatus, :userId, :carId)";
  
                 var_dump( $SessionGetData['DropOf']);
             $stmt = $this->pdo->prepare($sql);
@@ -77,17 +77,18 @@ class Payment
             $stmt->bindParam(':dropDate', $SessionGetData['DropOf']);
             $stmt->bindParam(':dropTime', $SessionGetData['DropOfTime']);
             $stmt->bindValue(':orderStatus', 0);  
+            $stmt->bindValue(':ReturnStatus', 0);  
             $stmt->bindValue(':paymentStatus', 0);  
             $stmt->bindValue(':totalCost',$TotalTarif); 
             $stmt->bindValue(':userId', $_SESSION['user_id']); 
             $stmt->bindParam(':carId',  $voitureId );    
             // Execute the prepared statement
-            $stmt->execute(); 
-
-            $sql = "UPDATE voiture SET carstatus = 1 WHERE id = :SelectedId";
-            $stmt = $this->pdo->prepare($sql);  
-            $stmt->bindParam(':SelectedId', $voitureId);     
-            $stmt->execute(); 
+            $stmt->execute();   
+ 
+            $sql2 = "UPDATE voiture SET carstatus = 1 WHERE id = :SelectedId";
+            $stmt2 = $this->pdo->prepare($sql2);  
+            $stmt2->bindParam(':SelectedId', $voitureId);     
+            $stmt2->execute(); 
             echo "Data inserted successfully."; 
 
         } catch (\PDOException $e) { 

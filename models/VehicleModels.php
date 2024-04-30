@@ -35,7 +35,7 @@ class VehiculeModels
         $sql = "SELECT voiture.*, types_de_voiture.*
         FROM voiture
         INNER JOIN types_de_voiture ON voiture.typeId = types_de_voiture.id 
-        WHERE  types_de_voiture.id = :ids"; 
+        WHERE carstatus = 0 AND types_de_voiture.id = :ids";    
      
         $stmt = $this->pdo->prepare($sql);
          $stmt->bindParam(':ids', $selectedType); 

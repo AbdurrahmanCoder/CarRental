@@ -13,8 +13,7 @@ class LoginController
     private $database;
     private $login;
     private $email;
-    private $password;
-
+    private $password; 
     public function index()
     {
 
@@ -25,11 +24,20 @@ class LoginController
             $database = new Database();
             $pdo = $database->getConnection(); 
             $login = new Login($pdo);
-            $login->authenticate($this->email,$this->password);
-            // print_r($login);             
+            $authenticated =  $login->authenticate($this->email,$this->password);
+            print_r($login);            
+            // ECHO "VOUS ETES BIEN CONNECTE";
+           
 
-            ECHO "VOUS ETES BIEN CONNECTE";
-
+            if(isset($_SESSION['pseudoData'])){
+                echo "welcome";
+              header("Location:".HOST);  
+            }
+            else {
+                
+                echo "NOT welcome";
+                require_once 'views/login.php';
+            }
 
          } else {
 

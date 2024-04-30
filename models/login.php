@@ -26,12 +26,12 @@
                     $mdpDb = $user["mdp"];
                     $pseudoData = $user['pseudo'];
                     $statut = $user['statut'];
-                    if ($email == $emailDb && password_verify($password,$mdpDb)) {
-                        // Authentication successful
+                    if ($email == $emailDb && password_verify($password,$mdpDb)) { 
                         $_SESSION['user_id'] = $user['id']; 
                         $_SESSION['email'] = $emailDb;  
                         $_SESSION['membre'] = $user;
-                        $_SESSION['pseudoData'] = $pseudoData;  
+                        $_SESSION['pseudoData'] = $pseudoData;    
+                        return true;
                     }
                 }
             }
