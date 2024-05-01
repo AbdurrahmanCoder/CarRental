@@ -20,7 +20,9 @@ function User() {
   }
 }   
 
- 
+
+
+
 
 function UserLogged() {
   if(isset($_SESSION['pseudoData'])) {
@@ -48,7 +50,8 @@ function UserLogged() {
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <link rel="stylesheet" href="front\css\navbar.css">
-  <link rel="stylesheet" href="front\css\home.css"> 
+  <link rel="stylesheet" href="front\css\home.css">
+
 
 </head>
 
@@ -167,11 +170,12 @@ text-decoration: none;
  
 }
  
+  @media screen and (max-width: 986px) {
+    .Nav_desktop ul {
+      display: none;
+    }
 
-
-
-
-
+  }
 </style>
 <script async>
    const imgTags = document.querySelectorAll('img');

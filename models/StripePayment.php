@@ -16,7 +16,7 @@ class StripePayment {
 
         $checkout_session = \Stripe\Checkout\Session::create([
             "mode" => "payment",
-            "success_url" => HOST."Paymentsuccess",
+            "success_url" => HOST."Paymentsuccess?user_id=" . $_SESSION['user_id'],
             "cancel_url" => HOST,
             "locale" => "auto",
             "line_items" => [

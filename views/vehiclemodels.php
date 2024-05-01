@@ -10,7 +10,7 @@ function UserLoggedIn()
 
 
 
-
+var_dump($results)
 ?>
 
 <!DOCTYPE html>
@@ -148,9 +148,7 @@ function UserLoggedIn()
         </div>
     </div>
 
-    <?php if (isset($_SESSION['DropOfTime'])) {
-
-        ?>
+  
         <div class="checkout_main">
             <div class="checkout_Div">
                 <div class="checkout">
@@ -166,9 +164,7 @@ function UserLoggedIn()
             </div>
         </div>
 
-        <?php
-    }
-    ?>
+ 
 
     <div class="Vehicule_List">
 
@@ -184,7 +180,7 @@ function UserLoggedIn()
 
 
                                 <!-- <img width="200px" height="300px"  src="views\admin\front\imgRentala_20240107_192939.png" alt=""> -->
-
+ 
 
                             </div>
                             <div>
@@ -205,10 +201,8 @@ function UserLoggedIn()
 
                                 </p>
                                 <?php if (UserLoggedIn()) { ?>
-                                    <!-- <a class="bookButton"
-                            href="?CarId=<?php echo $data['id']; ?>&CarMarque=<?php echo $data['marque']; ?>&CarTarif=<?php echo $data['tarif']; ?>&CarImg=<?php echo $data['photo']; ?>">
-                            Book Ride</a>  -->
-                                    <button class="bookButton  bookButtonSelect" data-car-id="<?php echo $data['id']; ?>"
+                 
+                                    <button class="bookButton  bookButtonSelect" data-car-id="<?php echo $data['voiture_id']; ?>"
                                         data-car-marque="<?php echo $data['marque']; ?>"
                                         data-car-tarif="<?php echo $data['tarif']; ?>" data-car-img="<?php echo $data['photo']; ?>">
                                         Book Ride

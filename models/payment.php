@@ -5,7 +5,8 @@ namespace Payment;
 // require_once "models/config.php";
 
 use Database\Database;
-use Vehicule\VehiculeModels; 
+use Vehicule\VehiculeModels;
+
 class Payment
 {
 
@@ -27,14 +28,14 @@ class Payment
     public function __construct($pdo)
     {
 
-        
-        $this->pdo = $pdo; 
+
+        $this->pdo = $pdo;
 
         $this->VehiculeAvailable = new VehiculeModels($pdo);
-          
+
     }
-    
-    
+
+
     public function calculateDateInfo()
     {
         $pickup = new \DateTime($_SESSION['PickUp']);
@@ -48,9 +49,9 @@ class Payment
             'days' => $days,
             'daysTotal' => $daysTotal
         ];
-        
+
     }
-    
+
     public function calculateTotal($id)
     {
 
@@ -62,46 +63,65 @@ class Payment
     }
 
 
-    function insertDataToDB($SessionGetData,$voitureId,$TotalTarif)
+    function insertDataToDB($SessionGetData, $voitureId, $TotalTarif)
     {
 
-        try { 
+        try {
             $sql = "INSERT INTO carorder (City, PickUpDate, PickUpTime, DropDate, DropTime, OrderStatus,ReturnStatus,TotalCost, PaymentStatus, id_User, voiture_id) 
             VALUES (:city, :pickupDate, :pickupTime, :dropDate, :dropTime, :orderStatus,:ReturnStatus, :totalCost, :paymentStatus, :userId, :carId)";
- 
-                var_dump( $SessionGetData['DropOf']);
+
+            var_dump($SessionGetData['DropOf']);
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindParam(':city', $SessionGetData['Location']);
             $stmt->bindParam(':pickupDate', $SessionGetData['PickUp']);
             $stmt->bindParam(':pickupTime', $SessionGetData['PickUpTime']);
             $stmt->bindParam(':dropDate', $SessionGetData['DropOf']);
             $stmt->bindParam(':dropTime', $SessionGetData['DropOfTime']);
-            $stmt->bindValue(':orderStatus', 0);  
-            $stmt->bindValue(':ReturnStatus', 0);  
-            $stmt->bindValue(':paymentStatus', 0);  
-            $stmt->bindValue(':totalCost',$TotalTarif); 
-            $stmt->bindValue(':userId', $_SESSION['user_id']); 
-            $stmt->bindParam(':carId',  $voitureId );    
-            // Execute the prepared statement
-            $stmt->execute();   
- 
-            $sql2 = "UPDATE voiture SET carstatus = 1 WHERE id = :SelectedId";
-            $stmt2 = $this->pdo->prepare($sql2);  
-            $stmt2->bindParam(':SelectedId', $voitureId);     
-            $stmt2->execute(); 
-            echo "Data inserted successfully."; 
+            $stmt->bindValue(':orderStatus', 0);
+            $stmt->bindValue(':ReturnStatus', 0);
+            $stmt->bindValue(':paymentStatus', 0);
+            $stmt->bindValue(':totalCost', $TotalTarif);
+            $stmt->bindValue(':userId', $_SESSION['user_id']);
+            $stmt->bindParam(':carId', $voitureId);
+            $stmt->execute();
 
-        } catch (\PDOException $e) { 
+            $sql2 = "UPDATE voiture SET carstatus = 1 WHERE id = :SelectedId";
+            $stmt2 = $this->pdo->prepare($sql2);
+            $stmt2->bindParam(':SelectedId', $voitureId);
+            $stmt2->execute();
+            echo "Data inserted successfully.";
+
+        } catch (\PDOException $e) {
 
             echo 'Error inserting data: ' . $e->getMessage();
-
-
             $this->success = false;
         }
     }
-    // function isSuccess()
-    // {
-    //     return $this->success;
-    // }
+
+
+    function PaymentSucess($user_id)
+    {
+        try {
+            $sql = "SELECT *, carorder.id AS carorder_ids  FROM carorder WHERE id_User = :userId ORDER BY carorder.id DESC LIMIT 1";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':userId', $user_id);
+            $stmt->execute();
+            $lastOrder = $stmt->fetch(\PDO::FETCH_ASSOC);
+            if ($lastOrder) {
+                $lastOrderId = $lastOrder['carorder_ids'];
+                $sql2 = "UPDATE carorder SET PaymentStatus = 1 WHERE carorder.id = :orderId";
+                $stmt2 = $this->pdo->prepare($sql2);
+                $stmt2->bindParam(':orderId', $lastOrderId);
+                $stmt2->execute();
+                echo "Payment status updated successfully.";
+            } else {
+                echo "No orders found for the user.";
+            }
+        } catch (\PDOException $e) {
+            echo 'Error updating payment status: ' . $e->getMessage();
+        }
+    }
+
+
 }
 

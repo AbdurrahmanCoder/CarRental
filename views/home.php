@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 
   <link rel="stylesheet" href="front\css\home.css">
+  <link rel="stylesheet" href="front\css\navbar.css">
 
 </head> 
 <body> 

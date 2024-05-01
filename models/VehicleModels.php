@@ -23,26 +23,43 @@ class VehiculeModels
       } 
     public function VehiculeModelsFetch()
     {   
-        $sql = "SELECT  * FROM  voiture where carstatus = 0 ";
+        $sql = "SELECT *, voiture.id AS voiture_id FROM voiture WHERE carstatus = 0";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();  
         $result = $stmt->fetchAll(\PDO::FETCH_ASSOC); 
         return  $result ;  
     } 
-    
+    //     public function VehiculeModelsFetchByType($selectedType)
+    // { 
+    //     $sql = "SELECT voiture.*, types_de_voiture.* 
+    //     FROM voiture
+    //     RIGHT JOIN types_de_voiture ON voiture.typeId = types_de_voiture.id 
+    //     WHERE carstatus = 0 AND types_de_voiture.id = :ids";     
+    //     $stmt = $this->pdo->prepare($sql);
+    //      $stmt->bindParam(':ids', $selectedType); 
+    //     $stmt->execute();  
+    //     $result = $stmt->fetchAll(\PDO::FETCH_ASSOC); 
+    //     return  $result ;  
+    // }  
+
+
     public function VehiculeModelsFetchByType($selectedType)
     { 
-        $sql = "SELECT voiture.*, types_de_voiture.*
+        $sql = "SELECT voiture.*, types_de_voiture.*, voiture.id AS voiture_id
         FROM voiture
-        INNER JOIN types_de_voiture ON voiture.typeId = types_de_voiture.id 
-        WHERE carstatus = 0 AND types_de_voiture.id = :ids";    
-     
+        RIGHT JOIN types_de_voiture ON voiture.typeId = types_de_voiture.id 
+        WHERE carstatus = 0 AND types_de_voiture.id = :ids";     
         $stmt = $this->pdo->prepare($sql);
          $stmt->bindParam(':ids', $selectedType); 
         $stmt->execute();  
         $result = $stmt->fetchAll(\PDO::FETCH_ASSOC); 
         return  $result ;  
     } 
+
+
+
+
+
 
     public function VehiculeModelsById($id)
     { 

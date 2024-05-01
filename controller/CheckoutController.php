@@ -61,9 +61,12 @@ class CheckoutController
             var_dump($this->id ."id bro ");
 
             $payment->insertDataToDB($SessionGetData, $voitureId , $TotalTarif);
-
+            
             $StripePayment = new StripePayment(); 
             $StripePayment->payment($TotalTarif); 
+             
+      
+            
  
             require_once 'views/payment.php';
 

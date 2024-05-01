@@ -39,14 +39,7 @@ function SelectedCar(carId, carMarque, carTarif, carImg) {
     
 }
 // document.querySelector('.check').innerHTML = carTarif;
- 
-
-
-
-
-
-
-
+  
 
 
 
