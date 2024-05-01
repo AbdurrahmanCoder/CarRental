@@ -55,17 +55,19 @@ class CheckoutController
             $payment = new Payment($pdo);
 
             $voitureId = $SessionGetData['VoitureId'] ?? null;
-
+            
             $TotalTarif = $payment->calculateTotal($voitureId);
-
-            var_dump($this->id ."id bro ");
-
-            $payment->insertDataToDB($SessionGetData, $voitureId , $TotalTarif);
+            
+            // var_dump($this->id ."id bro ");
+            $dateInfo = $payment->calculateDateInfo();
+            
+            $payment->insertDataToDB($SessionGetData, $voitureId , $TotalTarif,$dateInfo);
+           
             
             $StripePayment = new StripePayment(); 
+            
             $StripePayment->payment($TotalTarif); 
-             
-      
+            
             
  
             require_once 'views/payment.php';

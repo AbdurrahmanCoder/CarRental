@@ -50,7 +50,7 @@ class AdminController
         
 
 
-        var_dump($TotalAmount);
+        // var_dump($TotalAmount);
 
         require_once 'views/admin/Dashboard.php';
 

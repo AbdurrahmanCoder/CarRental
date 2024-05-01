@@ -24,11 +24,11 @@ if (!isAdmin()) {
     <body>
 
         <div class="container">
-        <?php
- 
- include_once ("header.php") ?>
+            <?php
 
-            <div class="Content"> 
+            include_once ("header.php") ?>
+
+            <div class="Content">
                 <div class="container mt-5">
 
                     <table class="table">
@@ -50,7 +50,7 @@ if (!isAdmin()) {
                                 <tr>
                                     <td>
                                         <?php echo $carData['id']; ?>
-                                     </td>
+                                    </td>
 
                                     <td>
 
@@ -88,6 +88,10 @@ if (!isAdmin()) {
                 padding: 22px;
                 margin-top: 11px;
             }
+
+
+
+        
         </style>
 
         </html>

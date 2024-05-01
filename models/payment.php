@@ -63,12 +63,12 @@ class Payment
     }
 
 
-    function insertDataToDB($SessionGetData, $voitureId, $TotalTarif)
+    function insertDataToDB($SessionGetData, $voitureId, $TotalTarif,$dateInfo)
     {
 
         try {
-            $sql = "INSERT INTO carorder (City, PickUpDate, PickUpTime, DropDate, DropTime, OrderStatus,ReturnStatus,TotalCost, PaymentStatus, id_User, voiture_id) 
-            VALUES (:city, :pickupDate, :pickupTime, :dropDate, :dropTime, :orderStatus,:ReturnStatus, :totalCost, :paymentStatus, :userId, :carId)";
+            $sql = "INSERT INTO carorder (City, PickUpDate, PickUpTime, DropDate, DropTime, OrderStatus,ReturnStatus,TotalCost, PaymentStatus,totalDays, id_User, voiture_id) 
+            VALUES (:city, :pickupDate, :pickupTime, :dropDate, :dropTime, :orderStatus,:ReturnStatus, :totalCost, :paymentStatus,:totalDays, :userId, :carId)";
 
             var_dump($SessionGetData['DropOf']);
             $stmt = $this->pdo->prepare($sql);
@@ -81,6 +81,9 @@ class Payment
             $stmt->bindValue(':ReturnStatus', 0);
             $stmt->bindValue(':paymentStatus', 0);
             $stmt->bindValue(':totalCost', $TotalTarif);
+            $stmt->bindValue(':totalDays', $dateInfo['days']);
+
+
             $stmt->bindValue(':userId', $_SESSION['user_id']);
             $stmt->bindParam(':carId', $voitureId);
             $stmt->execute();

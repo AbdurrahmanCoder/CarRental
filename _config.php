@@ -12,16 +12,14 @@ class Autoloader
         $host = $_SERVER['HTTP_HOST'];
 
        
-        // print_r($_SERVER);
-        
-        // print_r($_SERVER['HTTP_HOST']);
+    
         
         define('HOST', 'http://' .$host.'/');
         define('ROOT', $root.'/');
 
 
         // var_dump($root."cffddfd");
-        var_dump(HOST."cffddfd");
+        // var_dump(HOST."cffddfd");
         define('CONTROLLER', ROOT.'controller/');
         define('VIEWS', ROOT.'views/');
         define('MODELS', ROOT.'models/');
@@ -38,7 +36,7 @@ class Autoloader
         // Extract the last part of the namespace
         $className = end( $parts);
       
-          var_dump($className); 
+        //   var_dump($className); 
         if(file_exists(MODELS.$className.'.php'))
         {
             include_once (MODELS.$className.'.php'); 

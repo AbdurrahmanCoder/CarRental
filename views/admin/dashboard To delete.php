@@ -49,11 +49,8 @@
       <a href="/admin?id=neworder" class="nav-link">New Order</a>
     </div> -->
 
-    <!-- <div class="container"> -->
-     
-    
-    
-    <div class="Dashboard">
+    <div class="container">
+      <div class="Dashboard">
 
         <div>
           <h3>New Order </h3>
@@ -106,7 +103,7 @@
 
         
         <div>
-          <h3>Total amount</h3>
+          <h3>Registered User</h3>
 
           <h1>
             <?php echo $TotalAmount."€"?>
@@ -115,7 +112,7 @@
 
 
 
-      <!-- </div>  -->
+      </div> 
     </div> 
   </div>
 
@@ -129,40 +126,9 @@
 
 
 <style>
-/* 
+
 #dashboardLink
 {
   background-color: red;
-} */
-</style>
-
-
-<style>
- .Dashboard {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-top: 20px;
-  }
-
-  .Dashboard > div {
-    flex: 0 0 calc(33.33% - 20px);
-    background-color: #f8f9fa;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-
-  @media (max-width: 768px) {
-    .Dashboard > div {
-      flex: 0 0 calc(50% - 20px);
-    }
-  }
-
-  @media (max-width: 576px) {
-    .Dashboard > div {
-      flex: 0 0 calc(100% - 20px);
-    }
-  }
+}
 </style>

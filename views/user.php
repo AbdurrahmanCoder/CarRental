@@ -74,12 +74,8 @@
 <body>
 
 
-
 <a href="/user?id=newOrder" class="nav-link">new order </a>
-      <a href="/user?id=oldOrder" class="nav-link">old order</a>
-
-
-
+      <a href="/user?id=oldOrder" class="nav-link">old order</a> 
 <?php 
 foreach ($UserOrder as $order) { 
     ?> 
@@ -124,9 +120,7 @@ foreach ($UserOrder as $order) {
                                     days
                                 </B></p>
                             <p>Included </p>
-                        </div>
-
-
+                        </div> 
                         <div>
                             <p>Tarif</p>
                             <p><?php echo $order['tarif']; ?> € / jour</p>
@@ -153,19 +147,13 @@ foreach ($UserOrder as $order) {
                             <p>Railway Station Surcharge </p>
                             <p>Included</p>
                         </div>
-                        <div>
-               
-                        <?php 
-
-            //   $order['OrderStatus'] = 1;
-
+                        <div> 
+                        <?php  
             $statusClass = ($order['OrderStatus'] === 1) ? 'confirmed' : 'pending';
             $statusText = ($order['OrderStatus'] === 1) ? 'Confirmed' : 'Pending';
             ?>
-            <button class="button <?php echo $statusClass; ?>"><?php echo $statusText; ?></button>
-
-                        </div>
- 
+            <button class="button <?php echo $statusClass; ?>"><?php echo $statusText; ?></button> 
+                        </div> 
                     </div>
 
                 </div>

@@ -15,14 +15,12 @@
 <div class="container"> 
     <h1 class="succes containerTotal">🎉 Payment Successful 🎉</h1> 
 
-
-
+    
     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, recusandae eveniet quam sunt velit omnis magni ducimus enim, tenetur ipsam ad vel iure praesentium, eius cupiditate dolorem quos nisi quo!</p>
-
-            <button>USER DASHBOARD</button>
-
+    
+    <button>USER DASHBOARD</button>
+    
 </div>
-
 
     </body>
 
