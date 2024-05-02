@@ -12,12 +12,11 @@ class Router
         'about' => ['controllers' => 'AboutController', 'method' => 'index'],
         'testimonial' => ['controllers' => 'TestimonialController', 'method' => 'index'],
         'Paymentsuccess' => ['controllers' => 'PaymentsuccessController', 'method' => 'index'],
-          
+           
+        
         'admin' => ['controllers' => 'AdminController', 'method' => 'index'],
-        // 'adminaddcar' => ['controllers' => 'AdminController', 'method' => 'checking'],
-        'user' => ['controllers' => 'UserController', 'method' => 'index'], 
-
-        'login' => ['controllers' => 'LoginController', 'method' => 'index'],
+         'user' => ['controllers' => 'UserController', 'method' => 'index'], 
+         'login' => ['controllers' => 'LoginController', 'method' => 'index'],
         'register' => ['controllers' => 'RegisterController', 'method' => 'index'],
     ];
 

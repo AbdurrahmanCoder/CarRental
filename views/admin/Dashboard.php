@@ -36,10 +36,7 @@
 </head>
 
 <body>
-<?php
- 
- include_once ("header.php")
-  ?>
+
   <!-- <div class="container">
     <div class="links">
       <a href="/admin?id=Dashboard" id="dashboardLink" class="nav-link">Dashboard</a>
@@ -49,103 +46,134 @@
       <a href="/admin?id=neworder" class="nav-link">New Order</a>
     </div> -->
 
-    <!-- <div class="container"> -->
-     
-    
-    
+  <!-- <div class="container"> -->
+
+  <main>
+
+
+    <div class="DashboardSideBar">
+      <?php
+
+      include_once ("header.php")
+        ?>
+    </div>
+
     <div class="Dashboard">
 
-        <div>
-          <h3>New Order </h3>
-          <h1>
-            <?php echo $NewOrder ?>
-          </h1>
+       <div>
+        <h3>New Order </h3>
+        <h1>
+          <?php echo $NewOrder ?>
+        </h1>
 
-        </div>
+      </div>
 
-        <div>
-          <h3>Total Bookings </h3>
-          <h1>
-            <?php echo $TotalOrder ?>
-          </h1>
+      <div>
+        <h3>Total Bookings </h3>
+        <h1>
+          <?php echo $TotalOrder ?>
+        </h1>
 
-        </div>
+      </div>
 
-        <div>
+      <div>
 
-          <h3>Total Vehicules </h3>
-          <h1>
-            <?php echo $TotalVehicules ?>
-          </h1>
+        <h3>Total Vehicules </h3>
+        <h1>
+          <?php echo $TotalVehicules ?>
+        </h1>
 
-        </div>
-
-
-
-        <div>
-          <h3>Registered User</h3>
-
-          <h1>
-            <?php echo $TotalUser ?>
-          </h1>
-        </div>
+      </div>
 
 
 
+      <div>
+        <h3>Registered User</h3>
 
-        <div>
-          <h3> cars available </h3>
-
-          <h1>
-            <?php echo $CarAvailable ?>
-          </h1>
-        </div> 
+        <h1>
+          <?php echo $TotalUser ?>
+        </h1>
+      </div>
 
 
 
 
-        
+      <div>
+        <h3> cars available </h3>
+
+        <h1>
+          <?php echo $CarAvailable ?>
+        </h1>
+      </div>
+
+
+
+
+
         <div>
           <h3>Total amount</h3>
 
           <h1>
-            <?php echo $TotalAmount."€"?>
+            <?php echo $TotalAmount . "€" ?>
           </h1>
         </div>
 
 
+    </div>
 
-      <!-- </div>  -->
-    </div> 
-  </div>
 
+  </main>
 
 </body>
 
- 
+
 
 
 </html>
 
 
 <style>
-/* 
+
+
+ 
+
+
+ 
 #dashboardLink
 {
-  background-color: red;
-} */
+  width: 100%;
+  background-color: #006aff;
+}  
 </style>
 
 
 <style>
- .Dashboard {
+main{ 
+  display: flex;
+  /* gap: 10%; */
+}
+
+
+.DashboardSideBar {
+/* background-color: red; */
+  width: 15%;
+  /* background-color: red; */
+ } 
+
+/* main :nth-child(2)  {
+}  */
+
+
+
+.Dashboard {
+    width: 70%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 20px;
   }
 
-  .Dashboard > div {
+  .Dashboard>div {
     flex: 0 0 calc(33.33% - 20px);
     background-color: #f8f9fa;
     padding: 20px;
@@ -155,13 +183,13 @@
   }
 
   @media (max-width: 768px) {
-    .Dashboard > div {
+    .Dashboard>div {
       flex: 0 0 calc(50% - 20px);
     }
   }
 
   @media (max-width: 576px) {
-    .Dashboard > div {
+    .Dashboard>div {
       flex: 0 0 calc(100% - 20px);
     }
   }

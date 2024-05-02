@@ -272,3 +272,56 @@
     .checkout{ 
   opacity: 0 ; 
    }  
+
+
+
+    /* Form container */
+   #vehicleForm {
+       /* margin: 0 auto; */
+       width: 80%;
+       overflow: hidden;
+
+       max-width: 45%;
+       margin-left: 20px;
+
+   }
+
+   /* Dropdown styling */
+   #vehicleType {
+       float: left;
+       width: calc(70% - 10px);
+       padding: 10px;
+       font-size: 16px;
+       border: 1px solid #ccc;
+       border-radius: 5px;
+       margin-right: 10px;
+       box-sizing: border-box;
+   }
+
+   /* Button styling */
+   button[type="submit"] {
+       float: left;
+       width: calc(30% - 10px);
+       background-color: #4CAF50;
+       color: white;
+       padding: 14px 14px;
+       border: none;
+       border-radius: 5px;
+       cursor: pointer;
+       box-sizing: border-box;
+   }
+
+
+   button[type="submit"]:hover {
+       background-color: #45a049;
+   }
+
+   #Dropdown {
+
+       display: flex;
+       justify-content: left;
+       align-items: start;
+       align-self: start;
+       align-content: flex-start;
+   }
+ 

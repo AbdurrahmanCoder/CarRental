@@ -8,11 +8,7 @@ function UserLoggedIn()
     }
 }
 
-
-
-var_dump($results)
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,7 +83,7 @@ var_dump($results)
 
                             ?>
 
-                            <button > Insert form DATA</button>
+                            <button> Insert form DATA</button>
                             <?php
                         }
                         ?>
@@ -126,7 +122,30 @@ var_dump($results)
         }
         ?>
     <div>
-        <div class="container " id="Dropdown">
+
+
+    <div class="checkout_main">
+        <div class="checkout_Div">
+            <div class="checkout">
+                <div class="container tocheck">
+                    <form action="/checkout" method="post">
+                        <!-- Move the button inside the form -->
+                        <input type="hidden" class="SelectedCarID" name="SelectedCarID">
+                        <input type="submit" class="redBlock Form_book_btn checkout_btn"
+                            value="Go to review & checkout">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="Vehicule_List">
+
+        <div class="VehiculeModels">
+
+    <div class="container " id="Dropdown">
             <form id="vehicleForm" method="POST" action="">
                 <!-- Dropdown for selecting vehicle type -->
                 <select name="vehicleType" id="vehicleType">
@@ -143,32 +162,10 @@ var_dump($results)
                     <?php } ?>
 
                 </select>
-                <button type="submit" value="submit"> submit</button>
-            </form>
+             </form>
         </div>
     </div>
 
-  
-        <div class="checkout_main">
-            <div class="checkout_Div">
-                <div class="checkout">
-                    <div class="container tocheck">
-                        <form action="/checkout" method="post">
-                            <!-- Move the button inside the form -->
-                            <input type="hidden" class="SelectedCarID" name="SelectedCarID">
-                            <input type="submit" class="redBlock Form_book_btn checkout_btn"
-                                value="Go to review & checkout">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
- 
-
-    <div class="Vehicule_List">
-
-        <div class="VehiculeModels">
             <div class="container">
                 <?php
                 if (!empty($results)) {
@@ -180,7 +177,7 @@ var_dump($results)
 
 
                                 <!-- <img width="200px" height="300px"  src="views\admin\front\imgRentala_20240107_192939.png" alt=""> -->
- 
+
 
                             </div>
                             <div>
@@ -201,7 +198,7 @@ var_dump($results)
 
                                 </p>
                                 <?php if (UserLoggedIn()) { ?>
-                 
+
                                     <button class="bookButton  bookButtonSelect" data-car-id="<?php echo $data['voiture_id']; ?>"
                                         data-car-marque="<?php echo $data['marque']; ?>"
                                         data-car-tarif="<?php echo $data['tarif']; ?>" data-car-img="<?php echo $data['photo']; ?>">
@@ -220,7 +217,7 @@ var_dump($results)
                     ?>
                     <H1>NO CARS AVAILABLE </H1>
 
-                <?php
+                    <?php
 
                 }
                 ?>
@@ -235,7 +232,22 @@ var_dump($results)
         });
     </script>  -->
 
+
+
+        <script>
+
+            var selectElement = document.getElementById('vehicleType');
+
+            selectElement.addEventListener('change', function () {
+
+                document.getElementById('vehicleForm').submit();
+            });
+
+        </script>
+
+
         <script src="front\js\carselect.js" async>
+
         </script>
 
 

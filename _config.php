@@ -10,10 +10,7 @@ class Autoloader
 
         $root = $_SERVER['DOCUMENT_ROOT'];
         $host = $_SERVER['HTTP_HOST'];
-
-       
-    
-        
+ 
         define('HOST', 'http://' .$host.'/');
         define('ROOT', $root.'/');
 
