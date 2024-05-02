@@ -10,7 +10,7 @@
           /* background-color: red; */
         }
 
-    
+
 
         .content {
           float: left;
@@ -83,32 +83,47 @@
         .Content {
           width: 100%;
         }
-
-        /* .links {
-          width: auto;
-          left: 0;
-          position: absolute;
-          } */
-
-
-    
-        .links a {
-           font-size: large;
-     
-           color: #838383; 
-        }
  
+        .LinksDiv a {
+          font-size: large;
+
+          color: #838383;
+        }
 
 
 
-        .links a:hover {
+
+        .LinksDiv:hover {
           /* background: rgba(255, 83, 48, 0.2);
           color: #838383; */
- 
+
           background-color: rgba(255, 255, 255, .3);
           color: #fff;
         }
 
 
+        .nav-link.active {
+          background-color: orange;
+        }
 
- 
+
+        .links {
+          width: 100%;
+          height: 100vh;
+          background-color: black;
+        }
+
+
+        .links a {
+          /* text-align: center;
+          width: 100%;
+          padding: 20px 0px 20px 0px;*/
+          color: white;  
+        }
+
+        .LinksDiv {
+          padding: 0px 20px 0px 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center; 
+        }

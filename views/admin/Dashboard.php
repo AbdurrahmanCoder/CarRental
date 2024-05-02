@@ -141,7 +141,7 @@
  
 #dashboardLink
 {
-  width: 100%;
+  /* width: 100%; */
   background-color: #006aff;
 }  
 </style>
@@ -171,6 +171,7 @@ main{
     flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 20px;
+    height: 240px;
   }
 
   .Dashboard>div {

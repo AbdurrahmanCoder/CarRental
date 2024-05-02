@@ -8,11 +8,13 @@
 
 <div class="links">
       
-<div class="LinksDiv " id="dashboardLink">
-<i class="fa-solid fa-chart-pie" style="color: #ffffff;"></i>
-  <a href=" /admin?id=Dashboard"  class="nav-link">Dashboard</a>
+<!-- <div class="LinksDiv " id="dashboardLink"> -->
+  <a href=" /admin?id=Dashboard"  class="nav-link">
+<i class="fa-solid fa-chart-pie" style="color: #ffffff; font-size:25px"></i>
+    
+  Dashboard</a>
   
-</div>
+<!-- </div> -->
         
        
         <a href=" /admin?id=addCar" id="AddCarLink"  class="nav-link">addCar</a>
@@ -25,33 +27,6 @@
       <style>
 
  
-
-
-
-.nav-link.active {
-  background-color: orange;
-}
-
-
-.links  {
-  width: 15%;
-  height:100vh;
-  background-color: black;
-}
-
-
-.links a {
-  text-align: center;
-    width: 100%;
-    padding: 20px 0px 20px 0px;
-    color:white;
-}
-
-
-.LinksDiv {
-display: flex;
-justify-content: center;
-}
       </style>
 
 
