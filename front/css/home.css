@@ -250,6 +250,10 @@ font-weight: 500;
 
 /* ***************************bookcar******************** */
 
+
+/* select{
+  display: none;
+} */
 .bookCar
 {
 height: 44rem;
@@ -257,7 +261,7 @@ height: 44rem;
 .bookCarDiv {
   background-image: url("imgRental/bgImage.png");
   max-width: 127rem !important;
-  height: 28rem !important; 
+  height: 33rem !important; 
   border-radius: 4px;
   box-shadow: 0 10px 20px 0 rgba(0,0,0,.1); ;
   border: none;
@@ -568,9 +572,11 @@ list-style: none;
   padding: 1.3rem; 
 }
 
-.Form_item > select {
+.Form_item > select,#PickUp,#Location,#DropOf,#SearchBtn {
 
 margin-top: 13px;
+height: 45px;
+padding: 0;
 /* display: none; */
 }
 
@@ -591,9 +597,10 @@ border:none;
 padding: 5% !important; 
 }   
 
+.ti-car{
+font-size: 24px;
 
-
-
+}
 
 @media screen and (width < 900px){
   .Footer_Div{

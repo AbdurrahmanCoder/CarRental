@@ -69,19 +69,32 @@
           <div class="bookCarMain">
 
             <div class="Form_item">
-              <label for=""> <i class="ti ti-car"></i>Sélectionnez votre location</label>
-              <input type="text" name="Location" placeholder="ENTER THE CITY" required>
+              <label for="">
+                 <!-- <i class="ti ti-car"></i> -->
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon"><path d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203 .21l-4.243 4.242a3 3 0 0 1 -4.097 .135l-.144 -.135l-4.244 -4.243a9 9 0 0 1 12.728 -12.728zm-6.364 3.364a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z" fill="currentColor" stroke-width="0"></path></svg>
+
+              Location</label>
+              <input type="text" id="Location" name="Location" placeholder="ENTER THE CITY" required>
             </div>
-
-
+            
+            
             <div class="Form_item">
-              <label for=""> <i class="ti ti-car"></i> Pick-up *</label>
+              <!-- <label for=""> <i class="ti ti-car"></i> Pick-up *</label> -->
+              
+              <label>
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon"><path d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203 .21l-4.243 4.242a3 3 0 0 1 -4.097 .135l-.144 -.135l-4.244 -4.243a9 9 0 0 1 12.728 -12.728zm-6.364 3.364a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z" fill="currentColor" stroke-width="0"></path></svg>  -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon"><path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path><path d="M16 3l0 4"></path><path d="M8 3l0 4"></path><path d="M4 11l16 0"></path><path d="M8 15h2v2h-2z"></path></svg>
+                
+                &nbsp; Pick-up <b>*</b></label>
               <input type="date" name="PickUp" id="PickUp" min="<?php echo date('Y-m-d') ?>" format="yyyy-mm-dd" required>
             </div>
 
             <div class="Form_item">
               <!-- <label for=""> <i class="ti ti-car"></i> Time</label> -->
-
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon"><path d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203 .21l-4.243 4.242a3 3 0 0 1 -4.097 .135l-.144 -.135l-4.244 -4.243a9 9 0 0 1 12.728 -12.728zm-6.364 3.364a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z" fill="currentColor" stroke-width="0"></path></svg>
+                
+                &nbsp; Pick-up <b>*</b></label>
                <select name="PickUpTime" required>
                 <?php
                 for ($hour = 0; $hour < 24; $hour++) {
@@ -95,13 +108,26 @@
             </div>
 
             <div class="Form_item" >
-              <label for=""> <i class="ti ti-car"></i> Drop-of * </label>
+              <label for=""> 
+                <!-- <i class="ti ti-car"></i> -->
+              
+              
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon"><path d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path><path d="M16 3l0 4"></path><path d="M8 3l0 4"></path><path d="M4 11l16 0"></path><path d="M8 15h2v2h-2z"></path></svg>
+Drop-of * </label>
               <input type="date" id="DropOf" name="DropOf" min="<?php if (!empty($_POST['PickUp'])) {
                 echo $_POST['PickUp'];
               } ?>" format="yyyy-mm-dd" required>
             </div>
 
             <div class="Form_item">
+
+            <label for=""> 
+                <!-- <i class="ti ti-car"></i> -->
+              
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon"><path d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203 .21l-4.243 4.242a3 3 0 0 1 -4.097 .135l-.144 -.135l-4.244 -4.243a9 9 0 0 1 12.728 -12.728zm-6.364 3.364a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z" fill="currentColor" stroke-width="0"></path></svg>
+              
+ Drop-of * </label>
+
               <select name="DropOfTime" required > 
                 <?php
                 for ($hour = 0; $hour < 24; $hour++) {
@@ -115,7 +141,7 @@
             </div>
 
 
-            <div class="Form_item">
+            <div class="Form_item" id="SearchBtn">
               <button type="submit" id="submitBtn" class="redBlock Form_book_btn">search </button>
             </div>
 

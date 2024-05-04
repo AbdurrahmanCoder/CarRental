@@ -61,9 +61,12 @@ class CheckoutController
             // var_dump($this->id ."id bro ");
             $dateInfo = $payment->calculateDateInfo();
             
-            $payment->insertDataToDB($SessionGetData, $voitureId , $TotalTarif,$dateInfo);
+            $payment->insertDataToDB($SessionGetData, $voitureId,$TotalTarif,$dateInfo);
            
             
+                echo "wwokrknlkgr";
+
+
             $StripePayment = new StripePayment(); 
             
             $StripePayment->payment($TotalTarif); 

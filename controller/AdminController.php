@@ -45,10 +45,7 @@ class AdminController
         $NewOrder = $VehiculeAvailable->NewOrderCount();
         $CarAvailable = $VehiculeAvailable->CarAvailable();
         
-        $TotalAmount = $VehiculeAvailable->TotalAmount();
-        
-        
-
+        $TotalAmount = $VehiculeAvailable->TotalAmount(); 
 
         // var_dump($TotalAmount);
 

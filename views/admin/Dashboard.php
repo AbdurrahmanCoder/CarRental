@@ -1,23 +1,3 @@
-<?php
-
-
-// $result = new admin();
-// $total = $result->TotalOrder();
-// $totalOrders = $total[0]['total_orders'];
-
-
-// $vehicluesTotal = $result->TotalVehicules();
-// $TotalVehi = $vehicluesTotal[0]['total_voiture']; 
-// $totalUser = $result->TotalUser();
-// $User = $totalUser[0]['total_membre'];
-
-
-// if (!isAdmin()) {
-//   header("Location: login.php");
-//   exit();
-// } else {
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,9 +14,8 @@
   </script>
 
 </head>
-
-<body>
-
+  
+<body> 
   <!-- <div class="container">
     <div class="links">
       <a href="/admin?id=Dashboard" id="dashboardLink" class="nav-link">Dashboard</a>
@@ -84,7 +63,6 @@
         </h1>
 
       </div>
-
 
 
       <div>

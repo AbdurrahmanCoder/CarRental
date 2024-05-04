@@ -83,8 +83,16 @@
         .Content {
           width: 100%;
         }
- 
-        .LinksDiv a {
+
+        .links {
+          width: auto;
+          left: 0;
+          position: absolute;
+        }
+
+
+
+        .links a {
           font-size: large;
 
           color: #838383;
@@ -93,7 +101,7 @@
 
 
 
-        .LinksDiv:hover {
+        .links a:hover {
           /* background: rgba(255, 83, 48, 0.2);
           color: #838383; */
 
@@ -115,15 +123,13 @@
 
 
         .links a {
-          /* text-align: center;
+          text-align: center;
           width: 100%;
-          padding: 20px 0px 20px 0px;*/
-          color: white;  
+          padding: 20px 0px 20px 0px;
+          color: white;
         }
 
         .LinksDiv {
-          padding: 0px 20px 0px 20px;
           display: flex;
           justify-content: center;
-          align-items: center; 
         }

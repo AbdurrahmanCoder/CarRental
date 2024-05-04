@@ -170,13 +170,29 @@ text-decoration: none;
  
 }
  
-  @media screen and (max-width: 986px) {
+
+</style>
+
+<style>
+/*   
+  @media screen and (max-width < 986px) {
     .Nav_desktop ul {
       display: none;
     }
-
   }
+   */
+  @media screen and (width < 750px){
+
+.Nav_desktop  ul  {
+      display: none !important;
+  }
+
+}
+
 </style>
+
+
+
 <script async>
    const imgTags = document.querySelectorAll('img');
 

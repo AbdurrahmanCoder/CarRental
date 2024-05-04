@@ -82,8 +82,7 @@ class Payment
             $stmt->bindValue(':paymentStatus', 0);
             $stmt->bindValue(':totalCost', $TotalTarif);
             $stmt->bindValue(':totalDays', $dateInfo['days']);
-
-
+ 
             $stmt->bindValue(':userId', $_SESSION['user_id']);
             $stmt->bindParam(':carId', $voitureId);
             $stmt->execute();
