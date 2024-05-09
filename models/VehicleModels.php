@@ -103,6 +103,22 @@ class VehiculeModels
 
 
 
+    public function Location()
+    { 
+        $sql = "SELECT * FROM  location ";
+        $stmt = $this->pdo->prepare($sql); 
+        $stmt->execute();
+ 
+         $result = $stmt->fetchAll(\PDO::FETCH_ASSOC); 
+        return  $result ; 
+       
+    }
+
+
+
+
+
+
 
 
 

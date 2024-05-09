@@ -23,12 +23,13 @@ class Admin
         // INNER JOIN membre ON carorder.id_User = membre.id
         // INNER JOIN voiture ON carorder.voiture_id = voiture_id
         // WHERE membre.id";
-        $requete = "SELECT carorder.*, membre.*, voiture.*, types_de_voiture.*, carorder.id AS carorder_id
-         FROM carorder 
-         INNER JOIN membre ON carorder.id_User = membre.id
-         INNER JOIN voiture ON carorder.voiture_id = voiture.id
-         INNER JOIN types_de_voiture ON types_de_voiture.id = voiture.typeId
-         ORDER BY membre.id;";
+        $requete = "SELECT carorder.*, membre.*, voiture.*, location.*, types_de_voiture.*, carorder.id AS carorder_id
+        FROM carorder 
+        INNER JOIN membre ON carorder.id_User = membre.id
+        INNER JOIN voiture ON carorder.voiture_id = voiture.id
+        INNER JOIN types_de_voiture ON types_de_voiture.id = voiture.typeId
+        INNER JOIN location ON carorder.id_location= location.id
+        ORDER BY membre.id;";
 
         $stmt = $pdo->prepare($requete);
         $stmt->execute();
@@ -65,11 +66,12 @@ class Admin
 
  
 
-        $requete = "SELECT carorder.*, membre.*, voiture.*, types_de_voiture.*, carorder.id AS carorder_id
+        $requete = "SELECT  carorder.*,location.*, membre.*, voiture.*,  types_de_voiture.*, carorder.id AS carorder_id
                     FROM carorder 
                     INNER JOIN membre ON carorder.id_User = membre.id
                     INNER JOIN voiture ON carorder.voiture_id = voiture.id
                     INNER JOIN types_de_voiture ON types_de_voiture.id = voiture.typeId
+                    INNER JOIN location ON carorder.id_location= location.id
                     WHERE carorder.id LIKE :searchTerm OR membre.nom LIKE :searchTerm";
 
         // -- WHERE carorder.id LIKE :searchTerm";  
@@ -88,11 +90,7 @@ class Admin
 
 
 
-
-
-
-
-
+ 
 
     public function insertItem($marque, $kilometrage, $tarif, $photo, $carType)
     {

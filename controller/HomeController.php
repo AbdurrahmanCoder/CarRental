@@ -8,6 +8,7 @@
 use Database\Database;
 use Order\OrderSave;
 use Session\Session;
+use Home\Home;
 
 class HomeController
 {
@@ -21,23 +22,25 @@ class HomeController
 
             extract($_POST);
 
-            $SessionInsert = new Session();     
-            $SessionInsert->handleOrderSearch($_POST);    
-            $sessionData = $SessionInsert->getSessionData();  
-            print_r($sessionData);
- 
-            // $id_User =  $_SESSION['user_id'];  
-            // $database = new Database();
-            // $pdo = $database->getConnection(); 
-            // $order = new OrderSave($pdo); 
-            // $order->insertOrderSaveData($Location,$PickUp,$PickUpTime,$DropOf,$DropOfTime,$Checked,$id_User); 
-             header("Location:/vehicleModel");
-             exit(); 
+            $SessionInsert = new Session();
+            $SessionInsert->handleOrderSearch($_POST);
+            $sessionData = $SessionInsert->getSessionData();
+            // print_r($sessionData);
+            // var_dump($SessionInsert);
 
-        } else { 
+
+            header("Location:/vehicleModel");
+            exit();
+
+        } else {
             // echo $_SESSION['user_id'] . "sessiosioidio";
 
-            include 'views/navbar.php';
+            $database = new Database();
+            $pdo = $database->getConnection();
+            $Home = new Home($pdo);
+            $availableLocations =$Home->Location();
+            var_dump($availableLocations);
+                include 'views/navbar.php';
             include 'views/home.php';
         }
 

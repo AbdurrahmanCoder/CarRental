@@ -25,30 +25,37 @@
 
 <body>
 
-  <div class="container">
-  <?php 
+
+<main>
+  
+  <div class="DashboardSideBar">
+  <!-- <div class="container"> -->
+    <?php 
  include_once ("header.php") 
  ?> 
 
+</div>
 
+<div class="AddcarDiv">
 
-    <div class="Content">
+  
+  <div class="Content">
 
-      <div class="container-form">
+    <div class="container-form">
         <h2>Formulaire de Voiture</h2>
         <form id="myForm" enctype="multipart/form-data">
 
           <div class="mb-3">
 
             <label for="marque" class="form-label">Type de Voiture </label>
-
+            
             <select id="carType" name="carType" style="margin:20px">
-
+              
             <?php foreach ($typeDeVoiture as $type) { ?>
         <option value="<?php echo $type['id']; ?>"><?php echo $type['type']; ?></option>
     <?php } ?>
 
-
+    
             </select>
             <!-- <input type="text" class="form-control" id="marque" name="marque" required> -->
 
@@ -91,17 +98,47 @@
 
 
 
+      <!-- </div> -->
+
+      
+
+      
     </div>
-
-
-
-
   </div>
 
+</main>
+  
 
-  <style>
+<style>
+  
+  main{ 
+    display: flex;
+      /* gap: 10%; */
+    }
+    
+
+
+.DashboardSideBar {
+/* background-color: red; */
+  width: 15%;
+  background-color: red;
+ } 
+
+ 
+
+.AddcarDiv {
+    width: 70%;
+    margin-left: 2%; 
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+    height: 240px; */
+  }
+   
+  
     .sucess {
-
+      
       margin-top: 30px;
       justify-content: center;
       /* background-color: red; */

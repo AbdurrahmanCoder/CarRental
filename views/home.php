@@ -2,10 +2,8 @@
   ini_set('display_errors','1');
   ini_set('display_startup_errors','1');
   error_reporting(E_ALL);
-   
- 
+ ?>  
 
-?>
 
 <!DOCTYPE html>
 <html lang="en"> 
@@ -74,7 +72,21 @@
                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon"><path d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203 .21l-4.243 4.242a3 3 0 0 1 -4.097 .135l-.144 -.135l-4.244 -4.243a9 9 0 0 1 12.728 -12.728zm-6.364 3.364a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z" fill="currentColor" stroke-width="0"></path></svg>
 
               Location</label>
-              <input type="text" id="Location" name="Location" placeholder="ENTER THE CITY" required>
+
+              <select name="locationValue" id="location">
+    <option value="">Select Location</option>
+ 
+    <?php foreach ($availableLocations as $location): ?>
+        <option value="<?php echo $location['id']; ?>"><?php echo $location['City']; ?></option>
+ 
+
+
+    <?php endforeach; ?>
+</select>
+
+
+
+              <!-- <input type="text" id="Location" name="Location" placeholder="ENTER THE CITY" required> -->
             </div>
             
             
@@ -315,8 +327,7 @@ Drop-of * </label>
               coupons that you can use to lower the rental price. Renting from an off-airport location can sometimes
               result in lower prices.</p>
           </div>
-
-
+ 
         </div>
       </div>
     </div>
@@ -349,17 +360,13 @@ Drop-of * </label>
           <li>Blog </li>
           <li>How we work </li>
         </ul>
-
-
-
+ 
         <ul>
           <li><b>WORKING HOURS</b></li>
           <li>Mon - Fri: 9:00AM - 9:00PM</li>
           <li> sat: 9:00AM - 19:00PM</li>
           <li>Sun: Closed</li>
         </ul>
-
-
 
         <ul>
           <li><b> SUBSCRIPTION</b></li>
@@ -368,22 +375,11 @@ Drop-of * </label>
           <li><button type="submit " class="redBlock Subcription">Submit</button></li>
         </ul>
 
-
-
       </div>
-
     </div>
-
-
-
-
   </footer>
 
 
-
-
-
- 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.3/dist/js/bootstrap.min.js"></script>
 </body>
 

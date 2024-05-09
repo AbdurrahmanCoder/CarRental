@@ -22,9 +22,11 @@ class UserDashboard
     public function CommandeAffficher()
     { 
         try {
-            $requete = "SELECT carorder.*, voiture.id AS vid, voiture.* FROM `carorder`   
-            INNER JOIN voiture ON voiture.id = carorder.voiture_id 
-            WHERE carorder.id_User = :userId"; 
+            $requete = "SELECT carorder.*, voiture.id AS vid, voiture.*, location.*
+            FROM `carorder`
+            INNER JOIN voiture ON voiture.id = carorder.voiture_id
+            INNER JOIN location ON location.id = carorder.id_location
+            WHERE carorder.id_User = :userId AND carorder.ReturnStatus = 0"; 
             $pdo = $this->db->getConnection();
             $stmt = $pdo->prepare($requete);
             $stmt->bindParam(':userId', $this->userId, \PDO::PARAM_INT);
@@ -43,9 +45,11 @@ class UserDashboard
     public function OldOrders()
     { 
         try {
-            $requete = "SELECT carorder.*, voiture.id AS vid, voiture.* FROM `carorder`   
-            INNER JOIN voiture ON voiture.id = carorder.voiture_id 
-            WHERE carorder.id_User = :userId AND carorder.ReturnStatus = 1 "; 
+            $requete = "SELECT carorder.*, voiture.id AS vid, voiture.*, location.*
+            FROM `carorder`
+            INNER JOIN voiture ON voiture.id = carorder.voiture_id
+            INNER JOIN location ON location.id = carorder.id_location
+            WHERE carorder.id_User = :userId AND carorder.ReturnStatus = 1";  
             $pdo = $this->db->getConnection();
             $stmt = $pdo->prepare($requete);
             $stmt->bindParam(':userId', $this->userId, \PDO::PARAM_INT);

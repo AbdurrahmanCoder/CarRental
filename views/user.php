@@ -1,15 +1,4 @@
- <?php 
  
-
-  var_dump($_SESSION['user_id']."hjsfhjkh") ;
-  
-   if (isset($_SESSION['user_id'])) {
-          echo $_SESSION['user_id'];
-        }
-         
-        echo "ekelkejklezj";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,116 +58,279 @@
             background-color: #3498db; /* Blue */
             color: #fff;
         }
+        .selectedtag{
+
+            background-color: red;
+            color: green;
+        }
+        
+
+main{ 
+  display: flex;
+  /* gap: 10%; */
+} 
+
+#dashboardLink
+{
+  /* width: 100%; */
+  background-color: #006aff;
+}  
+
+    .DashboardSideBar {
+        /* background-color: red; */
+        width: 15%;
+        background-color: black;
+    }
+
+
+
+    .NewOldOrder {
+        width: 70%;
+        margin-left: 2%;
+        /* display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+    height: 240px; */
+    }
+
+    .DashboardSideBar a {
+          font-size: large;
+
+          color: #838383;
+        }
+
+
+/* 
+
+        .DashboardSideBar a:hover {
+ 
+
+          background-color: rgba(255, 255, 255, .3);
+          color: #fff;
+        }
+
+ */
+
+
     </style>
 </head>
 <body>
 
+<main>
 
-<a href="/user?id=newOrder" class="nav-link">new order </a>
-      <a href="/user?id=oldOrder" class="nav-link">old order</a> 
-<?php 
+    <div class="DashboardSideBar">
+        
+        <a  id="NewOrder" class="nav-link">new order </a>
+        <a  id="OldOrder"  class="nav-link">old order</a> 
+        
+    </div>
+    
+    <div class="NewOldOrder">
+        
+        <?php 
 foreach ($UserOrder as $order) { 
     ?> 
     <!--//tocheck-->
-   <section class="Section_Review">
-
-            <div class="container containerReview">
-                <!-- <h2>review</h2>  -->
-
-                <div class="vehicleDiv">
-
-                    <div class="vehicleDiv_descrip">
-
-                        <div class="vehicleImage">
-                            <h4>vehicle</h4>
-                            <!-- <img src="../front/imgRental/ <?php echo $order['photo']; ?>" alt="" width="200px"> -->
-                            <img src="../front/imgRental/<?php echo $order['photo']; ?>" alt="" width="200px">
-                            <h4>
-                                <?php echo $order['marque']; ?>
-                            </h4>
-                        </div>
-
-
-                        <h3>Pick up </h3>
-
-                        <div class="vehicleImage">
-                            <h5>pick up</h5>
-                            <h3>
-                                <?php echo $order['PickUpDate']; ?>
-                            </h3>
-                            <p> 
-                                <?php echo $order['City']; ?>
-                            </p>
-                            <hr>
-                  
-                        </div>
+    <section class="Section_Review">
+        
+        <div class="container containerReview">
+            <!-- <h2>review</h2>  -->
+            
+            <div class="vehicleDiv">
+                
+                <div class="vehicleDiv_descrip">
+                    
+                    <div class="vehicleImage">
+                        <h4>vehicle</h4>
+                        <!-- <img src="../front/imgRental/ <?php echo $order['photo']; ?>" alt="" width="200px"> -->
+                        <img src="../front/imgRental/<?php echo $order['photo']; ?>" alt="" width="200px">
+                        <h4>
+                            <?php echo $order['marque']; ?>
+                        </h4>
                     </div>
-
-                    <div class="Rate"> 
-                        <div>
-                            <p> <B>Basic rate for
-                                    days
-                                </B></p>
-                            <p>Included </p>
-                        </div> 
-                        <div>
-                            <p>Tarif</p>
-                            <p><?php echo $order['tarif']; ?> € / jour</p>
-
-                        </div>
-                        <div>
-                            <p>total Days </p>
-                            <p><?php ?></p>  
-                        </div>
-                        <div>
-                            <p> total paid </p>
-                            <p><?php echo $order['TotalCost']; ?> </p>
-                        </div>
-                        <div>
-                            <p>FLEETSC </p>
-                            <p>Included</p>
-                        </div>
-                        <div>
-                            <p>Environmental contribution </p>
-                            <p>Included</p>
-
-                        </div>
-                        <div>
-                            <p>Railway Station Surcharge </p>
-                            <p>Included</p>
-                        </div>
-                        <div> 
+                    
+                    
+                    <h3>Pick up </h3>
+                    
+                    <div class="vehicleImage">
+                        <h5>pick up</h5>
+                        <h3>
+                            <?php echo $order['PickUpDate']; ?>
+                        </h3>
+                        <p> 
+                            <?php echo $order['City']; ?>
+                        </p>
+                        <hr>
+                        
+                    </div>
+                </div>
+                
+                <div class="Rate"> 
+                    <div>
+                        <p> <B>Basic rate for
+                            days
+                        </B></p>
+                        <p>Included </p>
+                    </div> 
+                    <div>
+                        <p>Tarif</p>
+                        <p><?php echo $order['tarif']; ?> € / jour</p>
+                        
+                    </div>
+                    <div>
+                        <p>total Days </p>
+                        <p><?php ?></p>  
+                    </div>
+                    <div>
+                        <p> total paid </p>
+                        <p><?php echo $order['TotalCost']; ?> </p>
+                    </div>
+                    <div>
+                        <p>FLEETSC </p>
+                        <p>Included</p>
+                    </div>
+                    <div>
+                        <p>Environmental contribution </p>
+                        <p>Included</p>
+                        
+                    </div>
+                    <div>
+                        <p>Railway Station Surcharge </p>
+                        <p>Included</p>
+                    </div>
+                    <div> 
                         <?php  
             $statusClass = ($order['OrderStatus'] === 1) ? 'confirmed' : 'pending';
             $statusText = ($order['OrderStatus'] === 1) ? 'Confirmed' : 'Pending';
             ?>
             <button class="button <?php echo $statusClass; ?>"><?php echo $statusText; ?></button> 
-                        </div> 
-                    </div>
-
-                </div>
-            </div>
-        </section>
-   
- 
+        </div> 
+    </div>
+    
+</div>
+</div>
+</section>
 
 
 
-    <!--//tocheck-->
-    
-    
-    
-    
-    <?php
+
+
+<!--//tocheck-->
+
+
+
+
+<?php
 }
 ?>
+</div>
 
 
-    
 
 
+
+</main>
 </body>
+
+<script>
+// document.addEventListener('DOMContentLoaded', function() {
+//     let selectors = document.querySelectorAll('.DashboardSideBar > a');
+
+//     selectors.forEach(selector => {
+//         selector.addEventListener('click', function(e) {
+//             // e.preventDefault(); // Prevent the default behavior of links
+
+//             // Remove the color from all links
+//             selectors.forEach(sel => {
+//                 sel.style.color = "";
+//             });
+
+//             // Change the color of the clicked link
+//             this.style.color = "white";
+
+//             // Perform navigation programmatically
+//             let orderId = this.id;
+//             if (orderId === "NewOrder") {
+//                 window.location.href = "/user?id=newOrder";
+//             } else if (orderId === "OldOrder") {
+//                 window.location.href = "/user?id=oldOrder";
+//             }
+//         });
+//     });
+
+//     // Set the color of the link corresponding to the current page
+//     let currentPath = window.location.pathname;
+//     if (currentPath.includes("newOrder")) {
+//         document.getElementById("NewOrder").style.color = "white";
+//     } else if (currentPath.includes("oldOrder")) {
+//         document.getElementById("OldOrder").style.color = "white";
+//     }
+// });
+
+ 
+
+document.addEventListener('DOMContentLoaded', function() {
+    let selectors = document.querySelectorAll('.DashboardSideBar > a');
+
+    selectors.forEach(selector => {
+        selector.addEventListener('click', function(e) {
+             e.preventDefault();  
+
+            // Remove the color from all links
+            selectors.forEach(sel => {
+                sel.style.color = "";
+            });
+
+            // Change the color of the clicked link
+            this.style.color = "white";
+
+            // Perform navigation programmatically
+            let orderId = this.id;
+            if (orderId === "NewOrder") {
+                window.location.href = "/user?id=newOrder";
+            } else if (orderId === "OldOrder") {
+                window.location.href = "/user?id=oldOrder";
+            }
+        });
+    });
+
+    // Set the color of the link corresponding to the current page
+    let currentPath = window.location.pathname;
+    if (currentPath.includes("newOrder")) {
+        document.getElementById("NewOrder").style.color = "white";
+    } else if (currentPath.includes("oldOrder")) {
+        document.getElementById("OldOrder").style.color = "white";
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
 </html>
+
+
 
 
 

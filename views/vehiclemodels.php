@@ -169,15 +169,17 @@ function UserLoggedIn()
             <div class="container">
                 <?php
                 if (!empty($results)) {
+                  
+                  
+                    
                     foreach ($results as $data) { ?>
                         <div class="List_vehicule_Disponible">
-
+                            
                             <div>
                                 <img width="200px" height="300px" src=" ../front/imgRental/<?php echo $data['photo'] ?>" alt="">
-
-
-                                <!-- <img width="200px" height="300px"  src="views\admin\front\imgRentala_20240107_192939.png" alt=""> -->
-
+                                
+                                
+                                 
 
                             </div>
                             <div>

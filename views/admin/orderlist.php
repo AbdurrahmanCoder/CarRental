@@ -21,10 +21,28 @@ if (!isAdmin()) {
     </head>
 
     <body>
-        <div class="container">
-            <?php
+        
+        <main>
+        
 
-            include_once ("header.php") ?>
+        <div class="DashboardSideBar">
+
+
+
+
+            <!-- <div class="container"> -->
+                <?php
+                include_once ("header.php") ?>
+            </div>
+
+<div class="OrderListcarDiv">
+
+
+
+    
+    
+    
+
             <?php
             if (!isset($_GET['CarOrderId'])) {
                 ?>
@@ -37,7 +55,7 @@ if (!isAdmin()) {
                             <div id="result"></div>
 
 
-
+                            
                         </div>
                     </div>
 
@@ -47,127 +65,122 @@ if (!isAdmin()) {
 
         <?php } else { ?>
 
+
             
-            
-            
-            
-            
- 
 
 
- 
 
 
-    <section class="Section_Review">
-        <div class="container containerReview">
-            <div class="vehicleDiv">
-                <div class="vehicleDiv_descrip">
-                    <div class="vehicleImage">
-                        <h4>Vehicle</h4>
-                        <img src="../front/imgRental/<?php echo $SelectedIdData['photo']; ?>" alt="Vehicle Photo" width="200px">
-                        <h4><?php echo $SelectedIdData['marque']; ?></h4>
-                    </div>
-                    <div class="pickupInfo">
-                        <h3>Pick Up</h3>
-                        <div class="pickupDetails">
-                            <h5>Pick Up Date</h5>
-                            <h3><?php echo $SelectedIdData['PickUpDate']; ?></h3>
-                            <p><?php echo $SelectedIdData['City']; ?></p>
-                            <hr>
+            
+            
+
+            
+            
+            <section class="Section_Review">
+                <div class="container containerReview">
+                    <div class="vehicleDiv">
+                        <div class="vehicleDiv_descrip">
+                            <div class="vehicleImage">
+                                <h4>Vehicle</h4>
+                                <img src="../front/imgRental/<?php echo $SelectedIdData['photo']; ?>" alt="Vehicle Photo"
+                                    width="200px">
+                                <h4><?php echo $SelectedIdData['marque']; ?></h4>
+                            </div>
+                            <div class="pickupInfo">
+                                <h3>Pick Up</h3>
+                                <div class="pickupDetails">
+                                    <h5>Pick Up Date</h5>
+                                    <h3><?php echo $SelectedIdData['PickUpDate']; ?></h3>
+                                    <p><?php echo $SelectedIdData['City']; ?></p>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Rate">
+                            <div>
+                                <p><strong>Basic Rate for Days</strong></p>
+                                <p>Included</p>
+                            </div>
+                            <div>
+                                <p>Tarif</p>
+                                <p><?php echo $SelectedIdData['tarif']; ?> € / jour</p>
+                            </div>
+                            <div>
+                                <p>Total Days</p>
+                                <p><?php echo $SelectedIdData['totalDays']; ?></p>
+                            </div>
+                            <div>
+                                <p>Total Paid</p>
+                                <p><?php echo $SelectedIdData['TotalCost']; ?></p>
+                            </div>
+                            <div>
+                                <p>FLEETSC</p>
+                                <p>Included</p>
+                            </div>
+                            <div>
+                                <p>Environmental Contribution</p>
+                                <p>Included</p>
+                            </div>
+                            <div>
+                                <p>Railway Station Surcharge</p>
+                                <p>Included</p>
+                            </div>
+
+
+
+                            <div class="buttonsToAction">
+
+
+                                <div>
+
+                                    <?php
+                                    $statusClass = ($SelectedIdData['OrderStatus'] === 1) ? 'confirmed' : 'pending';
+                                    //  $statusText = ($SelectedIdData['OrderStatus'] === 1) ? 'Confirmed' : 'Pending';
+                                    ?>
+
+                                    <button id="button" data-SelectedId="<?php echo $SelectedIdData['carorder_id']; ?>"
+                                        class="button <?php echo $statusClass; ?>"><?php echo $statusClass; ?> </button>
+                                </div>
+
+                                <!-- ****************CAR RETURED BUTTON ****************** -->
+
+
+                                <div>
+
+                                    <?php
+                                    $statusClass = ($SelectedIdData['ReturnStatus'] === 1) ? 'Returned' : 'NotReturned';
+                                    //  $statusText = ($SelectedIdData['OrderStatus'] === 1) ? 'Confirmed' : 'Pending';
+                                    ?>
+                                    <button id="ReturnBtn" data-ReturnId="<?php echo $SelectedIdData['carorder_id']; ?>"
+                                        data-Carid="<?php echo $SelectedIdData['voiture_id']; ?>"
+                                        class="button <?php echo $statusClass; ?>"><?php echo $statusClass; ?> </button>
+
+                                        
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+
+
                         </div>
                     </div>
-                </div>
-                <div class="Rate">
-                    <div>
-                        <p><strong>Basic Rate for Days</strong></p>
-                        <p>Included</p>
-                    </div>
-                    <div>
-                        <p>Tarif</p>
-                        <p><?php echo $SelectedIdData['tarif']; ?> € / jour</p>
-                    </div>
-                    <div>
-                        <p>Total Days</p>
-                        <p><?php echo $SelectedIdData['totalDays']; ?></p>
-                    </div>
-                    <div>
-                        <p>Total Paid</p>
-                        <p><?php echo $SelectedIdData['TotalCost']; ?></p>
-                    </div>
-                    <div>
-                        <p>FLEETSC</p>
-                        <p>Included</p>
-                    </div>
-                    <div>
-                        <p>Environmental Contribution</p>
-                        <p>Included</p>
-                    </div>
-                    <div>
-                        <p>Railway Station Surcharge</p>
-                        <p>Included</p>
-                    </div>
-                    
+                <!-- </div> -->
+            </section> 
+
+            
+            
+            <?php } ?>
+            
+        </div> 
+            
 
 
-                            <div class="buttonsToAction"> 
-
-
-                            <div>
-
-                                <?php
-                                $statusClass = ($SelectedIdData['OrderStatus'] === 1) ? 'confirmed' : 'pending';
-                                //  $statusText = ($SelectedIdData['OrderStatus'] === 1) ? 'Confirmed' : 'Pending';
-                                ?>
-
-                                <button id="button" data-SelectedId="<?php echo $SelectedIdData['carorder_id']; ?>"
-                                    class="button <?php echo $statusClass; ?>"><?php echo $statusClass; ?> </button>
-                            </div>
-
-                            <!-- ****************CAR RETURED BUTTON ****************** -->
-
-
-                            <div>
-
-                                <?php
-                                $statusClass = ($SelectedIdData['ReturnStatus'] === 1) ? 'Returned' : 'NotReturned';
-                                //  $statusText = ($SelectedIdData['OrderStatus'] === 1) ? 'Confirmed' : 'Pending';
-                                ?>
-                                <button id="ReturnBtn" data-ReturnId="<?php echo $SelectedIdData['carorder_id']; ?>"
-                                    data-Carid="<?php echo $SelectedIdData['voiture_id']; ?>"
-                                    class="button <?php echo $statusClass; ?>"><?php echo $statusClass; ?> </button>
- 
-
-                            </div>
-
-
-
-                            </div>
-
-
-
-
-
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-
-
-
- 
-                   
-         
- 
-        <?php } ?>
-
-
-
+</main>
     </body>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -260,14 +273,6 @@ if (!isAdmin()) {
             console.log("clickedme", SelectedId);
         }
 
-
-
-
-
-
-
-
-
     </script>
 
 
@@ -282,7 +287,38 @@ if (!isAdmin()) {
 
 
 
+
+
 <style>
+
+
+main{ 
+  display: flex;
+  /* gap: 10%; */
+} 
+    .DashboardSideBar {
+        /* background-color: red; */
+        width: 15%;
+        background-color: red;
+    }
+
+
+
+    .OrderListcarDiv {
+        width: 70%;
+        margin-left: 2%;
+        /* display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+    height: 240px; */
+    }
+
+
+
+
+
+
     table {
         width: 100%;
         border-collapse: collapse;
@@ -353,7 +389,6 @@ if (!isAdmin()) {
     .OrderListDiv {
         display: flex;
         flex-direction: column;
-        background-color: palegoldenrod;
         width: 100%;
         gap: 5%;
     }
@@ -385,118 +420,119 @@ if (!isAdmin()) {
 
 
 
-    
+
 
 
     .vehicleDiv {
-    padding: 16px;
-}
+        padding: 16px;
+    }
 
-.total h3 {
-    font-size: 36px;
-}
-
-
-.total p {
-    position: relative;
-
-    text-align: end;
-    font-size: 20px;
-}
-
-h3 {
-
-    font-size: 36px;
-
-}
-
-.vehicleDiv {
-
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    width:100rem;
-}
-
-.vehicleDiv_descrip {
-
-    width: 40%;
-}
-
-.vehicleImage {
-
-    background-color: #f7f7f7;
-}
-
-.Section_Review {
-    border-image-slice: 1;
-    /* Ensure the entire border is used for the gradient */
-    /* Add padding to prevent content from touching the border */
-    border-image: linear-gradient(to top, #fafafa, #fbfbfb, #fcfcfc, #fdfdfd);
-    /* Define the linear gradient */
-
-    margin-top: 20px;
-
-}
-
-.containerReview {
-    background-color: white;
-    border: 1px solid #bfbfbf;
-    border-radius: 5px;
-}
-
-.Rate {
-
-    width: 100%;
-    margin: 0 auto;
-    width: 39%;
-    margin-top: 5%;
-    right: 0;
-    position: absolute;
-}
-
-.Rate div {
-    justify-content: space-between;
-    display: flex;
-    padding: 2px;
-
-}
-
-.tax {
-
-    color: #090;
-    font-size: 11px;
-    font-weight: 700;
-}
-
-.Section_Total {
-    margin-top: 5rem;
-    ;
-
-}
+    .total h3 {
+        font-size: 36px;
+    }
 
 
-.containerTotal {
+    .total p {
+        position: relative;
 
-    /* border: 1px solid #090; */
-    box-shadow: 0 0 0 1px #090, 0 5px 30px rgba(0, 153, 0, .3);
-    border-radius: 5px;
-    
-}
+        text-align: end;
+        font-size: 20px;
+    }
 
-.containerTotal div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-}
+    h3 {
+
+        font-size: 36px;
+
+    }
+
+    .vehicleDiv {
+
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        width: 100rem;
+    }
+
+    .vehicleDiv_descrip {
+
+        width: 40%;
+    }
+
+    .vehicleImage {
+
+        background-color: #f7f7f7;
+    }
+
+    .Section_Review {
+        border-image-slice: 1;
+        /* Ensure the entire border is used for the gradient */
+        /* Add padding to prevent content from touching the border */
+        border-image: linear-gradient(to top, #fafafa, #fbfbfb, #fcfcfc, #fdfdfd);
+        /* Define the linear gradient */
+
+        margin-top: 20px;
+
+    }
+
+    .containerReview {
+        background-color: white;
+        border: 1px solid #bfbfbf;
+        border-radius: 5px;
+    }
+
+    .Rate {
+
+        width: 100%;
+        margin: 0 auto;
+        width: 39%;
+        margin-top: 5%;
+        right: 0;
+        position: absolute;
+    }
+
+    .Rate div {
+        justify-content: space-between;
+        display: flex;
+        padding: 2px;
+
+    }
+
+    .tax {
+
+        color: #090;
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    .Section_Total {
+        margin-top: 5rem;
+        ;
+
+    }
 
 
+    .containerTotal {
 
-.buttonsToAction
-{
-    margin-top: 20px;
-}
+        /* border: 1px solid #090; */
+        box-shadow: 0 0 0 1px #090, 0 5px 30px rgba(0, 153, 0, .3);
+        border-radius: 5px;
+
+    }
+
+    .containerTotal div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+    }
+
+    .buttonsToAction {
+        margin-top: 20px;
+    }
 
 
 </style>
+
+
+ 
+ 

@@ -25,8 +25,7 @@ class UserController
        else if($id === "oldOrder")
 
         {  
-            echo "cooccoo";
-            $UserOrder = $User->OldOrders(); 
+             $UserOrder = $User->OldOrders(); 
             require_once 'views/navbar.php';
             require_once 'views/user.php'; 
          }

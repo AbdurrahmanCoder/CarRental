@@ -117,10 +117,11 @@ class adminDash
    public function NewOrder()
    {
     // $requete = "SELECT * FROM carorder  where OrderStatus = 0 ";
-    $requete = "SELECT carorder.*, membre.*, voiture.*, types_de_voiture.*, carorder.id AS carorder_id
+    $requete = "SELECT carorder.*,location.*, membre.*, voiture.*, types_de_voiture.*, carorder.id AS carorder_id
     FROM carorder 
     INNER JOIN membre ON carorder.id_User = membre.id
     INNER JOIN voiture ON carorder.voiture_id = voiture.id
+    INNER JOIN location ON carorder.id_location= location.id
     INNER JOIN types_de_voiture ON types_de_voiture.id = voiture.typeId
     WHERE OrderStatus = 0
     ORDER BY membre.id; ";
@@ -132,9 +133,10 @@ class adminDash
   // $requete = "SELECT * FROM carorder  where OrderStatus = 0 ";
   public function NewOrderById($id)
   {
-    $requete = "SELECT carorder.*, membre.*, voiture.*, types_de_voiture.*, carorder.id AS carorder_id
+    $requete = "SELECT carorder.*, location.*, membre.*, voiture.*, types_de_voiture.*, carorder.id AS carorder_id
       FROM carorder 
       INNER JOIN membre ON carorder.id_User = membre.id
+      INNER JOIN location ON carorder.id_location= location.id
       INNER JOIN voiture ON carorder.voiture_id = voiture.id
       INNER JOIN types_de_voiture ON types_de_voiture.id = voiture.typeId
       WHERE carorder.id = :id

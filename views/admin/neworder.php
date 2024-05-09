@@ -12,13 +12,26 @@
 </head>
 
 <body>
+    <main>
+    
 
-    <div class="container">
+<div class="DashboardSideBar">
+
+
+    
+    <!-- <div class="container"> -->
         <?php
         include_once ("header.php") ?>
-        <div class="Content">
-            <div class="container mt-5">
-                <?php
+        </div>
+       
+       
+       <div class="NewListcarDiv">
+
+
+           
+           <div class="Content">
+               <div class="container mt-5">
+                   <?php
                 if (isset($_GET['selectedId'])) {
                     ?>
 
@@ -26,7 +39,7 @@
 <article class="MainArticle">
 
 
-
+    
  
 
 
@@ -104,23 +117,23 @@
                 <p>prenom</p>
                 <p><?php echo $SelectedIdData['prenom'] ?></p>
             </div>
-                
+            
             <div>
                 <p>email</p>
                 <p><?php echo $SelectedIdData['email'] ?></p>
             </div>    
-
+            
             
             
             
             <div class="paymentStatus">
-                    <p>Payment Status</p>
-                    <p class="payment-status <?php echo ($SelectedIdData['PaymentStatus'] === 1) ? 'paid' : 'not-paid'; ?>"></p>
-                    <p><?php echo ($SelectedIdData['PaymentStatus'] === 1) ? 'Paid' : 'Not Paid'; ?></p>
+                <p>Payment Status</p>
+                <p class="payment-status <?php echo ($SelectedIdData['PaymentStatus'] === 1) ? 'paid' : 'not-paid'; ?>"></p>
+                <p><?php echo ($SelectedIdData['PaymentStatus'] === 1) ? 'Paid' : 'Not Paid'; ?></p>
                 </div>
             </div>
         </section> -->
-
+        
         <section class="customerInfoSection">
     <div class="customerInfo">
         <div class="infoRow">
@@ -149,7 +162,7 @@
 
 </article>
 
-                <?php
+<?php
                 } else {
                     ?>
                     <table class="table">
@@ -175,17 +188,17 @@
                                         <?php echo $ComData['carorder_id']; ?>
 
                                     </td>
-
+                                    
                                     <td>
                                         <?php echo $ComData['City']; ?>
                                     </td>
                                     <td>
                                         <?php echo $ComData['PickUpDate']; ?>
                                     </td>
-
+                                    
                                     <td>
                                         <?php echo $ComData['PickUpTime']; ?>
-
+                                        
                                     </td>
                                     <td>
                                         <?php echo $ComData['DropDate']; ?>
@@ -219,13 +232,13 @@
 
                             ?>
             </div>
-        </div>
+        <!-- </div> -->
 
 
 
-
-
-
+        
+        
+        
     </body>
 
     </html>
@@ -238,11 +251,35 @@
                 ?>
 
 
+</div>
+</main>
+
 
 <style>
     /* Add your styles here */
 
+    
+    main{ 
+  display: flex;
+  /* gap: 10%; */
+} 
+.DashboardSideBar {
+    /* background-color: red; */
+    width: 15%;
+    background-color: red;
+}
 
+
+
+.NewListcarDiv {
+    width: 70%;
+    margin-left: 2%;
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+    height: 240px; */
+}
 
 
     body {

@@ -16,11 +16,11 @@ document.querySelectorAll('.bookButtonSelect').forEach(function(button) {
 function SelectedCar(carId, carMarque, carTarif, carImg) {
     document.querySelector('.carSelected').innerHTML = `
     <p> <b> Selected Car :</b>${carMarque}<p/>
-    <p><b>  Per day Tarif:</b> ${carTarif}<p/>`;
+    <p><b>  Per day Tarif:</b> ${carTarif}<p/>
+    <b> Car selected :</b> 
+    <img style="width:120px " src=" ../front/imgRental/${carImg}" >` ;
     
-    document.querySelector('.checkout').style.opacity = 1;
-  
-  
+    document.querySelector('.checkout').style.opacity = 1; 
     console.log(carId)
     
   let dfez =  document.querySelector('.SelectedCarID');
