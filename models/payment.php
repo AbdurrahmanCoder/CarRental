@@ -100,6 +100,21 @@ class Payment
     }
 
 
+   
+    function UserDataById($user_id)
+    {
+        try {
+            $sql = "SELECT *, carorder.id AS carorder_ids  FROM carorder WHERE id_User = :userId ORDER BY carorder.id DESC LIMIT 1";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':userId', $user_id);
+            $stmt->execute();
+            $lastOrder = $stmt->fetch(\PDO::FETCH_ASSOC);
+            return $lastOrder;
+        } catch (\PDOException $e) {
+            echo 'Error updating payment status: ' . $e->getMessage();
+        }
+}
+
     function PaymentSucess($user_id)
     {
         try {

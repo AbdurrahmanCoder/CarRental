@@ -130,8 +130,7 @@
         <p>Bill To </p>
         <H4>nom de Personne</H4>
         <H4> <?php echo $nom ?></H4>
-        <H4>{{$nom}}</H4>
-        <H4>{$nom}</H4>
+    
         <p>email@gmail.com</p>
         <p>0774480962</p>
   
