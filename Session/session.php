@@ -18,8 +18,8 @@ class Session {
         $availableLocations = $Home->LocationById($id);  
         $city = $availableLocations[0]['City']; 
          $_SESSION['Location'] = isset($city) ? $city : null;
-      }
-       
+      } 
+
       
       $_SESSION['locationValue'] = isset($postData['locationValue']) ? $postData['locationValue'] : null;
 

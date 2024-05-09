@@ -1,11 +1,7 @@
 <?php
 
-
- 
-
 namespace User; 
 use Database\Database;
- 
 
 class UserDashboard
 {

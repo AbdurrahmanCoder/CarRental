@@ -86,12 +86,7 @@ class Admin
 
 
 
-
-
-
-
  
-
     public function insertItem($marque, $kilometrage, $tarif, $photo, $carType)
     {
         $pdo = $this->db->getConnection();
