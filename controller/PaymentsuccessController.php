@@ -1,6 +1,5 @@
 <?php
-// require_once 'models/register.php';
-
+ 
 
 use Database\Database;
 use Payment\Payment;
@@ -41,8 +40,7 @@ class PaymentsuccessController
           $pdfFilePath = "front/pdf/" . $pdfFileName ;
           file_put_contents($pdfFilePath, $dompdf->output());
           
-          // echo "PDF saved successfully at: $pdfFilePath" .$id."eeeeee" . $pdfFilePath; 
-
+ 
           if ( isset($id) && isset($pdfFilePath)) 
                 {
                      $payment->PaymentSuccess($id,$pdfFilePath);
@@ -52,18 +50,7 @@ class PaymentsuccessController
                     require_once 'views/payment.php';
                     require_once 'models/payment.php';
           
-          
-          // if (isset($_GET['user_id']) && isset($pdfFilePath)) {
-          //      $user_id = $_GET['user_id'];
-          //      $database = new Database();
-          //      $pdo = $database->getConnection();
-          //      $payment = new Payment($pdo);
-          //      $payment->PaymentSucess($user_id);
-                     
-          // }
-
-// var_dump($user_id);
-  
+ 
 
      }
 

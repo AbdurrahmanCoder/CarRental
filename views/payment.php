@@ -16,16 +16,16 @@
     <h1 class="succes containerTotal">🎉 Payment Successful 🎉</h1> 
 
     
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, recusandae eveniet quam sunt velit omnis magni ducimus enim, tenetur ipsam ad vel iure praesentium, eius cupiditate dolorem quos nisi quo!</p>
-    
+     
     <button>USER DASHBOARD</button>
 
-
+    
+  
     <?php 
     
     if($pdfFilePath){    
     ?>
-    <a href="../front/pdf/<?php echo $pdfFileName?>" download class="invoice-btn">Download Invoice</a>
+    <a href="../front/pdf/<?php echo $pdfFileName  ?>" download class="invoice-btn">Download Invoice</a>
     
  <?php }   ?>
  </div>
@@ -94,6 +94,9 @@ button:hover, .invoice-btn:hover {
         padding: 20px;
     }
 }
+
+
+
 
     </style>
     </html>

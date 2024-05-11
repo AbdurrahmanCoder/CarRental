@@ -25,22 +25,17 @@ class HomeController
             $SessionInsert = new Session();
             $SessionInsert->handleOrderSearch($_POST);
             $sessionData = $SessionInsert->getSessionData();
-            // print_r($sessionData);
-            // var_dump($SessionInsert);
-
-
+         
             header("Location:/vehicleModel");
             exit();
 
         } else {
-            // echo $_SESSION['user_id'] . "sessiosioidio";
-
+ 
             $database = new Database();
             $pdo = $database->getConnection();
             $Home = new Home($pdo);
             $availableLocations =$Home->Location();
-            var_dump($availableLocations);
-                include 'views/navbar.php';
+                 include 'views/navbar.php';
             include 'views/home.php';
         }
 

@@ -74,11 +74,7 @@ class CheckoutController
             
  
             require_once 'views/payment.php';
-
-            // var_dump($SessionGetData);
-
-            // $this->insertDataToDB();
-
+ 
 
 
 
