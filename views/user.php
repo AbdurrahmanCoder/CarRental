@@ -100,7 +100,11 @@ main{
           color: #838383;
         }
 
-
+.flex{
+    display: flex;
+    /* background-color: red; */
+    height: 50px;
+}
 /* 
 
         .DashboardSideBar a:hover {
@@ -199,13 +203,29 @@ foreach ($UserOrder as $order) {
                         <p>Railway Station Surcharge </p>
                         <p>Included</p>
                     </div>
-                    <div> 
-                        <?php  
+               
+                    <div class="flex">
+
+                        <div> 
+                            <?php  
             $statusClass = ($order['OrderStatus'] === 1) ? 'confirmed' : 'pending';
             $statusText = ($order['OrderStatus'] === 1) ? 'Confirmed' : 'Pending';
             ?>
             <button class="button <?php echo $statusClass; ?>"><?php echo $statusText; ?></button> 
         </div> 
+
+
+        <div> 
+        <a href=" ../<?php echo $order['invoice']?>" download class="invoice-btn">
+        
+        
+        <button class="button"> Invoice</button> 
+    </a>
+    </div> 
+
+
+    </div>
+        
     </div>
     
 </div>

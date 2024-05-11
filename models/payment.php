@@ -63,7 +63,7 @@ class Payment
     }
 
 
-    function insertDataToDB($SessionGetData, $voitureId, $TotalTarif,$dateInfo)
+    function insertDataToDB($SessionGetData, $voitureId, $TotalTarif, $dateInfo)
     {
 
         try {
@@ -81,7 +81,7 @@ class Payment
             $stmt->bindValue(':ReturnStatus', 0);
             $stmt->bindValue(':paymentStatus', 0);
             $stmt->bindValue(':totalCost', $TotalTarif);
-            $stmt->bindValue(':totalDays', $dateInfo['days']); 
+            $stmt->bindValue(':totalDays', $dateInfo['days']);
             $stmt->bindValue(':userId', $_SESSION['user_id']);
             $stmt->bindParam(':carId', $voitureId);
             $stmt->execute();
@@ -90,9 +90,9 @@ class Payment
             $stmt2 = $this->pdo->prepare($sql2);
             $stmt2->bindParam(':SelectedId', $voitureId);
             $stmt2->execute();
-            echo "Data inserted successfully."; 
+            echo "Data inserted successfully.";
 
-        } catch (\PDOException $e) { 
+        } catch (\PDOException $e) {
             echo 'Error inserting data: ' . $e->getMessage();
             $this->success = false;
         }
@@ -100,44 +100,86 @@ class Payment
     }
 
 
-   
-    function UserDataById($user_id)
-    {
-        try {
-            $sql = "SELECT *, carorder.id AS carorder_ids  FROM carorder WHERE id_User = :userId ORDER BY carorder.id DESC LIMIT 1";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(':userId', $user_id);
-            $stmt->execute();
-            $lastOrder = $stmt->fetch(\PDO::FETCH_ASSOC);
-            return $lastOrder;
-        } catch (\PDOException $e) {
-            echo 'Error updating payment status: ' . $e->getMessage();
-        }
-}
 
-    function PaymentSucess($user_id)
+            function UserDataById($user_id)
+            {
+                try {
+                    $sql = " SELECT carorder.*, voiture.*, membre.*, carorder.id AS carorder_ids
+                FROM carorder
+                INNER JOIN voiture ON carorder.voiture_id = voiture.id
+                INNER JOIN membre ON carorder.id_user = membre.id
+                WHERE carorder.id_User  =:userId
+                ORDER BY carorder.id DESC
+                LIMIT 1";
+
+
+                    $stmt = $this->pdo->prepare($sql);
+                    $stmt->bindParam(':userId', $user_id);
+                    $stmt->execute();
+                    $lastOrder = $stmt->fetch(\PDO::FETCH_ASSOC);
+                    return $lastOrder;
+                } catch (\PDOException $e) {
+                    echo 'Error updating payment status: ' . $e->getMessage();
+                }
+            }
+
+
+
+
+
+
+    function PaymentSuccess($id, $pdfname)
     {
         try {
-            $sql = "SELECT *, carorder.id AS carorder_ids  FROM carorder WHERE id_User = :userId ORDER BY carorder.id DESC LIMIT 1";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(':userId', $user_id);
-            $stmt->execute();
-            $lastOrder = $stmt->fetch(\PDO::FETCH_ASSOC);
-            if ($lastOrder) {
-                $lastOrderId = $lastOrder['carorder_ids'];
-                $sql2 = "UPDATE carorder SET PaymentStatus = 1 WHERE carorder.id = :orderId";
-                $stmt2 = $this->pdo->prepare($sql2);
-                $stmt2->bindParam(':orderId', $lastOrderId);
-                $stmt2->execute();
-                echo "Payment status updated successfully.";
-            } else {
-                echo "No orders found for the user.";
-            }
+
+            // $lastOrderId = $id;
+
+            // Update PaymentStatus
+            $sql1 = "UPDATE carorder SET PaymentStatus = 1 WHERE carorder.id = :orderId";
+            $stmt1 = $this->pdo->prepare($sql1);
+            $stmt1->bindParam(':orderId', $id);
+            $stmt1->execute();
+
+            // Update Invoice
+            $sql2 = "UPDATE carorder SET invoice = :pdfname WHERE carorder.id = :orderId";
+            $stmt2 = $this->pdo->prepare($sql2);
+            $stmt2->bindParam(':orderId', $id);
+            $stmt2->bindParam(':pdfname', $pdfname);
+            $stmt2->execute();
+
+            echo "Payment status and invoice updated successfullyhjjhhjhjh.";
         } catch (\PDOException $e) {
-            echo 'Error updating payment status: ' . $e->getMessage();
+            // Log error
+            error_log('Error updating payment status: ' . $e->getMessage());
+            echo 'An error occurred. Please try again later.';
         }
     }
 
-
 }
+
+//     function PaymentSucess($user_id)
+//     {
+//         try {
+//             $sql = "SELECT *, carorder.id AS carorder_ids  FROM carorder WHERE id_User = :userId ORDER BY carorder.id DESC LIMIT 1";
+//             $stmt = $this->pdo->prepare($sql);
+//             $stmt->bindParam(':userId', $user_id);
+//             $stmt->execute();
+//             $lastOrder = $stmt->fetch(\PDO::FETCH_ASSOC);
+//             if ($lastOrder) {
+//                 $lastOrderId = $lastOrder['carorder_ids'];
+//                 $sql2 = "UPDATE carorder SET PaymentStatus = 1 WHERE carorder.id = :orderId";
+//                 $stmt2 = $this->pdo->prepare($sql2);
+//                 $stmt2->bindParam(':orderId', $lastOrderId);
+//                 $stmt2->execute();
+//                 echo "Payment status updated successfully.";
+//             } else {
+//                 echo "No orders found for the user.";
+//             }
+//         } catch (\PDOException $e) {
+//             echo 'Error updating payment status: ' . $e->getMessage();
+//         }
+//     }
+
+
+// }
 

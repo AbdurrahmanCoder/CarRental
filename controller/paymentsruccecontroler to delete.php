@@ -44,9 +44,11 @@ class PaymentsuccessController
           // echo "PDF saved successfully at: $pdfFilePath" .$id."eeeeee" . $pdfFilePath; 
 
           if ( isset($id) && isset($pdfFilePath)) 
+               
                 {
                      $payment->PaymentSuccess($id,$pdfFilePath);
-                   
+                     
+                     
                     }      
                     require_once 'views/navbar.php';
                     require_once 'views/payment.php';

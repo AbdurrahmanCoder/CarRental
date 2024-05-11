@@ -123,16 +123,13 @@
         <img class="invoice-logo" src="front/Template/logo.png" alt="Company Logo">
         <h1 class="invoice-title">Invoice</h1>
         </div>
-        
-
-
+    
         <div class="invoice-To">
         <p>Bill To </p>
-        <H4>nom de Personne</H4>
-        <H4> <?php echo $nom ?></H4>
+         <H4> <?php echo $lastOrder["nom"]?></H4>
     
-        <p>email@gmail.com</p>
-        <p>0774480962</p>
+        <p><?php echo $lastOrder["email"]?></p>
+        <p><?php echo $lastOrder["telephone"]?>   </p>
   
          </div> 
 
@@ -153,21 +150,19 @@
             </thead>
             <tbody>
                 <tbody>
+                $lastOrder 
                     <tr>
-                        <td>data</td>
-                        <td>data</td>
-                        <td>data</td>
-                        <td>data</td>
-                        <td>data</td>
-                        <td>data</td>
-                        <td>data</td>
+                        <td><?php echo $lastOrder["id"]?></td>
+                        <td><?php echo $lastOrder["marque"]?></td>
+                        <td><?php echo $lastOrder["PickUpDate"]?></td>
+                        <td><?php echo $lastOrder["DropDate"]?></td>
+                        <td><?php echo $lastOrder["tarif"]?> /Per Day€ </td>
+                        <td><?php echo $lastOrder["totalDays"]?></td>
+                        <td><?php echo $lastOrder["TotalCost"]?> €</td>
                     </tr>                
                 </tbody>
-            </table>
-            
-            
-            
-            
+            </table> 
+
             <div class="invoice-total">
                 
                 <div class="Subtotal">
@@ -186,7 +181,7 @@
                 </div>
                 
                 <div class="Subtotal FinalTotal">
-                    <p> <b>   Total:  00000 </b></p>
+                    <p> <b>   Total:  <?php echo $lastOrder["TotalCost"]?>€ </b></p>
                     
                 </div>
                 
@@ -203,5 +198,5 @@
         </div>
 
 
-</body>
+ </body>
 </html>
