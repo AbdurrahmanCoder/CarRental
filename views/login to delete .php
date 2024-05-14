@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -21,17 +21,6 @@
     background-color: red !important;
    } 
 
-  
-.error {
-    color: red;
-    margin-bottom: 10px;
-  display: flex;
-  justify-content: center;
-}
-
-.card{
-  margin-top: 15rem;
-}   
 
   </style>
 </head>
@@ -45,14 +34,7 @@
         <div class="card">
           <div class="card-header  ">
             <h3 class="text-center loginColor" >Login</h3>
-          
           </div>
-          
-          
-          <?php if (isset($error)) : ?>
-          <div class="error"><?php echo $error; ?></div>
-      <?php endif; ?> 
-          
           <div class="card-body">
             <form id="myForm"  method="post">
               <div class="mb-3">

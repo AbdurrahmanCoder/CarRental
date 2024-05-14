@@ -42,7 +42,7 @@
             <a class="redBlock rentBlock" href="#BookCar">Book Ride <i class="fa-solid fa-circle-check"
                 style="color: #ffffff;"></i></a>
 
-            <a class="blackBlock" href="">Learn More <i class="fa-solid fa-chevron-right"
+            <a class="blackBlock LearnMoreBtn" href="">Learn More <i class="fa-solid fa-chevron-right"
                 style="color: #ffffff;"></i></a>
           </div>
 
@@ -210,7 +210,7 @@ Drop-of * </label>
   <section class="save">
     <div class="container ">
 
-      <div class="Plan_main_Div">
+      <div class="Plan_main_Div2">
 
         <h2>Save big with our cheap car rental!</h2>
         <p>Top Airports. Local Suppliers. <span>24/7</span> Support.</p>
@@ -354,7 +354,7 @@ Drop-of * </label>
 
         <ul>
           <li><b>COMPANY</b></li>
-          <li>New York</li>
+          <li>Paris</li>
           <li>Careers</li>
           <li>Mobile</li>
           <li>Blog </li>

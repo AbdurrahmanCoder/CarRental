@@ -53,7 +53,6 @@ function UserLogged()
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-  
   <link rel="stylesheet" href="front\css\navbar.css">
   <link rel="stylesheet" href="front\css\home.css">
 
@@ -116,7 +115,64 @@ function UserLogged()
               <a href=" /login">login</a>
 
             </div>
-          <?php } ?>
+          <?php } ?> 
+          <div class="userSession">
+            <a href="views/logout.php "> logout </a>
+          </div>
+
+        </div>
+
+
+        <?php if (!UserLogged()) { ?>
+
+          <a class='Register redBlock' href=" /register"> Register </a>
+
+        <?php }
+        ; ?>
+
+      </div>
+
+          <div class="HamburgerMenu">
+
+      <i class="fa-solid fa-bars"  style="color: #ff4d30; font-size:25px"></i>
+
+          </div>
+
+
+
+
+    </div>
+  </nav>
+  <div class="menuMobile">
+
+<ul>
+
+<li> <a href="/">Home</a> </li>
+      <li><a href=" /about">About</a></li>
+      <li><a href=" /vehicleModel">Vehicle Models</a> </li>
+ 
+      <li><a href=" /testimonial">Testimonials</a> </li>
+
+
+      <div class="LinksTOsignin">
+        <?php if (User() || isAdmin()) { ?>
+
+          <div class="flex">
+            <div>
+              <span class="arrowDownbutton">
+                <?php echo 'Hi, ' . $_SESSION['pseudoData'] . " " . "  " . "<i class='fa-solid fa-angle-down downarrow'>" . "</i>"; ?>
+              </span>
+            </div>
+
+
+
+          <?php } else { ?>
+            <div>
+
+              <a href=" /login">login</a>
+
+            </div>
+          <?php } ?> 
           <div class="userSession">
             <a href="views/logout.php "> logout </a>
           </div>
@@ -134,171 +190,54 @@ function UserLogged()
       </div>
 
 
-    </div>
-
-    <div class="HamburgerMenu">
-
-      <i class="fa-solid fa-bars" style="color: #ff4d30; font-size:25px"></i>
-
-    </div>
-  </nav>
 
 
 
-  <div class="menuMobile    ">
-    <ul>
-
-      <li> <a href="/">Home</a> </li>
-      <li><a href=" /about">About</a></li>
-      <li><a href=" /vehicleModel">Vehicle Models</a> </li>
-
-      <li><a href=" /testimonial">Testimonials</a> </li>
-      <li>
-        <?php if (User()): ?>
-          <a href="/user">User </a>
-        <?php endif; ?>
-        </a>
-      </li>
-      <li>  
-      <?php if (User()) { ?>
+</ul>
  
-    <a href="views/logout.php "> logout </a> 
-          
-        <?php
-      }
-        ?>
-</li>
-
-
-
-    </ul>
-    <div class="LinksTOsigninMobile">
-      <?php if (User() || isAdmin()) { ?>
-
-        <!-- <div class="flex">
-          <div>
-            <span class="arrowDownbutton">
-              <?php echo 'Hi, ' . $_SESSION['pseudoData'] . " " . "  " . "<i class='fa-solid fa-angle-down downarrow'>" . "</i>"; ?>
-            </span>
-          </div> -->
-
-        <?php } else { ?>
-          <div>
-
-            <a href=" /login">login</a>
-
-          </div>
-        <?php } ?>
-        <div class="userSession">
-          <a href="views/logout.php "> logout </a>
-        </div>
-      <?php if (!UserLogged()) { ?>
-
-        <a class='Register redBlock' href=" /register"> Register </a>
-
-      <?php }; 
-      ?>
-
-      </div>
-
-
-    </div>
-  </div>
+</div>  
 </body>
 
 <style>
 
+.menuMobile ul li {
+  list-style: none;
+  color: #010103;
+  cursor: pointer;
+  font-family: Rubik, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all .3s;
 
-.LinksTOsigninMobile{
+}
 
-  display: flex;
-    flex-direction: column;
-    align-items: center;
+.menuMobile ul li a {
+
+  text-decoration: none;
+  color: black;
+}
+
+.menuMobile{
+  /* display: none; */
+  margin-top: 10rem;
+  background-color: red;
+  width: 100vw;
+  height: 110vh;
+  position: fixed;
+  z-index: 222;
+}
+
+.Nav_desktop{
+  position: fixed;
 }
 
 
-  .menuMobile {
-margin-top: 8rem;
-    background-color: #fff;
-    /* Change background color to white */
-    width: 100vw;
-    height: 100vh;
-    /* Change height to 100vh */
-    position: fixed;
-    z-index: 222;
-    display: flex;
-    /* Set display to flex */
-    flex-direction: column;
-    /* Arrange items vertically */
-    justify-content: center;
-    /* Center items vertically */
-    align-items: center;
-    /* Center items horizontally */
-  }
 
-  .menuMobile ul {
-    padding: 0;
-    margin: 0;
-  }
-
-  .menuMobile ul li {
-    list-style: none;
-    color: #010103;
-    cursor: pointer;
-    font-family: Rubik, sans-serif;
-    font-size: 1.6rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all .3s;
-    margin-bottom: 1rem;
-    /* Add some space between menu items */
-  }
-
-  .menuMobile ul li a {
-    text-decoration: none;
-    color: black;
-  }
-
-  .menuMobile ul {
-
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-  }
-
-
-  .LinksTOsignin {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .userSession,
-  .Register {
-    margin-top: 1rem;
-    /* Add some space between login/register and user session */
-  }
-
-  .Register {
- 
-    /* Add padding to register button */
-    background-color: #ff4d30;
-    /* Change background color to match the desktop version */
-    color: #fff;
-    /* Change text color to white */
-    border: none;
-    border-radius: 5px;
-    font-size: 1.4rem;
-  }
-
-  .HamburgerMenu {
-    display: none;
-  }
-
-
-
- 
+.HamburgerMenu
+{
+  display: none;
+}
   .LinksTOsignin {
     display: flex;
     flex-direction: column;
@@ -347,69 +286,19 @@ margin-top: 8rem;
     }
   }
    */
-
-
-   .fa-bars
-   {
-    margin-top:20px;
-   }
-
-  @media screen and (width > 750px) {
-
-    .menuMobile {
-      display: none;
-    }
-
-  }
-
-
   @media screen and (width < 750px) {
 
-    .Nav_desktop {
- position: fixed;
-z-index: 22222;
- background-color:#fff; 
-padding: 1rem 2rem;
+   .Nav_desktop ul {
+      display: none !important;   
+    }  
+    .LoginRegister{
+      display: none;
+    }
+
+    .HamburgerMenu
+{
+  display: block;
 }
-
-
-
-    .menuMobile {
-      
-      display: none;
-      margin: O;
-    }
-
-
-    .Nav_desktop ul {
-      display: none !important;
-    }
-
-    .LoginRegister {
-      display: none;
-    }
-
-    .HamburgerMenu {
-       display: block;
-    }
-
-    .HamburgerMenu {
-      display: block;
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      cursor: pointer;
-    }
-
-
-
-    .menuMobile.show-menu {
-      display: block;
-    }
-
-
-
-
 
   }
 </style>
@@ -443,25 +332,6 @@ padding: 1rem 2rem;
 
     }
   }
-
-
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const hamburgerMenu = document.querySelector(".HamburgerMenu");
-    const mobileMenu = document.querySelector(".menuMobile");
-
-    if (hamburgerMenu !== null && mobileMenu !== null) {
-      hamburgerMenu.addEventListener("click", function () {
-        mobileMenu.classList.toggle("show-menu");
-      });
-    }
-  });
-
-
-
-
-
-
 </script>
 
 

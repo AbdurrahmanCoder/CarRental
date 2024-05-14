@@ -25,7 +25,7 @@ class LoginController
             $pdo = $database->getConnection(); 
             $login = new Login($pdo);
             $authenticated =  $login->authenticate($this->email,$this->password);
-            print_r($login);            
+            // print_r($login);            
             // ECHO "VOUS ETES BIEN CONNECTE";
            
 
@@ -34,8 +34,11 @@ class LoginController
               header("Location:".HOST);  
             }
             else {
-                
-                echo "NOT welcome";
+
+
+                $error = "Invalid email or password.";
+
+                // echo "NOT welcome";
                 require_once 'views/login.php';
             }
 

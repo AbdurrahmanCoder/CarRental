@@ -304,6 +304,78 @@ function UserLoggedIn()
                 align-self: start;
                 align-content: flex-start;
             }
+
+
+
+
+
+                  /* to check */
+ 
+/* .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+} */
+ 
+
+.List_vehicule_Disponible {
+    width: 300px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.List_vehicule_Disponible:hover {
+    transform: translateY(-5px);
+}
+
+.List_vehicule_Disponible img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.List_vehicule_Disponible h2 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: #333333;
+}
+
+.List_vehicule_Disponible p {
+    margin-bottom: 5px;
+    color: #777777;
+}
+
+.List_vehicule_Disponible .tarif_vehicule {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.List_vehicule_Disponible button,
+.List_vehicule_Disponible a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.List_vehicule_Disponible button:hover,
+.List_vehicule_Disponible a:hover {
+    background-color: #0056b3;
+}
+
         </style>
 
 

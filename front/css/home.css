@@ -59,7 +59,9 @@ body{
   max-width: 133rem;
   padding: 2.7rem 2rem;
   width: 100%;
+
 }
+
 
 
 .Nav_desktop ul {
@@ -261,7 +263,7 @@ height: 44rem;
 .bookCarDiv {
   background-image: url("imgRental/bgImage.png");
   max-width: 127rem !important;
-  height: 33rem !important; 
+  height: 33rem ; 
   border-radius: 4px;
   box-shadow: 0 10px 20px 0 rgba(0,0,0,.1); ;
   border: none;
@@ -325,7 +327,13 @@ display: grid;
   padding: 0 3rem;
  
 }
+.Plan_main_Div2
+{
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
 
 .Plan_main_Div{
 
@@ -611,10 +619,105 @@ font-size: 24px;
 }
 
 
-@media screen and (width < 499px){
+@media screen and (width < 499px)
+{  
   .Footer_Div{
- 
-      grid-template-columns: 45fr 45fr ;
-  
+      grid-template-columns: 45fr ;
+    }
+
+
+
+    .LearnMoreBtn{
+      display: none;
     }
 }
+
+                       /* media query   ********************    1021px  ****************************** */
+
+
+@media screen and (width < 1021px){
+  .plan_Flex_items {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 2rem;
+  }
+
+.bookCarDiv {
+  height: 55rem  !important;
+}
+
+.Plan_main_Div
+  {
+    margin-top: 20rem;
+  }
+
+  .suv_Content{
+
+    flex-direction: column;
+    align-items: center;
+
+  }
+  .SuvRight
+{
+ margin-top: 5rem;
+align-items: center;
+justify-content: center;
+text-align: center;
+
+}
+.bookCarMain  
+{
+  grid-template-columns: 1fr 1fr;
+  
+} 
+
+}
+
+
+                       /* media query   ********************    800px ****************************** */
+
+
+  @media screen and (width < 800px){
+  
+  .plan_Flex_items{
+    grid-template-columns: 1fr;
+    margin-top: 1rem;
+  }
+  
+  
+  .bookCarMain  
+  {
+    grid-template-columns:  1fr;
+    
+  }
+  
+
+  .faq_All_questions{
+    width: 90%;
+  }
+
+
+  .bookCarDiv {
+      height: 85rem !important;
+  }
+  
+
+  .Plan_main_Div
+  {
+    margin-top: 45rem;
+  }
+
+}
+
+
+                         /* media query   ********************    650px ****************************** */
+
+
+                         @media screen and (width < 650px){
+                          #mainCar{
+                            display: none;
+                          }
+                       
+                        }
+                        
+                        
+                          
