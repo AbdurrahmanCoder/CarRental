@@ -1,131 +1,234 @@
-<head>
+<!-- <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<div class="links">
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h3>Admin Panel</h3>
+  </div>
+  <ul class="links">
+    <li>
+      <a href="/admin?id=Dashboard" id="dashboardLink" class="nav-link active">
+        <i class="fas fa-chart-pie"></i>
+        Dashboard
+      </a>
+    </li>
+    <li>
+      <a href="/admin?id=addCar" id="AddCarLink" class="nav-link">
+        <i class="fas fa-car"></i>
+        Add Car
+      </a>
+    </li>
+    <li>
+      <a href="/admin?id=deleteCar" class="nav-link">
+        <i class="fas fa-trash-alt"></i>
+        Delete Car
+      </a>
+    </li>
+    <li>
+      <a href="/admin?id=orderlist" class="nav-link">
+        <i class="fas fa-list"></i>
+        Order List
+      </a>
+    </li>
+    <li>
+      <a href="/admin?id=neworder" class="nav-link">
+        <i class="fas fa-cart-plus"></i>
+        New Order
+      </a>
+    </li>
+  </ul>
+</div>
 
+<style>
+  .sidebar {
+    width: 190px;
+    height: 100%;
+    background-color: #252525;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
 
+  .sidebar-header {
+    padding: 20px;
+    text-align: center;
+  }
 
-  <a href=" /admin?id=Dashboard" id="dashboardLink" class="nav-link">
+  .sidebar-header h3 {
+    margin: 0;
+  }
 
-    <i class="fa-solid fa-chart-pie" style="color: #ffffff; font-size:25px">
-  
-  </i>
+  .links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 
-    Dashboard</a>
+  .links li {
+    margin-bottom: 10px;
+  }
 
+  .nav-link {
+    display: block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .nav-link:hover {
+    background-color: #333;
+  }
+
+  .nav-link.active {
+    background-color: #4CAF50;
+  }
+
+  .nav-link i {
+    margin-right: 10px;
+  }
+</style> -->
 
 
  
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
-  <a class="centered" href=" /admin?id=addCar" id="AddCarLink" class="nav-link"> <i class="fa-solid fa-car-side" style="color: #ffffff;font-size:25px" ></i> <i class="fa-solid fa-plus" style="color: #ffffff;font-size:10px"></i>Add Car</a>
-   
-  
-  <a class="centered" href=" /admin?id=deleteCar" class="nav-link">
-  <i class="fa-solid fa-car-side" style="color: #ffffff;font-size:25px" ></i>
-   <i class="fa-solid fa-minus" style="color: #ffffff;font-size:10px"></i>  
-  
-  Delete Car</a>
-  <a href=" /admin?id=orderlist" class="nav-link">Order List</a>
-  <a href="/admin?id=neworder" class="nav-link">New Order</a>
+    .sidebar {
+      width: 250px;
+      height: 100%;
+      background-color: #252525;
+      color: #fff;
+      position: fixed;
+      top: 0;
+      left: 0;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      padding-top: 20px;
+    }
+
+    .sidebar-header {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .sidebar-header h3 {
+      margin: 0;
+    }
+
+    .links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .links li {
+      margin-bottom: 10px;
+    }
+
+    .nav-link {
+      display: block;
+      padding: 10px 20px;
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color: #333;
+    }
+
+    .nav-link.active {
+      background-color: #4CAF50;
+    }
+
+    .nav-link i {
+      margin-right: 10px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+
+      .sidebar-header {
+        text-align: left;
+      }
+
+      .nav-link {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h3>Admin Panel</h3>
+  </div>
+  <ul class="links">
+    <li>
+      <a href="/admin?id=Dashboard" id="dashboardLink" class="nav-link">
+        <i class="fas fa-chart-pie"></i>
+        Dashboard
+      </a>
+    </li>
+    <li>
+      <a href="/admin?id=addCar" id="AddCarLink" class="nav-link">
+        <i class="fas fa-car"></i>
+        Add Car
+      </a>
+    </li>
+    <li>
+      <a href="/admin?id=deleteCar" id="DeleteCar" class="nav-link">
+        <i class="fas fa-trash-alt"></i>
+        Delete Car
+      </a>
+    </li>
+    <li>
+      <a href="/admin?id=orderlist" id="orderList" class="nav-link">
+        <i class="fas fa-list"></i>
+        Order List
+      </a>
+    </li>
+    <li>
+      <a href="/admin?id=neworder" id="NewOrder" class="nav-link">
+        <i class="fas fa-cart-plus"></i>
+        New Order
+      </a>
+    </li>
+  </ul>
 </div>
 
-
-<style>
-.links {
-  width: 100%; /* Adjusted width for responsiveness */
-  height: auto; /* Changed height to auto for responsiveness */
-  background-color: black;
-  display: flex; /* Added flex display */
-  flex-direction: column; /* Set flex direction to column for stacking links */
-}
-
-.links a {
-  width: 100%;
-  padding: 20px 0px; /* Adjusted padding */
-  color: white;
-  text-align: center; /* Centered text */
-}
-
-@media screen and (min-width: 768px) {
-  .links {
-    width: 15%; /* Set fixed width for larger screens */
-    height: 100vh;
-  }
-  .links a {
-    text-align: left; /* Align text to the left for larger screens */
-  }
-}
-
-.centered {
-  display: flex;
-  justify-content: center; /* Horizontally center */
-  align-items: center; /* Vertically center */
-}
-
-.fa-plus,
-.fa-minus {
-  align-self: flex-start;
-}
-
-.nav-link.active {
-  background-color: orange;
-}
-
-.navbar {
-  background-color: black;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.hamburger-menu {
-  color: white;
-  font-size: 25px;
-  cursor: pointer;
-}
-
-.links {
-  /* display: none; */
-}
-
-.links.active {
-  display: block;
-}
-
-.links a {
-  color: white;
-  text-decoration: none;
-  display: block;
-  padding: 10px 0;
-  text-align: center;
-}
-
-.links a:hover {
-  background-color: #333;
-}
-</style>
-
-
-
-
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const hamburgerMenu = document.querySelector(".hamburger-menu");
-  const links = document.querySelector(".links");
-
-  hamburgerMenu.addEventListener("click", function () {
-    links.classList.toggle("active");
-  });
-
-  document.addEventListener("click", function (event) {
-    if (!links.contains(event.target) && event.target !== hamburgerMenu) {
-      links.classList.remove("active");
-    }
-  });
-});
-
+  // Your JavaScript code here if any
 </script>
+
+</body>
+</html>
+```
+
+ 

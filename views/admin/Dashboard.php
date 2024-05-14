@@ -26,17 +26,17 @@
     </div> -->
 
   <!-- <div class="container"> -->
-
-  <main>
-
-
-    <div class="DashboardSideBar">
+  <div class="DashboardSideBar">
       <?php
 
       include_once ("header.php")
         ?>
     </div>
+  <main>
+  <?php
 
+  require_once 'views/navbar.php';
+  ?>
     <div class="Dashboard">
 
        <div>
@@ -129,22 +129,25 @@
 main{ 
   display: flex;
   /* gap: 10%; */
+ 
+ 
+  justify-content: flex-end;
 }
 
 
 .DashboardSideBar {
 /* background-color: red; */
-  width: 15%;
+  /* width:20%; */
   /* background-color: red; */
  } 
-
-/* main :nth-child(2)  {
-}  */
-
+ 
+   /* main :nth-child(2)  {
+   
+}    */
 
 
 .Dashboard {
-    width: 70%;
+    width:80%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -171,5 +174,10 @@ main{
     .Dashboard>div {
       flex: 0 0 calc(100% - 20px);
     }
+  }
+
+
+  .Nav_desktop img{
+    display: none;
   }
 </style>

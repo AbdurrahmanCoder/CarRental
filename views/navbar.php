@@ -3,11 +3,13 @@
 // session_start(); // Start a new or resume the existing session
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
-}
+} 
+
 function isConnected()
 {
   return !empty($_SESSION['membre']) ? $_SESSION['membre'] : false;
 }
+
 function isAdmin()
 {
 
@@ -15,6 +17,7 @@ function isAdmin()
     return $_SESSION['membre'];
   }
 }
+
 function User()
 {
 
@@ -22,8 +25,6 @@ function User()
     return $_SESSION['membre'];
   }
 }
-
-
 
 
 

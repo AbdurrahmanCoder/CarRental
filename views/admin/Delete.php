@@ -104,7 +104,14 @@ if (!isAdmin()) {
     display: flex;
       /* gap: 10%; */
     }
+ 
+
     
+#DeleteCar
+{
+  /* width: 100%; */
+  background-color: #006aff;
+}  
 
 
     .DashboardSideBar {

@@ -15,9 +15,7 @@
   </i>
 
     Dashboard</a>
-
-
-
+ 
  
 
   <a class="centered" href=" /admin?id=addCar" id="AddCarLink" class="nav-link"> <i class="fa-solid fa-car-side" style="color: #ffffff;font-size:25px" ></i> <i class="fa-solid fa-plus" style="color: #ffffff;font-size:10px"></i>Add Car</a>

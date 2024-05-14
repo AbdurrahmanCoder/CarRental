@@ -25,7 +25,6 @@
 
 <body>
 
-
 <main>
   
   <div class="DashboardSideBar">
@@ -116,12 +115,14 @@
       /* gap: 10%; */
     }
     
-
+    #AddCarLink{
+  background-color: #006aff;
+ 
+    }
 
 .DashboardSideBar {
 /* background-color: red; */
   width: 15%;
-  background-color: red;
  } 
 
  

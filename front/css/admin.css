@@ -68,10 +68,10 @@
         }
 
 
-        .links a.active {
+        /* .links a.active {
           background: rgba(255, 83, 48, 0.2);
           color: #ff5330;
-        }
+        } */
 
         .container {
 
@@ -110,9 +110,9 @@
         }
 
 
-        .nav-link.active {
+        /* .nav-link.active {
           background-color: orange;
-        }
+        } */
 
 
         .links {

@@ -58,8 +58,7 @@ class AdminController
         } else {
           $VehiculeAvailable = new VehiculeModels($pdo);
           $typeDeVoiture = $VehiculeAvailable->VehiculeType();
-          var_dump($typeDeVoiture);
-          require_once 'views/admin/Addcar.php';
+           require_once 'views/admin/Addcar.php';
         }
 
 

@@ -532,4 +532,10 @@ h3 {
 
 
 
+#NewOrder
+{
+  /* width: 100%; */
+  background-color: #006aff;
+}  
+
      </style>

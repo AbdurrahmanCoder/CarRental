@@ -204,10 +204,10 @@ function UserLoggedIn()
                                     <button class="bookButton  bookButtonSelect" data-car-id="<?php echo $data['voiture_id']; ?>"
                                         data-car-marque="<?php echo $data['marque']; ?>"
                                         data-car-tarif="<?php echo $data['tarif']; ?>" data-car-img="<?php echo $data['photo']; ?>">
-                                        Book Ride
+                                        Select
                                     </button>
                                 <?php } else { ?>
-                                    <a class="bookButton" href=" /login"> Book Ride</a>
+                                    <a class="bookButton" href=" /login"> Select</a>
                                 <?php } ?>
 
                             </div>
@@ -218,7 +218,7 @@ function UserLoggedIn()
 
                     ?>
                     <H1>NO CARS AVAILABLE </H1>
-
+                    <?php echo $data['tarif']; ?> <span> €/day </span>
                     <?php
 
                 }
@@ -256,8 +256,9 @@ function UserLoggedIn()
 
         <style>
             /* Form container */
+            /* margin: 0 auto; */
+
             #vehicleForm {
-                /* margin: 0 auto; */
                 width: 80%;
                 overflow: hidden;
 
@@ -266,8 +267,7 @@ function UserLoggedIn()
 
             }
 
-            /* Dropdown styling */
-            #vehicleType {
+           #vehicleType {
                 float: left;
                 width: calc(70% - 10px);
                 padding: 10px;
@@ -276,10 +276,11 @@ function UserLoggedIn()
                 border-radius: 5px;
                 margin-right: 10px;
                 box-sizing: border-box;
-            }
+            } 
 
-            /* Button styling */
-            button[type="submit"] {
+
+
+             /* button[type="submit"] {
                 float: left;
                 width: calc(30% - 10px);
                 background-color: #4CAF50;
@@ -289,42 +290,41 @@ function UserLoggedIn()
                 border-radius: 5px;
                 cursor: pointer;
                 box-sizing: border-box;
-            }
+            } */
 
 
-            button[type="submit"]:hover {
+            /* button[type="submit"]:hover {
                 background-color: #45a049;
-            }
+            } */
 
-            #Dropdown {
+            /* #Dropdown {
 
                 display: flex;
                 justify-content: left;
                 align-items: start;
                 align-self: start;
                 align-content: flex-start;
-            }
+            } */
 
 
 
 
-
-                  /* to check */
  
-/* .container {
+/* 
+            .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     padding: 20px;
 } */
- 
 
 .List_vehicule_Disponible {
-    width: 300px;
-    padding: 20px;
+    width: 90% ;
+    padding: 0px 70px 0px 70px;
+    margin: 20px;
     background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     overflow: hidden;
 }
@@ -335,34 +335,44 @@ function UserLoggedIn()
 
 .List_vehicule_Disponible img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px 10px 0 0;
+    height: 230px;
+ 
+    border-radius: 20px 20px 0 0;
+    transition: transform 0.3s ease;
+}
+
+.List_vehicule_Disponible:hover img {
+    transform: scale(1.1);
+}
+
+.List_vehicule_Disponible .car-details {
+    padding: 20px;
 }
 
 .List_vehicule_Disponible h2 {
     font-size: 1.5rem;
-    margin: 10px 0;
+    margin-bottom: 10px;
     color: #333333;
 }
 
 .List_vehicule_Disponible p {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     color: #777777;
 }
 
 .List_vehicule_Disponible .tarif_vehicule {
-    font-size: 1.2rem;
+    font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 10px;
-    color: #007bff;
+    margin-bottom: 15px;
+    color: #000;
 }
 
 .List_vehicule_Disponible button,
 .List_vehicule_Disponible a {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
+    padding: 12px 24px;
+     background-color: #ff4d30;  
+    box-shadow: 0 10px 15px 0 rgba(255, 83, 48, .35);
     color: #ffffff;
     text-decoration: none;
     border: none;
@@ -373,8 +383,58 @@ function UserLoggedIn()
 
 .List_vehicule_Disponible button:hover,
 .List_vehicule_Disponible a:hover {
-    background-color: #0056b3;
+    /* background-color: #0056b3; */
+    box-shadow: 1px 10px 15px 0 rgba(255, 83, 48, 1.35);
+    /* padding: 10px; */
+    transform: scale(1);
+
+
 }
+
+@media screen and (max-width: 768px) {
+    .List_vehicule_Disponible {
+        width: calc(100% - 40px);
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .List_vehicule_Disponible {
+        width: calc(100% - 40px);
+    display: flex;
+    flex-direction: column;
+}
+
+
+.List_vehicule_Disponible div:nth-child(2) {
+    width: 100%;
+}
+
+.List_vehicule_Disponible div:nth-child(3) {
+    
+    width: 100%;
+    /* align-items: center; */
+}
+.bookButton{
+    align-self: center;
+    margin-bottom:1rem;
+}
+ 
+.List_vehicule_Disponible div:nth-child(2) { 
+    width: 100%;
+
+}
+.List_vehicule_Disponible div:nth-child(1) { 
+width: 100%;
+}
+ 
+
+#vehicleType
+{
+    width: 100%;
+}
+}
+
+
 
         </style>
 

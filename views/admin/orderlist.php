@@ -529,7 +529,13 @@ main{
     .buttonsToAction {
         margin-top: 20px;
     }
+    
 
+    #orderList
+{
+  /* width: 100%; */
+  background-color: #006aff;
+}  
 
 </style>
 
