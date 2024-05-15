@@ -86,7 +86,7 @@ function UserLogged()
       <?php endif; ?>
 
       <li>
-        <?php if (User()): ?>
+        <?php if (User()  ): ?>
           <a href="/user">User </a>
         <?php endif; ?>
         </a>

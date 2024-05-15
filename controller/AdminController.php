@@ -74,13 +74,28 @@ class AdminController
         // var_dump($CommandeListe);
 
         require_once 'views/admin/orderlist.php';
+ 
 
-      } else if ($id === "deleteCar") {
+      } 
+      
+      else if ($id === "deleteCar") {
         $VehiculeAvailable = new VehiculeModels($pdo);
         $results = $VehiculeAvailable->VehiculeModelsFetch();
         require_once 'views/admin/Delete.php';
 
-      } else if ($id === "neworder") {
+      }
+      
+      else if ($id === "modifyCar") {
+        $VehiculeAvailable = new VehiculeModels($pdo);
+        $results = $VehiculeAvailable->VehiculeModelsFetch();
+        require_once 'views/admin/Delete.php';
+
+      }
+      
+      
+      
+      
+      else if ($id === "neworder") {
 
         $VehiculeAvailable = new adminDash($pdo);
         $CommandeListe = $VehiculeAvailable->NewOrder();
@@ -102,6 +117,8 @@ class AdminController
         //  }
  
         require_once 'views/admin/neworder.php';
+
+
       } else {
         echo "<h1>this is modify</h1>";
       }

@@ -143,7 +143,7 @@ font-family: Rubik,sans-serif;
 .container {
   margin: 0 auto !important;
   max-width: 127rem !important;
-  padding: 0 2.5rem !important;
+  padding: 1px  2.5rem !important;
 }
 
 .Hero-Div {

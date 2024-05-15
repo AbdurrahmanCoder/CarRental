@@ -216,7 +216,7 @@ foreach ($UserOrder as $order) {
 
 
         <div> 
-        <a href="../<?php echo $order['invoice']?>" download  class="invoice-btn">
+        <a href=" ../<?php echo $order['invoice']?>" download class="invoice-btn">
         
         
         <button class="button"> Invoice</button> 

@@ -208,6 +208,14 @@
         Delete Car
       </a>
     </li>
+
+    <li>
+      <a href="/admin?id=updateCar" id="modifyCar" class="nav-link">
+        <i class="fas fa-edit"></i>
+        Update Car
+      </a>
+    </li>
+
     <li>
       <a href="/admin?id=orderlist" id="orderList" class="nav-link">
         <i class="fas fa-list"></i>
