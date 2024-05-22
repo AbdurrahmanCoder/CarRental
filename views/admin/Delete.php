@@ -117,8 +117,7 @@ if (!isAdmin()) {
     .DashboardSideBar {
     /* background-color: red; */
     width: 15%;
-    background-color: red;
-    } 
+     } 
 
     
 

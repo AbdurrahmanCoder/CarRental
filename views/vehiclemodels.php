@@ -218,7 +218,7 @@ function UserLoggedIn()
 
                     ?>
                     <H1>NO CARS AVAILABLE </H1>
-                    <?php echo $data['tarif']; ?> <span> €/day </span>
+                    <!-- <?php echo $data['tarif']; ?> <span> €/day </span> -->
                     <?php
 
                 }

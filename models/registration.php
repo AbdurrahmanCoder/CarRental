@@ -34,10 +34,15 @@ class Registration
             $stmt->bindParam(':telephone', $_POST['telephone']);
             $stmt->bindValue(':statut', 0);
             $stmt->execute();
-            $response = "true";
-            echo  $response; 
+              $response = "true";           
+              return $response ;
+ 
         } catch (\Exception $e) { 
             echo "Error: " . $e->getMessage();
+            $response = "false";           
+            return $response ;
+
+       
         }
     }
 } 

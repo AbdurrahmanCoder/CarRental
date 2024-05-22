@@ -16,8 +16,12 @@
     <h1 class="succes containerTotal">🎉 Payment Successful 🎉</h1> 
 
     
-     
-    <button>USER DASHBOARD</button>
+    <a href="/user">
+    
+    <button>User Dashboard</button>  
+</a> 
+
+
 
     
   
@@ -41,6 +45,7 @@
     max-width: 800px;
     width: 90%;
     margin: 0 auto;
+    margin-top: 100px;
 }
 
 .success-message {

@@ -88,7 +88,7 @@ class AdminController
       else if ($id === "modifyCar") {
         $VehiculeAvailable = new VehiculeModels($pdo);
         $results = $VehiculeAvailable->VehiculeModelsFetch();
-        require_once 'views/admin/Delete.php';
+        require_once 'views/admin/modifycar.php';
 
       }
       

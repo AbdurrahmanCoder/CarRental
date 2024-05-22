@@ -1,6 +1,6 @@
 <?php
 
-require_once "Database.php";
+  require_once "Database.php";
 
 use Database\Database;
 
@@ -154,10 +154,34 @@ class Admin
         $sql2 = "UPDATE voiture SET carstatus = 0 WHERE id = :carid; ";
         $stmt2 = $pdo->prepare($sql2);
         $stmt2->bindParam(':carid', $carid, PDO::PARAM_INT);
-        $stmt2->execute();
- 
-
+        $stmt2->execute(); 
     }
+
+    public function CarUpdate($id,$tarif,$kilometrage)
+    {
+        try {
+            $pdo = $this->db->getConnection();
+            $sql = "UPDATE voiture SET kilometrage = :kilometrage, tarif = :tarif WHERE id = :id";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':tarif', $tarif, PDO::PARAM_INT);
+            $stmt->bindParam(':kilometrage', $kilometrage, PDO::PARAM_INT);
+            $stmt->execute(); 
+            return true;
+        } catch (PDOException $e) {
+            // Handle the exception as needed
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    
+
+
+
+
+
+
+
+
 
 }
 
@@ -328,14 +352,9 @@ if (isset($_POST['action'])) {
                
                 $datainsert = new Admin;
 
-                $datainsert->CarReturned($SelectedId,$Carid);
+                $datainsert->CarReturned($SelectedId,$Carid); 
 
-
-
-
-                echo "returned";
-
-       
+                echo "returned"; 
                 
                 
             } else {
@@ -353,6 +372,44 @@ if (isset($_POST['action'])) {
             }
 
             break;
+
+            case 'update':  
+                
+                if (isset($_POST['tarif']) && isset($_POST['carId']) && isset($_POST['kilometrage'])     ) { 
+                    $id = $_POST['carId']; 
+                    $tarif = $_POST['tarif']; 
+                    $kilometrage = $_POST['kilometrage']; 
+
+                    echo $id,$tarif, $kilometrage,"from adminMOD database"; 
+                    
+                    $datainsert = new Admin;
+                    if ($datainsert->CarUpdate($id, $tarif, $kilometrage)) {
+                        // Return JSON response
+                        echo json_encode([
+                            'status' => 'success',
+                            'message' => 'Car updated successfully',
+                            'carId' => $id,
+                            'tarif' => $tarif,
+                            'kilometrage' => $kilometrage
+                        ]);
+                    } else {
+                        echo json_encode([
+                            'status' => 'error',
+                            'message' => 'Failed to update car'
+                        ]);
+                    }
+                } else {
+                    echo json_encode([
+                        'status' => 'error',
+                        'message' => 'Invalid input'
+                    ]);
+                
+                
+                
+                } 
+
+                break; 
+
         default:
             // Handle unrecognized action
             echo "Unrecognized action";

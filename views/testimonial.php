@@ -145,7 +145,7 @@
 
                 <ul>
                     <li><b>COMPANY</b></li>
-                    <li>New York</li>
+                    <li>Paris</li>
                     <li>Careers</li>
                     <li>Mobile</li>
                     <li>Blog </li>

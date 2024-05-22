@@ -1,101 +1,4 @@
-<!-- <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-
-<div class="sidebar">
-  <div class="sidebar-header">
-    <h3>Admin Panel</h3>
-  </div>
-  <ul class="links">
-    <li>
-      <a href="/admin?id=Dashboard" id="dashboardLink" class="nav-link active">
-        <i class="fas fa-chart-pie"></i>
-        Dashboard
-      </a>
-    </li>
-    <li>
-      <a href="/admin?id=addCar" id="AddCarLink" class="nav-link">
-        <i class="fas fa-car"></i>
-        Add Car
-      </a>
-    </li>
-    <li>
-      <a href="/admin?id=deleteCar" class="nav-link">
-        <i class="fas fa-trash-alt"></i>
-        Delete Car
-      </a>
-    </li>
-    <li>
-      <a href="/admin?id=orderlist" class="nav-link">
-        <i class="fas fa-list"></i>
-        Order List
-      </a>
-    </li>
-    <li>
-      <a href="/admin?id=neworder" class="nav-link">
-        <i class="fas fa-cart-plus"></i>
-        New Order
-      </a>
-    </li>
-  </ul>
-</div>
-
-<style>
-  .sidebar {
-    width: 190px;
-    height: 100%;
-    background-color: #252525;
-    color: #fff;
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
-    padding-top: 20px;
-  }
-
-  .sidebar-header {
-    padding: 20px;
-    text-align: center;
-  }
-
-  .sidebar-header h3 {
-    margin: 0;
-  }
-
-  .links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .links li {
-    margin-bottom: 10px;
-  }
-
-  .nav-link {
-    display: block;
-    padding: 10px 20px;
-    color: #fff;
-    text-decoration: none;
-    transition: 0.3s;
-  }
-
-  .nav-link:hover {
-    background-color: #333;
-  }
-
-  .nav-link.active {
-    background-color: #4CAF50;
-  }
-
-  .nav-link i {
-    margin-right: 10px;
-  }
-</style> -->
-
-
+ 
  
   
 <!DOCTYPE html>
@@ -210,7 +113,7 @@
     </li>
 
     <li>
-      <a href="/admin?id=updateCar" id="modifyCar" class="nav-link">
+      <a href="/admin?id=modifyCar" id="modifyCar" class="nav-link">
         <i class="fas fa-edit"></i>
         Update Car
       </a>
@@ -228,6 +131,14 @@
         New Order
       </a>
     </li>
+
+    <li>
+  <a href="/admin?id=testimonials" id="TestimonialsLink" class="nav-link">
+    <i class="fas fa-comments"></i>
+    Testimonials
+  </a>
+</li>
+
   </ul>
 </div>
 
@@ -237,6 +148,4 @@
 
 </body>
 </html>
-```
-
  

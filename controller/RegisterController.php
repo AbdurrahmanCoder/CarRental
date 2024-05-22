@@ -19,15 +19,16 @@ class RegisterController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {             
             $database = new Database();
-            var_dump($database);
-            print_r($database); 
             $pdo = $database->getConnection(); 
             $registration = new Registration();
-            $registration->insertData($pdo);
-            
-            
-            
-            echo "heelo";
+            $registration->insertData($pdo);  
+        
+            if($registration->insertData($pdo))
+            { 
+                require_once 'views/navbar.php';
+                require_once 'views/registerSuccessPage.php';
+                
+            }
         } else {
             require_once 'views/navbar.php';
             require_once 'views/register.php';

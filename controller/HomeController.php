@@ -35,7 +35,7 @@ class HomeController
             $pdo = $database->getConnection();
             $Home = new Home($pdo);
             $availableLocations =$Home->Location();
-                 include 'views/navbar.php';
+          include 'views/navbar.php';
             include 'views/home.php';
         }
 

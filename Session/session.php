@@ -18,12 +18,9 @@ class Session {
         $availableLocations = $Home->LocationById($id);  
         $city = $availableLocations[0]['City']; 
          $_SESSION['Location'] = isset($city) ? $city : null;
-      } 
+      }  
 
-      
       $_SESSION['locationValue'] = isset($postData['locationValue']) ? $postData['locationValue'] : null;
-
-      
       $_SESSION['PickUp'] = isset($postData['PickUp']) ? $postData['PickUp'] : null;
         $_SESSION['PickUpTime'] = isset($postData['PickUpTime']) ? $postData['PickUpTime'] : null;
         $_SESSION['DropOf'] = isset($postData['DropOf']) ? $postData['DropOf'] : null;
@@ -31,9 +28,6 @@ class Session {
         $_SESSION['Checked'] = 1;  // Assuming this is a default value 
         echo "Form data has been successfully stored in session variables.";
  
-
-
-
 
 
     } 

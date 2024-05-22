@@ -24,10 +24,9 @@ require('controller/UserController.php');
 require('controller/AboutController.php');
 require('controller/PaymentsuccessController.php');
  
-// CHARGEMENT DE LA CONFIGURATION ET L'AUTOLOAD
 Autoloader::start();
 
- $request = isset($_GET['url']) ? $_GET['url'] : 'home';
+$request = isset($_GET['url']) ? $_GET['url'] : 'home';
 
 
 //$request = $_GET['url']; //fait référence à index.php?url=...

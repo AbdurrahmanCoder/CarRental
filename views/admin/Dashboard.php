@@ -135,11 +135,7 @@ main{
 }
 
 
-.DashboardSideBar {
-/* background-color: red; */
-  /* width:20%; */
-  /* background-color: red; */
- } 
+ 
  
    /* main :nth-child(2)  {
    
