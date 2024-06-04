@@ -97,7 +97,7 @@
                     <div>
                         <button id="button" data-SelectedId="<?php echo $SelectedIdData['carorder_id']; ?>
                         " class="button <?php echo ($SelectedIdData['OrderStatus'] === 1) ? 'confirmed' : 'pending'; ?>">
-                        <?php echo ($SelectedIdData['OrderStatus'] === 1) ? 'Confirmed' : 'Pending'; ?>
+                        <?php echo ($SelectedIdData['OrderStatus'] === 1) ? 'Confirmed' : 'click to confirm car'; ?>
                     </button>
                     </div>
                 </div>
@@ -338,27 +338,7 @@
 
 
 
-
-    /* 
-
-
-    .button:hover {
-    background-color: #0056b3;
-}
-
-.confirmed {
-    background-color: #28a745;
-}
-
-.pending {
-    background-color: #ffc107;
-}
- */
-    /* Styling for Section_Review */ 
-
-
-
-
+ 
 
 
 

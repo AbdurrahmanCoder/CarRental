@@ -87,12 +87,21 @@ if (!isAdmin()) {
                                 <h4><?php echo $SelectedIdData['marque']; ?></h4>
                             </div>
                             <div class="pickupInfo">
-                                <h3>Pick Up</h3>
+                                <h3>Pick up & return </h3>
                                 <div class="pickupDetails">
-                                    <h5>Pick Up Date</h5>
+                                    <h5>Pick Up </h5>
                                     <h3><?php echo $SelectedIdData['PickUpDate']; ?></h3>
                                     <p><?php echo $SelectedIdData['City']; ?></p>
                                     <hr>
+
+
+                                    <!-- <h3>Return</h3> -->
+
+                                    <h5>Return</h5>
+
+                                    <h3><?php echo $SelectedIdData['DropDate']; ?></h3>
+                                    <p><?php echo $SelectedIdData['City']; ?></p>
+
                                 </div>
                             </div>
                         </div>
@@ -126,12 +135,14 @@ if (!isAdmin()) {
                                 <p>Included</p>
                             </div>
 
+ 
+
 
 
                             <div class="buttonsToAction">
 
 
-                                <div>
+                                <!-- <div>
 
                                     <?php
                                     $statusClass = ($SelectedIdData['OrderStatus'] === 1) ? 'confirmed' : 'pending';
@@ -140,15 +151,25 @@ if (!isAdmin()) {
 
                                     <button id="button" data-SelectedId="<?php echo $SelectedIdData['carorder_id']; ?>"
                                         class="button <?php echo $statusClass; ?>"><?php echo $statusClass; ?> </button>
-                                </div>
+                                </div> -->
 
                                 <!-- ****************CAR RETURED BUTTON ****************** -->
+
+
+
+                             
+
+
+
+
+
+
 
 
                                 <div>
 
                                     <?php
-                                    $statusClass = ($SelectedIdData['ReturnStatus'] === 1) ? 'Returned' : 'NotReturned';
+                                    $statusClass = ($SelectedIdData['ReturnStatus'] === 1) ? 'Returned' : 'confirm car return';
                                     //  $statusText = ($SelectedIdData['OrderStatus'] === 1) ? 'Confirmed' : 'Pending';
                                     ?>
                                     <button id="ReturnBtn" data-ReturnId="<?php echo $SelectedIdData['carorder_id']; ?>"
@@ -158,6 +179,7 @@ if (!isAdmin()) {
                                         
                                 </div>
 
+                                
 
 
                             </div>

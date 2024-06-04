@@ -5,6 +5,7 @@
 // require_once "Session/session.php";
 
 
+
 use Database\Database;
 use Order\OrderSave;
 use Session\Session;
@@ -20,12 +21,10 @@ class HomeController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            extract($_POST);
-
+            extract($_POST); 
             $SessionInsert = new Session();
             $SessionInsert->handleOrderSearch($_POST);
-            $sessionData = $SessionInsert->getSessionData();
-         
+            $sessionData = $SessionInsert->getSessionData(); 
             header("Location:/vehicleModel");
             exit();
 

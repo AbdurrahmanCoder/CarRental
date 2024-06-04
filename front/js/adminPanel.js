@@ -6,7 +6,7 @@ button.addEventListener('click', functionRun);
 
 function functionRun() {
     const SelectedId = this.getAttribute('data-SelectedId');
-    const buttonElement = this; // Store a reference to the button element
+    const buttonElement = this; 
 
     fetch('../models/AdminMod.php', {
         method: 'POST',
@@ -19,10 +19,10 @@ function functionRun() {
     .then(data => {
         console.log(data);
         console.log("eeddededededed");
-        console.log(buttonElement); // Use buttonElement instead of this
+        console.log(buttonElement);  
         buttonElement.classList.remove("pending");
         buttonElement.classList.add("confirmed");
-        buttonElement.innerHTML = "confirmed";
+        buttonElement.innerHTML = "Confirmed";
     })
     .catch(error => {
         console.error('Error:', error);

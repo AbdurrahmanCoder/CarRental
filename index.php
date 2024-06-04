@@ -23,6 +23,7 @@ require('controller/RegisterController.php');
 require('controller/UserController.php');
 require('controller/AboutController.php');
 require('controller/PaymentsuccessController.php');
+require('controller/TestimonialController.php');
  
 Autoloader::start();
 

@@ -7,6 +7,7 @@ require_once "models/VehicleModels.php";
 use Database\Database;
 use Vehicule\VehiculeModels;
 use AdminDash\adminDash;
+use Testimonial\Testimonialmodel;
  
 // use AdminDash\adminDash; 
 use Admin\admin;  
@@ -16,11 +17,7 @@ class AdminController
   public function index()
   {
 
-
-    // function isConnectedz() {
-    //   return !empty($_SESSION['membre']) ? $_SESSION['membre'] : false;
-    // }
-
+ 
     function isAdmind()
     {
 
@@ -51,14 +48,23 @@ class AdminController
 
         require_once 'views/admin/Dashboard.php';
 
-      } else if ($id === "addCar") {
+      } else if ($id === "addCar") 
+      
+      {
+        
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
+        
           echo "hello ";
-        } else {
+        }
+         else {
+
+
           $VehiculeAvailable = new VehiculeModels($pdo);
           $typeDeVoiture = $VehiculeAvailable->VehiculeType();
            require_once 'views/admin/Addcar.php';
+
+
+           
         }
 
 
@@ -79,9 +85,12 @@ class AdminController
       } 
       
       else if ($id === "deleteCar") {
+
+
         $VehiculeAvailable = new VehiculeModels($pdo);
         $results = $VehiculeAvailable->VehiculeModelsFetch();
         require_once 'views/admin/Delete.php';
+
 
       }
       
@@ -101,13 +110,9 @@ class AdminController
         $CommandeListe = $VehiculeAvailable->NewOrder();
  
         if (isset($_GET['selectedId'])) {
-          $id = $_GET['selectedId'];
- 
-
-          var_dump($id);
-          $SelectedIdData = $VehiculeAvailable->NewOrderById($id);
-          var_dump($SelectedIdData);
-        }
+          $id = $_GET['selectedId']; 
+           $SelectedIdData = $VehiculeAvailable->NewOrderById($id);
+         }
 
         //  if (isset($_GET['confirmed'])) { 
         //    $id=  $_GET['selectedId']; 
@@ -119,8 +124,33 @@ class AdminController
         require_once 'views/admin/neworder.php';
 
 
-      } else {
-        echo "<h1>this is modify</h1>";
+      }
+      
+      
+      else if ($id === "testimonials") {
+ 
+
+        $VehiculeAvailable = new adminDash($pdo); 
+ 
+        
+        $testimonial = new Testimonialmodel($pdo);
+        $testimonials = $testimonial->AllTestimonial();  
+        
+        
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {  
+          $approvedTestimonials = $_POST['testimonial'] ?? [];
+          $idsToApprove = array_map('intval', $approvedTestimonials); 
+          $testimonialsApprove = $testimonial->TestimonialApprove($idsToApprove); 
+          
+        require_once 'views/admin/AdminTestimonials.php';  
+          }  
+        require_once 'views/admin/AdminTestimonials.php';  
+      
+      }
+      
+       
+      else {
+        echo "<h1>404</h1>";
       }
 
 

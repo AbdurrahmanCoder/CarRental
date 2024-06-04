@@ -49,80 +49,83 @@
     <section>
         <div class="container">
 
-            <div class="Persons_Testimonial">
-
-
-                <div>
-                    <p>"We rented a car from this website and had an amazing experience! The booking was easy and the
-                        rental rates were very affordable. "</p> 
-                    <span> 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="tabler-icon tabler-icon-quote">
-                            <path
-                                d="M19 11h-4a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h3a1 1 0 0 1 1 1v6c0 2.667 -1.333 4.333 -4 5">
-                            </path>
-                            <path
-                                d="M10 11h-4a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h3a1 1 0 0 1 1 1v6c0 2.667 -1.333 4.333 -4 5">
-                            </path>
-                        </svg>
-
-                    </span>
-
-
-
+<div class="Testimonial_Comments">
+<div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <?php 
+        $active = 'active';
+        for($i = 0; $i < count($result); $i += 3) { ?>
+            <div class="carousel-item <?php echo $active; ?>">
+                <div class="row">
+                    <?php for($j = $i; $j < $i + 3; $j++) { 
+                        if(isset($result[$j])) { ?>
+                        <div class="col-md-4">
+                            <div class="testimonial-card">
+                                <p>"<?php echo $result[$j]["comment"] ?>"</p> 
+                            </div>
+                        </div>
+                    <?php } } ?>
                 </div>
-
-
-
-                <div>
-
-                    <p>"The car was in great condition and made our trip even better. Highly recommend for this car
-                        rental website!"</p>
-
-                    <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="tabler-icon tabler-icon-quote">
-                            <path
-                                d="M19 11h-4a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h3a1 1 0 0 1 1 1v6c0 2.667 -1.333 4.333 -4 5">
-                            </path>
-                            <path
-                                d="M10 11h-4a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h3a1 1 0 0 1 1 1v6c0 2.667 -1.333 4.333 -4 5">
-                            </path>
-                        </svg>
-                    </span>
-
-
-
-
-                </div>
-
-
-
-
-
             </div>
+            <?php $active = ''; // Remove 'active' class after the first item ?>
+        <?php } ?>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+    
+    <!-- <div class="Persons_Testimonial">
+        
+        
+        <?php
+ foreach($result as $comments) 
+ { ?>
+
+<div>
+    <p>"<?php echo $comments["comment"] ?>"</p> 
+    <span> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="tabler-icon tabler-icon-quote">
+        <path
+        d="M19 11h-4a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h3a1 1 0 0 1 1 1v6c0 2.667 -1.333 4.333 -4 5">
+    </path>
+    <path
+    d="M10 11h-4a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h3a1 1 0 0 1 1 1v6c0 2.667 -1.333 4.333 -4 5">
+</path>
+</svg>
+
+</span> 
+
+</div>
 
 
 
-        </div>
+<?php } ?>
+ 
+    </div>
+    
+</div>
+     -->
+    
+</div>
 
 
 
-    </section>
+</section>
 
 
 
 
 
-
-
-
-
-
-
-
+ 
 
 
 
@@ -159,9 +162,7 @@
                     <li>Mon - Fri: 9:00AM - 9:00PM</li>
                     <li> sat: 9:00AM - 19:00PM</li>
                     <li>Sun: Closed</li>
-                </ul>
-
-
+                </ul> 
 
                 <ul>
                     <li><b> SUBSCRIPTION</b></li>
@@ -170,8 +171,6 @@
                     <li><button type="submit " class="redBlock Subcription">Submit</button></li>
                 </ul>
 
-
-
             </div>
 
         </div>
@@ -179,6 +178,39 @@
 
     </footer>
 
-</body>
+</body> 
+
+<style>
+        .testimonial-card {
+            padding: 20px;
+            text-align: center;
+        }
+        .testimonial-card p {
+            font-style: italic;
+        }
+
+        .testimonial-card {
+            padding: 20px;
+            text-align: center;
+            background-color: greenyellow; /* Light grey background */
+            border-radius: 10px;
+            margin: 10px;
+            transition: background-color 0.5s ease; /* Smooth transition */
+        }
+        .testimonial-card p {
+            font-style: italic;
+        }
+        /* Custom styles for the carousel controls */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: #000; /* Black background */
+            border-radius: 50%; /* Circular button */
+            padding: 10px; /* Add padding for larger clickable area */
+        }
+        .carousel-control-prev span,
+        .carousel-control-next span {
+            color: #fff; /* White text */
+        }
+</style>
 
 </html>

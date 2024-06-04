@@ -104,11 +104,10 @@ class Admin
         }
         $target_path = $target_directory . $new_image_name;
         if (!move_uploaded_file($_FILES["image_file"]["tmp_name"], $target_path)) {
-            //   echo "non";
-            // header("Location:index.php?message=er");
         }
 
-        $sql = "INSERT INTO voiture (marque, kilometrage, tarif, photo ,typeId,carstatus) VALUES (:marque, :kilometrage, :tarif, :photo,:typeId,:carstatus )";
+        $sql = "INSERT INTO voiture (marque, kilometrage, tarif, photo ,typeId,carstatus) 
+        VALUES (:marque, :kilometrage, :tarif, :photo,:typeId,:carstatus )";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':marque', $marque);
         $stmt->bindParam(':kilometrage', $kilometrage);
@@ -306,6 +305,8 @@ if (isset($_POST['action'])) {
     $action = $_POST['action'];
     switch ($action) {
         case 'insert':
+
+
             if (isset($_POST['marque']) && isset($_POST['kilometrage']) && isset($_POST['tarif']) && isset($_FILES["image_file"]["tmp_name"]) && isset($_POST['carType'])) {
                 $marque = $_POST['marque'];
                 $kilometrage = $_POST['kilometrage'];
@@ -324,6 +325,7 @@ if (isset($_POST['action'])) {
             } else {
                 "not working" . $action;
             }
+            
             break;
         case 'delete':
             if (isset($_POST['id'])) {

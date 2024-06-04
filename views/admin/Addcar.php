@@ -1,9 +1,8 @@
-
 <?php
-  foreach ($typeDeVoiture as $type) { 
-    echo $type['id'];
-    echo $type['type']; 
-  }
+foreach ($typeDeVoiture as $type) {
+  echo $type['id'];
+  echo $type['type'];
+}
 ?>
 
 
@@ -25,121 +24,87 @@
 
 <body>
 
-<main>
-  
-  <div class="DashboardSideBar">
-  <!-- <div class="container"> -->
-    <?php 
- include_once ("header.php") 
- ?> 
+  <main> 
+    <div class="DashboardSideBar">
+       <?php  include_once ("header.php")  ?> 
+    </div> 
+    <div class="AddcarDiv"> 
+      <div class="Content"> 
+        <div class="container-form">
+          <h2>Formulaire de Voiture</h2>
+          <form id="myForm" enctype="multipart/form-data"> 
+            <div class="mb-3"> 
+              <label for="marque" class="form-label">Type de Voiture </label> 
+              <select id="carType" name="carType" style="margin:20px"> 
+                <?php foreach ($typeDeVoiture as $type) { ?>
+                  <option value="<?php echo $type['id']; ?>"><?php echo $type['type']; ?></option>
+                <?php } ?> 
+              </select> 
+            </div> 
+            <div class="mb-3">
+              <label for="marque" class="form-label">Marque</label>
+              <input type="text" class="form-control" id="marque" name="marque" required>
+            </div>
+            <div class="mb-3">
+              <label for="kilometrage" class="form-label">Kilométrage</label>
+              <input type="number" class="form-control" id="kilometrage" name="kilometrage" required>
+            </div>
 
-</div>
+            <div class="mb-3">
+              <label for="tarif" class="form-label">Tarif</label>
+              <input type="number" class="form-control" id="tarif" name="tarif" required>
+            </div>
 
-<div class="AddcarDiv">
-
-  
-  <div class="Content">
-
-    <div class="container-form">
-        <h2>Formulaire de Voiture</h2>
-        <form id="myForm" enctype="multipart/form-data">
-
-          <div class="mb-3">
-
-            <label for="marque" class="form-label">Type de Voiture </label>
-            
-            <select id="carType" name="carType" style="margin:20px">
-              
-            <?php foreach ($typeDeVoiture as $type) { ?>
-        <option value="<?php echo $type['id']; ?>"><?php echo $type['type']; ?></option>
-    <?php } ?>
-
-    
-            </select>
-            <!-- <input type="text" class="form-control" id="marque" name="marque" required> -->
-
-          </div>
-
-          <div class="mb-3">
-            <label for="marque" class="form-label">Marque</label>
-            <input type="text" class="form-control" id="marque" name="marque" required>
-          </div>
-          <div class="mb-3">
-            <label for="kilometrage" class="form-label">Kilométrage</label>
-            <input type="number" class="form-control" id="kilometrage" name="kilometrage" required>
-          </div>
-
-          <div class="mb-3">
-            <label for="tarif" class="form-label">Tarif</label>
-            <input type="number" class="form-control" id="tarif" name="tarif" required>
-          </div>
-
-          <div class="mb-3">
-            <label for="images" class="form-label">Photo</label>
-            <label for="images" class="drop-container">
-              <span class="drop-title">Déposez les fichiers ici</span>
-              ou
-              <input type="file" name="image_file" id="images" accept="image/*" required>
-            </label>
-          </div>
-          <button type="submit" id="submitForm">Enregistrer</button>
-        </form>
-
-        <div class="sucess" id="success">
-
-          <p>Data inserted Succesfully</p>
-
-        </div>
-
-
-
+            <div class="mb-3">
+              <label for="images" class="form-label">Photo</label>
+              <label for="images" class="drop-container">
+                <span class="drop-title">Déposez les fichiers ici</span>
+                ou
+                <input type="file" name="image_file" id="images" accept="image/*" required>
+              </label>
+            </div>
+            <button type="submit" id="submitForm">Enregistrer</button>
+          </form> 
+          <div class="sucess" id="success"> 
+            <p>Data inserted Succesfully</p> 
+          </div>  
+        </div> 
       </div>
+    </div> 
+  </main>
 
 
-
-      <!-- </div> -->
-
-      
-
-      
-    </div>
-  </div>
-
-</main>
-  
-
-<style>
-  
-  main{ 
-    display: flex;
+  <style>
+    main {
+      display: flex;
       /* gap: 10%; */
     }
-    
-    #AddCarLink{
-  background-color: #006aff;
- 
+
+    #AddCarLink {
+      background-color: #006aff;
+
     }
 
-.DashboardSideBar {
-/* background-color: red; */
-  width: 15%;
- } 
+    .DashboardSideBar {
+      /* background-color: red; */
+      width: 15%;
+    }
 
- 
 
-.AddcarDiv {
-    width: 70%;
-    margin-left: 2%; 
-    /* display: flex;
+
+    .AddcarDiv {
+      width: 70%;
+      margin-left: 2%;
+      /* display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 20px;
     height: 240px; */
-  }
-   
-  
+    }
+
+
     .sucess {
-      
+
       margin-top: 30px;
       justify-content: center;
       /* background-color: red; */
