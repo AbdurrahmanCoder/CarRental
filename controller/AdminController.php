@@ -52,19 +52,13 @@ class AdminController
       
       {
         
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
           echo "hello ";
         }
-         else {
-
-
+         else { 
           $VehiculeAvailable = new VehiculeModels($pdo);
           $typeDeVoiture = $VehiculeAvailable->VehiculeType();
-           require_once 'views/admin/Addcar.php';
-
-
-           
+           require_once 'views/admin/Addcar.php'; 
         }
 
 
@@ -134,20 +128,24 @@ class AdminController
  
         
         $testimonial = new Testimonialmodel($pdo);
-        $testimonials = $testimonial->AllTestimonial();  
+        $testimonials = $testimonial->AllTestimonial();    
         
-        
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {  
-          $approvedTestimonials = $_POST['testimonial'] ?? [];
-          $idsToApprove = array_map('intval', $approvedTestimonials); 
-          $testimonialsApprove = $testimonial->TestimonialApprove($idsToApprove); 
+        // if ($_SERVER["REQUEST_METHOD"] == "POST") {  
           
-        require_once 'views/admin/AdminTestimonials.php';  
-          }  
+        //   $Idaza = $_POST['id'];   
+        //   echo $Idaza;  
+          // $approvedTestimonials = $_POST['testimonial'] ?? [];
+          // $idsToApprove = array_map('intval', $approvedTestimonials); 
+          // $testimonialsApprove = $testimonial->TestimonialApprove($idsToApprove);  
+          // }  
+          
+          require_once 'views/admin/AdminTestimonials.php';  
+
+
+ 
         require_once 'views/admin/AdminTestimonials.php';  
       
-      }
-      
+      } 
        
       else {
         echo "<h1>404</h1>";

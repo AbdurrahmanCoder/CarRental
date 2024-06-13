@@ -6,81 +6,71 @@
     <title>Registration Form</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-
- 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="front\css\register.css">
-    <link rel="stylesheet" href="front\css\home.css">
-        <!-- <script src="front\js\register.js" defer>
-        </script>  -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .card-header, .btn-primary {
+            background-color: #ec6f58;
+            border: none;
+        }
+        .card-header h3 {
+            color: white;
+        }
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #ec6f58;
+        }
+        .btn-primary {
+            width: 100%;
+        }
+    </style>
 </head> 
 <body> 
-    </nav>
     <div class="container">
-        <div class="row justify-content-center" >
-            <div class="col-md-6">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header"  >
-                        <h3 id="FormTOFill" >Registration Form</h3>
+                    <div class="card-header text-center">
+                        <h3>Registration Form</h3>
                     </div>
                     <div class="card-body">
-                    <h1 id="registerSuccess">Successfully Registered </h1>
-                        <form id="myForm"   method="post">
-                            <div class="mb-3 row">
-                                <label for="username" class="col-sm-3 col-form-label">pseudo</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="pseudo" name="pseudo" required>
-                                </div>
+                        <form id="myForm" method="post">
+                            <div class="mb-3">
+                                <label for="pseudo" class="form-label">Pseudo</label>
+                                <input type="text" class="form-control" id="pseudo" name="pseudo" required>
                             </div>
-                            <div class="mb-3 row">
-                                <label for="password" class="col-sm-3 col-form-label">Password</label>
-                                <div class="col-sm-9">
-                                    <input type="password" class="form-control" id="password" name="mdp" required>
-                                </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="mdp" required>
                             </div>
-                            <div class="mb-3 row">
-                                <label for="firstName" class="col-sm-3 col-form-label">First Name</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="firstName" name="nom" required>
-                                </div>
+                            <div class="mb-3">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName" name="nom" required>
                             </div>
-                            <div class="mb-3 row">
-                                <label for="lastName" class="col-sm-3 col-form-label">Last Name</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="lastName" name="prenom" required>
-                                </div>
+                            <div class="mb-3">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" name="prenom" required>
                             </div>
-                            <div class="mb-3 row">
-                                <label for="email" class="col-sm-3 col-form-label">Email</label>
-                                <div class="col-sm-9">
-                                    <input type="email" class="form-control" id="email" name="email" required>
-                                </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
                             </div>
-                            <div class="mb-3 row">
-                                <label for="phone" class="col-sm-3 col-form-label">Phone</label>
-                                <div class="col-sm-9">
-                                    <input type="tel" class="form-control" id="phone" name="telephone" required>
-                                </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="tel" class="form-control" id="phone" name="telephone" required>
                             </div>
-
+                            <button type="submit" id="buttonToRegister" class="btn btn-primary">Register</button>
+                        </form>
                     </div>
-                    <div class="text-center">
-                        <button type="submit" id="buttonToRegister" class="btn btn-primary">Register</button>
-                    </div>
-                    </form>
                 </div>
             </div>
         </div>
     </div>
-    </div>  
- <div id="buttonToLogin"> 
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.3/dist/js/bootstrap.min.js"></script>
 </body>
-
 </html>

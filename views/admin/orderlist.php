@@ -65,17 +65,7 @@ if (!isAdmin()) {
 
         <?php } else { ?>
 
-
-            
-
-
-
-
-            
-            
-
-            
-            
+ 
             <section class="Section_Review">
                 <div class="container containerReview">
                     <div class="vehicleDiv">
@@ -133,11 +123,7 @@ if (!isAdmin()) {
                             <div>
                                 <p>Railway Station Surcharge</p>
                                 <p>Included</p>
-                            </div>
-
- 
-
-
+                            </div>                       
 
                             <div class="buttonsToAction">
 

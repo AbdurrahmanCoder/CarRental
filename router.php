@@ -12,7 +12,6 @@ class Router
         'about' => ['controllers' => 'AboutController', 'method' => 'index'],
         'testimonial' => ['controllers' => 'TestimonialController', 'method' => 'index'],
         'Paymentsuccess' => ['controllers' => 'PaymentsuccessController', 'method' => 'index'],
-           
         
         'admin' => ['controllers' => 'AdminController', 'method' => 'index'],
          'user' => ['controllers' => 'UserController', 'method' => 'index'], 
@@ -23,9 +22,7 @@ class Router
     public function __construct($request)
     {
         $this->request = $request;
-    }
-
-
+    }  
     public function renderControllers()
     {
         $request = $this->request;

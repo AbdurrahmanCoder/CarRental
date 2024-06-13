@@ -8,6 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="front/css/admin.css">
     <link rel="stylesheet" href="front/css/home.css">
+    <script src="front\js\Testinomial.js" async>
+    </script>
+
+    </script>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -84,7 +88,7 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
             margin-top: 20px;
-            width: 30%;
+            width: 100%;
         }
 
         button:hover {
@@ -122,21 +126,24 @@
                             <tr>
                                 <th>Testimonial</th>
                                 <th>Approve</th>
-                            </tr>
+                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($testimonials as $testimonial): ?>
                                 <tr>
                                     <td><?= htmlspecialchars($testimonial['comment']); ?></td>
                                     <td class="checkbox-cell">
-                                        <input type="checkbox" name="testimonial[]" value="<?= $testimonial['id']; ?>" <?= $testimonial['isapproved'] === 1  ? 'checked' : ''; ?>>
+                                        <!-- <input type="checkbox" name="testimonial[]" value="<?= $testimonial['id']; ?>" <?= $testimonial['isapproved'] === 1  ? 'checked' : ''; ?>> -->
+                                        <button data-id="<?php echo $testimonial['id']; ?>" class="DelButtonClicked">DELETE
+                                        </button>
+                                    
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
 
-                    <p><?php echo $testimonialsApprove  ?> </p>
+                    <!-- <p><?php echo $testimonialsApprove  ?> </p> -->
                     <div style="text-align: left;">
                         <button id="SaveChanges" type="submit">Save Changes</button>
                     </div>
@@ -144,9 +151,7 @@
             </div>
         </div>
     </div>
-</main>
-
-
+</main> 
 </body>
 
 <script>

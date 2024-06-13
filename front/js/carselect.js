@@ -45,25 +45,25 @@ function SelectedCar(carId, carMarque, carTarif, carImg) {
 
 
 
-function sendData() {
-    var data = {
-        carids: carId,
-        marque:  carMarque,
-        tarif: carTarif,
-        img:carImg
-    }; 
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "models/checkout.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == XMLHttpRequest.DONE) {
-            // Redirect to the PHP page after sending data
-            window.location.href = `/checkout`;     
-           }
-    }; 
-    var formData = Object.keys(data).map(function (key) {
-        return encodeURIComponent(key) + '=' + encodeURIComponent(data[key]);
-    }).join('&');
+// function sendData() {
+//     var data = {
+//         carids: carId,
+//         marque:  carMarque,
+//         tarif: carTarif,
+//         img:carImg
+//     }; 
+//     var xhr = new XMLHttpRequest();
+//     xhr.open("POST", "models/checkout.php", true);
+//     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+//     xhr.onreadystatechange = function () {
+//         if (xhr.readyState == XMLHttpRequest.DONE) {
+//             // Redirect to the PHP page after sending data
+//             window.location.href = `/checkout`;     
+//            }
+//     }; 
+//     var formData = Object.keys(data).map(function (key) {
+//         return encodeURIComponent(key) + '=' + encodeURIComponent(data[key]);
+//     }).join('&');
 
-    xhr.send(formData);
-}
+//     xhr.send(formData);
+// }

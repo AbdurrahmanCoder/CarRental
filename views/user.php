@@ -114,122 +114,106 @@
             background-color: #28a745;
             color: #fff;
         }
+
+        .no-orders {
+            text-align: center;
+            padding: 50px;
+            font-size: 24px;
+            color: #888;
+ 
+            width: 80vw;
+        }
     </style>
 </head>
 <body>
 <main>
+    <?php if (!empty($UserOrder)) { ?>
     <div class="DashboardSideBar">
-        <a id="NewOrder" class="nav-link">new order</a>
-        <a id="OldOrder" class="nav-link">old order</a>
+            <a id="NewOrder" class="nav-link">new order</a>
+            <a id="OldOrder" class="nav-link">old order</a>
+        <?php } ?>
     </div>
     <div class="NewOldOrder">
-        <?php
-        foreach ($UserOrder as $order) {
-            ?>
-            <section class="Section_Review">
-                <div class="container containerReview">
-                    <div class="vehicleDiv">
-                        <div class="vehicleDiv_descrip">
-                            <div class="vehicleImage">
-                                <h4>vehicle</h4>
-                                <img src="../front/imgRental/<?php echo $order['photo']; ?>" alt="" width="200px">
-                                <h4><?php echo $order['marque']; ?></h4>
-                            </div>
-                            <h3>Pick up</h3>
-                            <div class="vehicleImage">
-                                <h5>pick up</h5>
-                                <h3><?php echo $order['PickUpDate']; ?></h3>
-                                <p><?php echo $order['City']; ?></p>
-                                <hr>
-                            </div>
-                        </div>
-                        <div class="Rate">
-                            <div>
-                                <p><b>Basic rate for days</b></p>
-                                <p>Included</p>
-                            </div>
-                            <div>
-                                <p>Tarif</p>
-                                <p><?php echo $order['tarif']; ?> € / jour</p>
-                            </div>
-                            <div>
-                                <p>total Days</p>
-                                <p><?php ?></p>
-                            </div>
-                            <div>
-                                <p>total paid</p>
-                                <p><?php echo $order['TotalCost']; ?></p>
-                            </div>
-                            <div>
-                                <p>FLEETSC</p>
-                                <p>Included</p>
-                            </div>
-                            <div>
-                                <p>Environmental contribution</p>
-                                <p>Included</p>
-                            </div>
-                            <div>
-                                <p>Railway Station Surcharge</p>
-                                <p>Included</p>
-                            </div>
-                            <div class="flex">
-                                <div>
-                                    <?php
-                                    $statusClass = ($order['OrderStatus'] === 1) ? 'confirmed' : 'pending';
-                                    $statusText = ($order['OrderStatus'] === 1) ? 'Confirmed' : 'Pending';
-                                    ?>
-                                    <button class="button <?php echo $statusClass; ?>"><?php echo $statusText; ?></button>
+        <?php if (empty($UserOrder)) { ?>
+            <div class="no-orders">No orders yet</div>
+        <?php } else { ?>
+            <?php foreach ($UserOrder as $order) { ?>
+                <section class="Section_Review">
+                    <div class="container containerReview">
+                        <div class="vehicleDiv">
+                            <div class="vehicleDiv_descrip">
+                                <div class="vehicleImage">
+                                    <h4>vehicle</h4>
+                                    <img src="../front/imgRental/<?php echo $order['photo']; ?>" alt="" width="200px">
+                                    <h4><?php echo $order['marque']; ?></h4>
                                 </div>
-                                <div>
-                                    <a href="../<?php echo $order['invoice'] ?>" download class="invoice-btn">
-                                        <button class="button">Invoice</button>
-                                    </a>
+                                <h3>Pick up</h3>
+                                <div class="vehicleImage">
+                                    <h5>pick up</h5>
+                                    <h3><?php echo $order['PickUpDate']; ?></h3>
+                                    <p><?php echo $order['City']; ?></p>
+                                    <hr>
                                 </div>
                             </div>
+                            <div class="Rate">
+                                <div>
+                                    <p><b>Basic rate for days</b></p>
+                                    <p>Included</p>
+                                </div>
+                                <div>
+                                    <p>Tarif</p>
+                                    <p><?php echo $order['tarif']; ?> € / jour</p>
+                                </div>
+                                <div>
+                                    <p>total Days</p>
+                                    <p><?php // calculate and echo the total days ?></p>
+                                </div>
+                                <div>
+                                    <p>total paid</p>
+                                    <p><?php echo $order['TotalCost']; ?></p>
+                                </div>
+                                <div>
+                                    <p>FLEETSC</p>
+                                    <p>Included</p>
+                                </div>
+                                <div>
+                                    <p>Environmental contribution</p>
+                                    <p>Included</p>
+                                </div>
+                                <div>
+                                    <p>Railway Station Surcharge</p>
+                                    <p>Included</p>
+                                </div>
+                                <div class="flex">
+                                    <div>
+                                        <?php
+                                        $statusClass = ($order['OrderStatus'] === 1) ? 'confirmed' : 'pending';
+                                        $statusText = ($order['OrderStatus'] === 1) ? 'Confirmed' : 'Pending';
+                                        ?>
+                                        <button class="button <?php echo $statusClass; ?>"><?php echo $statusText; ?></button>
+                                    </div>
+                                    <div>
+                                        <a href="../<?php echo $order['invoice'] ?>" download class="invoice-btn">
+                                            <button class="button">Invoice</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-
-
-                     
                     </div>
-                </div>
 
-
-
-                <?php 
-
-
-if (isset($visibile)){
-    
-    ?>
-
-
-
-
-                <?php if ($order['OrderStatus'] === 1 && $visibile === "show")   { ?>  
-                            <div class="comment-form">
-                                <form   method="post">
-                                    <textarea name="comment" placeholder="Leave your comment here..." required></textarea>
-                                    <input type="hidden" name="order_id" value="<?php echo $order['id']; ?>">
-                                    <button type="submit">Submit Comment</button>
-                                </form>
-                            </div>
-                        <?php }
-                            }
-                
-                        ?>
-
-
-
-
- 
-
-
-
-            </section>
-            <?php
-        }
-        ?>
+                    <?php if (isset($visibile) && $order['OrderStatus'] === 1 && $visibile === "show") { ?>  
+                        <div class="comment-form">
+                            <form method="post">
+                                <textarea name="comment" placeholder="Leave your comment here..." required></textarea>
+                                <input type="hidden" name="order_id" value="<?php echo $order['id']; ?>">
+                                <button type="submit">Submit Comment</button>
+                            </form>
+                        </div>
+                    <?php } ?>
+                </section>
+            <?php } ?>
+        <?php } ?>
     </div>
 </main>
 <script>
@@ -260,3 +244,4 @@ if (isset($visibile)){
 </script>
 </body>
 </html>
+ 

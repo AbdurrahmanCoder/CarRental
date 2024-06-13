@@ -1,6 +1,9 @@
-<?php
-// include("ToCheck.php");
-// session_start(); // Start a new or resume the existing session
+<?php 
+
+
+ 
+ 
+ 
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
 } 

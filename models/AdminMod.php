@@ -83,9 +83,7 @@ class Admin
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
-
-
+ 
  
     public function insertItem($marque, $kilometrage, $tarif, $photo, $carType)
     {
@@ -165,6 +163,21 @@ class Admin
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->bindParam(':tarif', $tarif, PDO::PARAM_INT);
             $stmt->bindParam(':kilometrage', $kilometrage, PDO::PARAM_INT);
+            $stmt->execute(); 
+            return true;
+        } catch (PDOException $e) {
+            // Handle the exception as needed
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    
+    public function TestimonialDelete($id)
+    {
+        try {
+            $pdo = $this->db->getConnection();
+            $sql = "DELETE from temoignage  WHERE id = :id";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT); 
             $stmt->execute(); 
             return true;
         } catch (PDOException $e) {
@@ -278,14 +291,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <td>  <a href="/admin?id=orderlist&CarOrderId=' .$data['carorder_id'] . '">
                 <p>More details</p>
             </a>
-        </td>
-         
-        
-
+        </td> 
             </tr>';
-            }
-
-
+            } 
             // Close the table
             $table .= '</table>';
             echo $table;
@@ -350,8 +358,7 @@ if (isset($_POST['action'])) {
         case 'return':
             if (isset($_POST['CarReturned'])) {
                 $SelectedId = $_POST['CarReturned'];
-                $Carid = $_POST['Carid'];
-               
+                $Carid = $_POST['Carid']; 
                 $datainsert = new Admin;
 
                 $datainsert->CarReturned($SelectedId,$Carid); 
@@ -404,13 +411,29 @@ if (isset($_POST['action'])) {
                     echo json_encode([
                         'status' => 'error',
                         'message' => 'Invalid input'
-                    ]);
-                
-                
-                
+                    ]); 
                 } 
 
                 break; 
+
+
+                case 'TestimonialDelete':
+
+                    if (isset($_POST['id'])) {
+                        $id = $_POST['id'];
+                        $datainsert = new Admin;
+                        $datainsert ->TestimonialDelete($id);
+
+                        echo "confirmed", $query;
+                    } else {
+                        echo "no data from query ";
+                    }
+        
+                    break;
+
+  
+
+
 
         default:
             // Handle unrecognized action

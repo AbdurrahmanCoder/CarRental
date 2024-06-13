@@ -192,10 +192,12 @@
         .testimonial-card {
             padding: 20px;
             text-align: center;
-            background-color: greenyellow; /* Light grey background */
+            background-color: #dddddd;  
+
+
             border-radius: 10px;
             margin: 10px;
-            transition: background-color 0.5s ease; /* Smooth transition */
+            transition: background-color 0.5s ease;  
         }
         .testimonial-card p {
             font-style: italic;
@@ -203,13 +205,13 @@
         /* Custom styles for the carousel controls */
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
-            background-color: #000; /* Black background */
-            border-radius: 50%; /* Circular button */
-            padding: 10px; /* Add padding for larger clickable area */
+            background-color: #000;  
+            border-radius: 50%;  
+            padding: 10px; 
         }
         .carousel-control-prev span,
         .carousel-control-next span {
-            color: #fff; /* White text */
+            color: #fff; 
         }
 </style>
 
