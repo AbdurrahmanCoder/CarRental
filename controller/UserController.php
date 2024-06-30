@@ -20,16 +20,17 @@ class UserController
         } else if ($id === "oldOrder") {
 
             
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
-                $userId = $_SESSION['user_id'];
-                $orderId = $_POST['order_id'];
-                $comment = $_POST['comment']; 
-                if (!empty($comment) && !empty($orderId)) {
-                    $User->InsertTestimonial($userId, $orderId, $comment); 
-                    header('Location: /user?id=oldOrder');
-                    exit;
-                }
-            }  
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
+                    $userId = $_SESSION['user_id'];
+                    $orderId = $_POST['order_id'];
+                    $comment = $_POST['comment']; 
+                    if (!empty($comment) && !empty($orderId)) {
+                        $User->InsertTestimonial($userId, $orderId, $comment); 
+                    $success = true;
+                        header('Location: /user?id=oldOrder&message=sent');
+                        exit;
+                    }
+                }  
             $visibile = "show";
             $UserOrder = $User->OldOrders();
             require_once 'views/navbar.php';
