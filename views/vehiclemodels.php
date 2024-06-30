@@ -100,11 +100,8 @@ function UserLoggedIn()
 
                         </div>
                         <div class="carSelected">
-
-
+                
                             <p>you have not selected the car </p>
-
-
                         </div>
 
                     </div>

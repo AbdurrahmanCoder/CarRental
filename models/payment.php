@@ -49,7 +49,6 @@ class Payment
             'days' => $days,
             'daysTotal' => $daysTotal
         ];
-
     }
 
     public function calculateTotal($id)
@@ -146,8 +145,6 @@ class Payment
             $stmt2->bindParam(':orderId', $id);
             $stmt2->bindParam(':pdfname', $pdfname);
             $stmt2->execute();
-
-            echo "Payment status and invoice updated successfullyhjjhhjhjh.";
         } catch (\PDOException $e) {
             // Log error
             error_log('Error updating payment status: ' . $e->getMessage());

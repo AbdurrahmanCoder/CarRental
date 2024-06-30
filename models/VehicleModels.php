@@ -97,10 +97,7 @@ class VehiculeModels
         return  $result ; 
        
     }
-
-
-
-
+ 
 
 
     public function Location()

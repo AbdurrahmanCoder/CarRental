@@ -15,30 +15,24 @@ class RegisterController
     private $register;
 
 
-    public function index()
+    public function register()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {             
             $database = new Database();
             $pdo = $database->getConnection(); 
             $registration = new Registration();
             $registration->insertData($pdo);  
-        
             if($registration->insertData($pdo))
             { 
                 require_once 'views/navbar.php';
-                require_once 'views/registerSuccessPage.php';
-                
+                require_once 'views/registerSuccessPage.php';       
             }
         } else {
             require_once 'views/navbar.php';
             require_once 'views/register.php';
         }
-
     }
-
-
 }
-
 // $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASSWORD);
 // $register = new Register($pdo);
 // $register->insertData();

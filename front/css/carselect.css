@@ -124,9 +124,9 @@
    background-color:#f7f7f7;
 
 } */
-.checkout{
-    
-   border:none;
+.checkout {
+
+    border: none;
 }
 
 .OrderDivsContainer {
@@ -244,84 +244,108 @@
 }
 
 
-.checkout  {
-   position: sticky;
+.checkout {
+    position: sticky;
     width: 100%;
     display: flex;
     /* display: none; */
     justify-content: flex-end;
     align-items: center;
     height: 70px;
-    background-color:#f7f7f7;
-    
-   }
-   
-.tocheck{
-   display: flex;
-   justify-content: flex-end;
-  
+    background-color: #f7f7f7;
+
+}
+
+.tocheck {
+    display: flex;
+    justify-content: flex-end;
+
     width: 100vw;
-    
-}   
-   .checkout_main{
-       position: sticky;
-           top:0 ;
-   
-   } 
 
-    .checkout{ 
-  opacity: 0 ; 
-   }  
+}
 
+.checkout_main {
+    position: sticky;
+    top: 0;
 
+}
 
-    /* Form container */
-   #vehicleForm {
-       /* margin: 0 auto; */
-       width: 80%;
-       overflow: hidden;
-
-       max-width: 45%;
-       margin-left: 20px;
-
-   }
-
-   /* Dropdown styling */
-   #vehicleType {
-       float: left;
-       width: calc(70% - 10px);
-       padding: 10px;
-       font-size: 16px;
-       border: 1px solid #ccc;
-       border-radius: 5px;
-       margin-right: 10px;
-       box-sizing: border-box;
-   }
-
-   /* Button styling */
-   button[type="submit"] {
-       float: left;
-       width: calc(30% - 10px);
-       background-color: #4CAF50;
-       color: white;
-       padding: 14px 14px;
-       border: none;
-       border-radius: 5px;
-       cursor: pointer;
-       box-sizing: border-box;
-   }
+.checkout {
+    opacity: 0;
+}
 
 
-   button[type="submit"]:hover {
-       background-color: #45a049;
-   }
 
-   #Dropdown {
+/* Form container */
+#vehicleForm {
+    /* margin: 0 auto; */
+    width: 80%;
+    overflow: hidden;
 
-       display: flex;
-       justify-content: left;
-       align-items: start;
-       align-self: start;
-       align-content: flex-start;
-   }
- 
+    max-width: 45%;
+    margin-left: 20px;
+
+}
+
+/* Dropdown styling */
+#vehicleType {
+    float: left;
+    width: calc(70% - 10px);
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    box-sizing: border-box;
+}
+
+/* Button styling */
+button[type="submit"] {
+    float: left;
+    width: calc(30% - 10px);
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+#Dropdown {
+
+    display: flex;
+    justify-content: left;
+    align-items: start;
+    align-self: start;
+    align-content: flex-start;
+}
+
+
+@media screen and (width < 750px) {
+    .order {
+        display: none;
+    }
+
+    .vehicule {
+        display: none;
+    }
+
+
+
+    .checkout_main {
+        z-index: 111;
+        position: fixed;
+        top: 70px;
+    }
+
+    .checkout_main {
+        position: fixed;
+        top: 70px;
+    }
+}

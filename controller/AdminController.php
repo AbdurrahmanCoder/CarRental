@@ -14,10 +14,8 @@ use Admin\admin;
 class AdminController
 {
   private $database;
-  public function index()
-  {
-
- 
+  public function admin()
+  {                               
     function isAdmind()
     {
 
@@ -30,9 +28,7 @@ class AdminController
       require_once 'views/navbar.php';
       $database = new Database();
       $pdo = $database->getConnection();
-
       $id = isset($_GET["id"]) ? $_GET["id"] : "Dashboard";
-
 
       if ($id === "Dashboard") {
         $VehiculeAvailable = new adminDash($pdo);

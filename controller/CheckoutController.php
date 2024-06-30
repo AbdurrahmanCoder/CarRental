@@ -22,7 +22,7 @@ class CheckoutController
 
 
 
-    public function index()
+    public function checkout()
     {
         $database = new Database();
         $pdo = $database->getConnection();

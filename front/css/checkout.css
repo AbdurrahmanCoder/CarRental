@@ -142,5 +142,91 @@ h3 {
     padding: 20px 0;
 }
 
+ /* ******************************   to delete REPONSIVE         ****************************** */
+
 
  
+@media (max-width: 1200px) {
+    .review {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .vehicleDiv {
+        flex-direction: column;
+    }
+
+    .vehicleDiv_descrip, .Rate {
+        width: 100%;
+        margin-top: 20px;
+        position: relative;
+    }
+
+    .Rate {
+        margin-top: 20px;
+    }
+
+    .pay {
+        width: 40%;
+    }
+
+    .containerTotal div {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    
+    .vehicleDiv , .Section_Total  {
+        margin: 20px;
+    }
+
+
+
+.review{
+
+    display: none;
+}
+ 
+
+.review h1 {
+        font-size: 24px;
+    }
+
+    .total h3 {
+        font-size: 28px;
+    }
+
+    .total p {
+        font-size: 18px;
+    }
+
+    h3 {
+        font-size: 28px;
+    }
+
+    .pay {
+        width: 60%;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .total h3 {
+        font-size: 24px;
+    }
+
+    .total p {
+        font-size: 16px;
+    }
+
+    h3 {
+        font-size: 24px;
+    }
+
+    .pay {
+        width: 80%;
+        font-size: 14px;
+    }
+}

@@ -1,6 +1,4 @@
 <?php  
-    
-    
  namespace Testimonial;
  
     
@@ -13,8 +11,7 @@
         }
     
         public function retrieveTestimonial() { 
-        
-            $requete = "SELECT * from temoignage where isapproved  = 1 ";    
+            $requete = "SELECT * from temoignage  ";    
             $stmt = $this->pdo->prepare($requete);
             $stmt->execute();
             return $stmt->fetchAll(\PDO::FETCH_ASSOC); 

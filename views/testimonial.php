@@ -8,26 +8,15 @@
     <link rel="stylesheet" href="front\css\about.css"> 
         <title>Document</title>
 </head>
-
 <body>
-
     <div class="header">
         <div class="header_overlay">
-  
-
             <div class="container">
-
                 <h1>Testimonial</h1>
                 <p>Home / About</p>
-
-            </div>
-
-
-
+</div>
         </div>
     </div>
-
-
     <section class="Section_Testimonial">
 
         <div class="container">
@@ -41,17 +30,15 @@
                         experiences with you.</p>
 
 
-                </div>
-
+                </div> 
     </section>
 
-
     <section>
-        <div class="container">
+                <div class="container">
 
-<div class="Testimonial_Comments">
-<div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
+    <div class="Testimonial_Comments">
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
         <?php 
         $active = 'active';
         for($i = 0; $i < count($result); $i += 3) { ?>
@@ -86,8 +73,8 @@
         
         <?php
  foreach($result as $comments) 
- { ?>
 
+ { ?>
 <div>
     <p>"<?php echo $comments["comment"] ?>"</p> 
     <span> 
@@ -115,20 +102,8 @@
 </div>
      -->
     
-</div>
-
-
-
+</div> 
 </section>
-
-
-
-
-
- 
-
-
-
     <footer>
         <div class="container">
 

@@ -1,6 +1,4 @@
 <?php 
-
-
 namespace Home;
 
 class Home 

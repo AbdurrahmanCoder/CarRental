@@ -23,7 +23,7 @@ class VehicleController
     private $order;
 
 
-    public function index()
+    public function vehicule()
     {
 
         // $id_User = $_SESSION['user_id'];

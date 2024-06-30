@@ -14,8 +14,6 @@ function deleted() {
     // fetch('../models/AdminMod.php', {
     fetch('/', {
 
- 
-
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

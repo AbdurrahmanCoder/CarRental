@@ -36,16 +36,7 @@
                     ?>
 
 
-<article class="MainArticle">
-
-
-    
- 
-
-
- 
-
-
+<article class="MainArticle"> 
     <section class="Section_Review">
         <div class="container containerReview">
             <div class="vehicleDiv">

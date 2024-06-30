@@ -4,8 +4,6 @@
 // require_once "models/config.php";
 // require_once "Session/session.php";
 
-
-
 use Database\Database;
 use Order\OrderSave;
 use Session\Session;
@@ -17,17 +15,15 @@ class HomeController
     private $order;
 
 
-    public function index()
+    public function home()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
             extract($_POST); 
             $SessionInsert = new Session();
             $SessionInsert->handleOrderSearch($_POST);
             $sessionData = $SessionInsert->getSessionData(); 
             header("Location:/vehicleModel");
             exit();
-
         } else {
  
             $database = new Database();
@@ -37,18 +33,6 @@ class HomeController
           include 'views/navbar.php';
             include 'views/home.php';
         }
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
 

@@ -14,7 +14,7 @@ class LoginController
     private $login;
     private $email;
     private $password; 
-    public function index()
+    public function login()
     {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -24,10 +24,7 @@ class LoginController
             $database = new Database();
             $pdo = $database->getConnection(); 
             $login = new Login($pdo);
-            $authenticated =  $login->authenticate($this->email,$this->password);
-  
-           
-
+            $authenticated =  $login->authenticate($this->email,$this->password); 
             if(isset($_SESSION['pseudoData'])){
                 echo "welcome";
               header("Location:".HOST);  

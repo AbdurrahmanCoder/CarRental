@@ -1,6 +1,6 @@
 <?php 
 class AboutController {
-    public function index() {  
+    public function About() {  
         require_once 'views/navbar.php';
         require_once 'views/about.php';
     }

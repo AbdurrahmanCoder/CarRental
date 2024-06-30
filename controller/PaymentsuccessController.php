@@ -8,24 +8,17 @@ use Dompdf\Dompdf;
 
 class PaymentsuccessController
 {
-     public function index()
+     public function Payment()
      {
-               
-          
           $user_id = $_GET['user_id'];
           $database = new Database();
           $pdo = $database->getConnection();
           $payment = new Payment($pdo);
-
-
-
-
           if (isset($_GET['user_id']) ) {
               $lastOrder =  $payment->UserDataById($user_id);
               $id =  $lastOrder['carorder_ids']; 
            }
 
- 
           $nom = "abdurrahman";
           require_once __DIR__ . '/../vendor/autoload.php';
           $dompdf = new Dompdf(["chroot" => ROOT]);
@@ -49,8 +42,6 @@ class PaymentsuccessController
                     require_once 'views/navbar.php';
                     require_once 'views/payment.php';
                     require_once 'models/payment.php';
-          
- 
 
      }
 
